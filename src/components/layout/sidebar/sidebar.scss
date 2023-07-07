@@ -1,0 +1,122 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+.sidebar{
+    width: 100%;
+    max-width: 300px;
+    height: 100vh;
+    background: black;
+    color: white;
+    overflow-y: auto;
+    @media (max-width:$xxxl) {
+        max-width: 280px;
+    }
+    @media (max-width:$xxl) {
+        max-width: 260px;
+    }
+    @media (max-width:$xl) {
+        max-width: 240px;
+    }
+    .logo-wrapper{
+        width: 100%;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    h1{
+        color: #F1F1F1;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-bottom: 15px;
+    }
+    .wrapper{
+        width: 80%;
+        padding: 20px 0px 0px 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+        @media (max-width:$xxxl) {
+            gap: 80px;
+        }
+        @media (max-width:$xxl) {
+            gap: 40px;
+        }
+        @media (max-width:$xl) {
+            gap: 20px;
+        }
+        nav{
+        ul{
+            display: flex;
+            flex-direction: column;
+            li{
+                a{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 10px 0px 10px 20px;
+                    text-decoration: none;
+                    cursor: pointer;
+                    color: #F1F1F1;
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 125%;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    border-radius: 8px;
+                    position: relative;
+                    @media (max-width:$xxxl) {
+                        font-size: 16px;
+                    }
+                    @media (max-width:$xl) {
+                        font-size: 14px;
+                    }
+                    &:hover{
+                        background: rgba(249, 199, 11, 0.25);
+                        &:before{
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 6px;
+                            height: 100%;
+                            background: #F9C70B;
+                            border-radius: 8px 0px 0px 8px;
+                        }
+                    }
+                    &.active{
+                        background: rgba(249, 199, 11, 0.25);
+                        &:before{
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 6px;
+                            height: 100%;
+                            background: #F9C70B;
+                            border-radius: 8px 0px 0px 8px;
+                        }
+                    }
+                    div{
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    }
+    
+}
