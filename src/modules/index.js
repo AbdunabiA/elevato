@@ -1,5 +1,5 @@
-import ContainerAll from './containerAll'
-import ContainerOne from './containerOne'
-import ContainerForm from './containerForm'
+import GetAll from "./getAll";
+import GetOne from "./getOne";
+import ContainerForm from "./containerForm";
 
-export { ContainerAll, ContainerOne, ContainerForm };
+export { GetAll, GetOne, ContainerForm };

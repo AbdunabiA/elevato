@@ -9,10 +9,13 @@ const Header = ({ setSideMenu }) => {
 
   const location = useLocation();
   const paths = {
-    "/filiallar": "Filiallar",
-    "/mahsulot": "Mahsulot",
-    "/pul_aylanmasi": "Pul Aylanmasi",
-    "/statistika": "Statistika",
+    "/branches": "Filiallar",
+    "/product": "Mahsulot",
+    "/money-circulation": "Pul Aylanmasi",
+    "/statistics": "Statistika",
+    "/support":"Qo'llab Quvvatlash",
+    "/settings":"Sozlamalar",
+    "/big-leap":"Big Leap Team"
   };
   return (
     <header>

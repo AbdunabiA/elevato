@@ -1,7 +1,7 @@
 import { useGet } from "crud";
 import { get } from "lodash";
 
-const index = ({ url, queryKey, params, onSuccess, onError, children }) => {
+const GetOne = ({ url, queryKey, params, onSuccess, onError, children }) => {
   const data = useGet({ url, queryKey, params, onSuccess, onError });
   // console.log(get(data, "data.data"));
   return children({
@@ -10,4 +10,4 @@ const index = ({ url, queryKey, params, onSuccess, onError, children }) => {
   });
 };
 
-export default index;
+export default GetOne;

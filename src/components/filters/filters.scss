@@ -1,0 +1,29 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+.filters{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    .btns{
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 120%;
+        color: rgba(0, 0, 0, 0.5);
+        padding: 16px 28px;
+        @media (max-width:$md) {
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+        &.chosen{
+            border-bottom: 1.5px solid #F4BE37;
+            color: #F4BE37;
+        }
+    }
+}

@@ -11,6 +11,10 @@ header{
     width: 100%;
     height: 108px;
     border-bottom: 1px solid #F9C70B;
+    background:#F1F1F1;
+    position: sticky;
+    top: 0;
+    left: 0;
     @media (max-width:$lg) {
         height: 88px;
     }
@@ -38,6 +42,12 @@ header{
                 @media (max-width:$lg) {
                     display: block;
                 }
+                @media (max-width:$md) {
+                    margin-right: 8px;
+                }
+                @media (max-width:$sm) {
+                    margin-right: 2px;
+                }
             }
             h1{
                 font-family: Inter;
@@ -59,6 +69,12 @@ header{
             display: flex;
             align-items: center;
             gap: 15px;
+            @media (max-width:$xxl) {
+                gap: 10px;  
+            }
+            @media (max-width:$sm) {
+                gap: 5px;
+            }
             .input__wrapper{
                 display: flex;
                 align-items: center;
@@ -69,7 +85,7 @@ header{
                 border-radius: 16px;
                 padding: 16px;
                 @media (max-width:$xxl) {
-                    width: 400px;
+                    width: 350px;
                     height: 50px;
                     border-radius: 14px;
                 }
@@ -107,6 +123,10 @@ header{
                 border-radius: 100%;
                 padding: 10px;
                 background: #F4BE37;
+                @media (max-width:$xxl) {
+                    width: 50px;
+                    height: 50px;
+                }
                 @media (max-width:$xl) {
                     width: 40px;
                     height: 40px;
@@ -122,6 +142,10 @@ header{
                 height: 55px;
                 border-radius: 100%;
                 overflow: hidden;
+                @media (max-width:$xxl) {
+                    width: 50px;
+                    height: 50px;
+                }
                 @media (max-width:$xl) {
                     width: 40px;
                     height: 40px;
@@ -140,6 +164,9 @@ header{
                 background: #F9C70B;
                 padding: 16px 24px;
                 color: #FFFFFF;
+                @media (max-width:$xxl) {
+                    padding: 12px 20px;
+                }
                 @media (max-width:$xl) {
                     padding: 10px 18px;
                 }

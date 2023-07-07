@@ -35,6 +35,10 @@ $xxxxl:1921px;
     .logo-wrapper{
         width: 100%;
         cursor: pointer;
+        height: 108px;
+        @media (max-width:$lg) {
+            height: 88px;
+        }
         img{
             width: 100%;
             height: 100%;
@@ -107,8 +111,11 @@ $xxxxl:1921px;
                     @media (max-width:$xxxl) {
                         font-size: 16px;
                     }
-                    @media (max-width:$xl) {
+                    @media (max-width:$xxl) {
                         font-size: 14px;
+                    }
+                    @media (max-width:$xl) {
+                        font-size: 13px;
                     }
                     &:hover{
                         background: rgba(249, 199, 11, 0.25);

@@ -1,7 +1,7 @@
 import { useGet } from "crud"
 import { get } from "lodash"
 
-const index = ({url, queryKey, params, onSuccess, onError, children}) => {
+const GetAll = ({url, queryKey, params, onSuccess, onError, children}) => {
     const data = useGet({url, queryKey, params, onSuccess, onError})
   return children({
     items: get(data, "data.data.data"),
@@ -15,4 +15,4 @@ const index = ({url, queryKey, params, onSuccess, onError, children}) => {
   });
 }
 
-export default index
+export default GetAll
