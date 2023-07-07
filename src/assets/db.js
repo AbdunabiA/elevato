@@ -1,6 +1,6 @@
 import asosiy from './icons/AsosiyIcon.png'
 import bigLeap from './icons/BigLeapIcon.png'
-import filiallar from './icons/filiallarIcon.png'
+import filiallar from './icons/FiliallarIcon.png'
 import mahsulot from './icons/MahsulotIcon.png'
 import pulAylanmasi from './icons/PulAylanmasiIcon.png'
 import qollabQuvvatlash from './icons/QollabQuvvatlashIcon.png'
