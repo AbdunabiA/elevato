@@ -1,11 +1,11 @@
 import asosiy from './icons/AsosiyIcon.png'
-import bigLeap from 'assets/icons/BigLeapIcon.png'
-import filiallar from 'assets/icons/filiallarIcon.png'
-import mahsulot from 'assets/icons/MahsulotIcon.png'
-import pulAylanmasi from 'assets/icons/PulAylanmasiIcon.png'
-import qollabQuvvatlash from 'assets/icons/QollabQuvvatlashIcon.png'
-import sozlamalar from 'assets/icons/SozlamalarIcon.png'
-import statistika from 'assets/icons/StatistikaIcon.png'
+import bigLeap from './icons/BigLeapIcon.png'
+import filiallar from './icons/filiallarIcon.png'
+import mahsulot from './icons/MahsulotIcon.png'
+import pulAylanmasi from './icons/PulAylanmasiIcon.png'
+import qollabQuvvatlash from './icons/QollabQuvvatlashIcon.png'
+import sozlamalar from './icons/SozlamalarIcon.png'
+import statistika from './icons/StatistikaIcon.png'
 
 
 const menus = {
