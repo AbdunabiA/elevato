@@ -2,17 +2,19 @@ import { Outlet } from "react-router-dom"
 import Sidebar from "./sidebar"
 import Header from "./header"
 import './layout.scss'
+import { useState } from "react"
 
-const index = () => {
+const Index = () => {
+  const [sideMenu, setSideMenu] = useState(false)
   return (
     <div className="layout">
-        <Sidebar/>
+        <Sidebar {...{sideMenu, setSideMenu}}/>
         <div className="content">
-            <Header/>
+            <Header {...{setSideMenu}}/>
             <Outlet/>
         </div>
     </div>
   )
 }
 
-export default index
+export default Index

@@ -112,7 +112,7 @@ $mainBg: #F1F1F1;
 .container{
     width: 100%;
     max-width: 1300px;
-    // margin: 0 auto;
+    
     padding: 0 20px;
 
     @include xxxxl{
@@ -132,7 +132,8 @@ $mainBg: #F1F1F1;
         background: blue;
     }
     @include lg{
-        max-width: $md
+        max-width: $md;
+        margin: 0 auto;
     }
     @include md{
         max-width: $sm;

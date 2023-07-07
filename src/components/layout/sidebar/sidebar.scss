@@ -13,6 +13,7 @@ $xxxxl:1921px;
     background: black;
     color: white;
     overflow-y: auto;
+    transition: all .5s;
     @media (max-width:$xxxl) {
         max-width: 280px;
     }
@@ -22,8 +23,18 @@ $xxxxl:1921px;
     @media (max-width:$xl) {
         max-width: 240px;
     }
+    @media (max-width:$lg) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        &.active{
+            transform: translateX(0);
+        }
+    }
     .logo-wrapper{
         width: 100%;
+        cursor: pointer;
         img{
             width: 100%;
             height: 100%;
@@ -53,6 +64,25 @@ $xxxxl:1921px;
         }
         @media (max-width:$xl) {
             gap: 20px;
+        }
+        .menus-wrapper>div{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 15px;
+            h1{
+                margin-bottom: 0;
+            }
+            .close-icon__wrapper{
+                width: 30px;
+                cursor: pointer;
+                display: none;
+                @media (max-width:$lg) {
+                    display: block;
+                }
+            }
         }
         nav{
         ul{
@@ -120,3 +150,19 @@ $xxxxl:1921px;
     }
     
 }
+
+.back-black__cover{
+        display: none;
+        @media (max-width:$lg) {
+            display: block;
+            position: fixed;
+            inset: 0;
+            background: black;
+            opacity: .3;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+    }

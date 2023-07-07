@@ -1,7 +1,19 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+
 header{
     width: 100%;
     height: 108px;
     border-bottom: 1px solid #F9C70B;
+    @media (max-width:$lg) {
+        height: 88px;
+    }
     .wrapper{
         width: 100%;
         height: 100%;
@@ -9,7 +21,24 @@ header{
         align-items: center;
         justify-content: space-between;
         padding: 0px 20px;
+        @media (max-width:$md) {
+            padding: 0px 10px;
+        }
+        @media (max-width:$sm) {
+            padding: 0px 5px;
+        }
         &__left{
+            display: flex;
+            align-items: center;
+            .humburger-icon__wrapper{
+                width: 30px;
+                padding: 3px;
+                margin-right: 10px;
+                display: none;
+                @media (max-width:$lg) {
+                    display: block;
+                }
+            }
             h1{
                 font-family: Inter;
                 font-size: 36px;
@@ -18,6 +47,12 @@ header{
                 letter-spacing: 0em;
                 text-align: left;
                 color: #000000;
+                @media (max-width:$xl) {
+                    font-size: 26px;
+                }
+                @media (max-width:$md) {
+                    font-size: 20px;
+                }
             }
         }
         &__right{
@@ -33,6 +68,23 @@ header{
                 background: white;
                 border-radius: 16px;
                 padding: 16px;
+                @media (max-width:$xxl) {
+                    width: 400px;
+                    height: 50px;
+                    border-radius: 14px;
+                }
+                @media (max-width:$xl) {
+                    width: 250px;
+                    height: 40px;
+                    border-radius: 12px;
+                }
+                @media (max-width:$md) {
+                    width: 180px;
+                    height: 30px;
+                }
+                @media (max-width:$sm) {
+                    display: none;
+                }
                 label{
                     img{
                         width: 100%;
@@ -55,12 +107,29 @@ header{
                 border-radius: 100%;
                 padding: 10px;
                 background: #F4BE37;
+                @media (max-width:$xl) {
+                    width: 40px;
+                    height: 40px;
+                }
+                @media (max-width:$md) {
+                    width: 30px;
+                    height: 30px;
+                    padding: 5px;
+                }
             }
             .avatar{
                 width: 55px;
                 height: 55px;
                 border-radius: 100%;
                 overflow: hidden;
+                @media (max-width:$xl) {
+                    width: 40px;
+                    height: 40px;
+                }
+                @media (max-width:$md) {
+                    width: 30px;
+                    height: 30px;
+                }
             }
             button{
                 font-size: 14px;
@@ -71,6 +140,12 @@ header{
                 background: #F9C70B;
                 padding: 16px 24px;
                 color: #FFFFFF;
+                @media (max-width:$xl) {
+                    padding: 10px 18px;
+                }
+                @media (max-width:$md) {
+                    padding: 8px 16px;
+                }
             }
         }
         
