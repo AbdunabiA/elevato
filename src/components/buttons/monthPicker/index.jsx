@@ -6,7 +6,7 @@ import { Button } from "..";
 import { forwardRef, useRef } from "react";
 import './monthPicker.scss'
 
-const MonthPicker = ({date, setDate}) => {
+const MonthPicker = ({month, setMonth}) => {
     const dateRef = useRef(null);
     registerLocale("uz", uz);
     const CustomInput = forwardRef(({ onClick, value }, ref) => {
@@ -22,10 +22,10 @@ const MonthPicker = ({date, setDate}) => {
     });
   return (
     <ReactDatePicker
-      selected={date}
+      selected={month}
       locale={"uz"}
       closeOnScroll={true}
-      onChange={(date) => setDate(date)}
+      onChange={(date) => setMonth(date)}
       dateFormat="MMMM/yyyy"
       showMonthYearPicker
       customInput={<CustomInput inputRef={dateRef} />}
