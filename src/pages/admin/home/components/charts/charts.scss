@@ -7,12 +7,27 @@ $xxxl:1601px;
 $xxxxl:1921px;
 
 
-.charts{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 15px;
-    margin-top: 30px;
-    width: 100%;
-    
+.charts-wrapper{
+    margin-top: 40px;
+    >.title{
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 44px;
+        @media (max-width:$xl) {
+            font-size: 32px;
+            text-align: center;
+        }
+        @media (max-width:$sm) {
+            font-size: 28px;
+        }
+    }
+    .charts{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 20px;
+        width: 100%;
+        
+}
 }

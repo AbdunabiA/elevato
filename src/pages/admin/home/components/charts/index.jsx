@@ -3,7 +3,9 @@ import './charts.scss'
 
 const Charts = () => {
   return (
-    <div className="charts">
+    <div className="charts-wrapper">
+      <h1 className="title">Umumiy statistika</h1>
+      <div className="charts">
       <BarChart
         title={"Daromad grafigi (uzs)"}
         subtitle={
@@ -32,14 +34,14 @@ const Charts = () => {
         tooltipVal={"ta"}
         key={2}
       />
-          <PieChart
-            title={"Mahsulot sotuv ulushi"}
-            labels={["ofiyat1", "ofiyat2", "ofiyat3", "ofiyt4"]}
-            datas={["5000", "40000", "10000", "100000"]}
-            datasetLabel={"Mahsulot"}
-            tooltipVal={"ta"}
-            key={3}
-          />
+      <PieChart
+        title={"Mahsulot sotuv ulushi"}
+        labels={["ofiyat1", "ofiyat2", "ofiyat3", "ofiyt4"]}
+        datas={["5000", "40000", "10000", "100000"]}
+        datasetLabel={"Mahsulot"}
+        tooltipVal={"ta"}
+        key={3}
+      />
       <BarChart
         title={"Umumiy maosh grafigi (uzs)"}
         subtitle={
@@ -54,6 +56,7 @@ const Charts = () => {
         tooltipVal={"M uzs"}
         key={4}
       />
+    </div>
     </div>
   );
 }
