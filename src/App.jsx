@@ -11,7 +11,7 @@ function App() {
   const isAuthenticated = true
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/");
+      // navigate("/");
     } else {
       navigate("/auth/sign-in");
     }

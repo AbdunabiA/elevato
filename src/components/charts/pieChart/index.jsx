@@ -5,8 +5,7 @@ import { generateUniqueColor } from "services/generateUniqueColors";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = ({
-  labels,
-  datas,
+  infos,
   datasetLabel,
   width = "100%",
   height = "100%",
@@ -23,23 +22,29 @@ const options = {
     },
     tooltip: {
       callbacks: {
-        //   title: (value) => {
-        //     return value + 'ta' ;
-        //   },
-        label: (value) => {
-          return tooltipVal && value.formattedValue + tooltipVal;
+          // title: (value) => {
+          //   console.log(value);
+          //   return  'title';
+          // },
+        label: (data) => {
+          const sum = data.dataset.data.reduce((acc, el)=>acc + Number(el), 0)
+          const slice = data.parsed
+          const percentage = 100 / sum * slice
+          return tooltipVal
+            ? `${data.formattedValue + tooltipVal} / ${percentage.toFixed(1)}%`
+            : `${data.formattedValue} / ${percentage.toFixed(1)}%`;
         },
       },
     },
   },
 };
   const data = {
-    labels: labels,
+    labels: Object.keys(infos),
     datasets: [
       {
         label: datasetLabel,
-        data: datas,
-        backgroundColor: generateUniqueColor(labels?.length),
+        data: Object.values(infos),
+        backgroundColor: generateUniqueColor(Object.keys(infos)?.length),
         borderWidth: 1,
         hoverBorderColor: "rgb(0,0,0)",
       },

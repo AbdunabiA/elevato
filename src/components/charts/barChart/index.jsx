@@ -18,29 +18,40 @@ ChartJS.register(
   Legend
 );
 
-const BarChart = ({labels, datas, datasetLabel, width='100%', height='100%', tooltipVal, title, subtitle, textBottom}) => {
-    const chartData = {
-      labels,
-      datasets: [
-        {
-          borderRadius: 15,
-          borderWidth: 1,
-          hoverBorderColor: "rgb(0,0,0)",
-          hoverBackgroundColor: "rgb(0,0,0)",
-          label: datasetLabel,
-          maxBarThickness: 30,
-          backgroundColor: "rgba(249, 199, 11, 0.25)",
-          data:datas,
-        },
-      ],
-    };
+const BarChart = ({
+  infos,
+  displayDatasetLabel=false,
+  positionDatasetLabel='bottom',
+  datasetLabel,
+  width = "100%",
+  height = "100%",
+  tooltipVal,
+  title,
+  subtitle,
+  textBottom,
+}) => {
+  const chartData = {
+    labels:Object.keys(infos),
+    datasets: [
+      {
+        borderRadius: 15,
+        borderWidth: 1,
+        hoverBorderColor: "rgb(0,0,0)",
+        hoverBackgroundColor: "rgb(0,0,0)",
+        label: datasetLabel,
+        maxBarThickness: 30,
+        backgroundColor: "rgba(249, 199, 11, 0.25)",
+        data: Object.values(infos),
+      },
+    ],
+  };
 
   const options = {
     responsive: true,
     plugins: {
       legend: {
-        display: false,
-        position: "bottom",
+        display: displayDatasetLabel,
+        position: positionDatasetLabel,
       },
       tooltip: {
         callbacks: {
