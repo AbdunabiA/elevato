@@ -22,9 +22,9 @@ const Cards = ({ infos }) => {
     },
     {
       icon: nasiya,
-      title: "Umumiy Nasiya",
+      title: "Ishlangan kunlar",
       count: formatNums(infos[2]),
-      val: "uzs",
+      val: "kun",
     },
     {
       icon: mahsulot,

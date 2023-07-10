@@ -22,13 +22,13 @@ const Cards = ({infos}) => {
       },
       {
         icon: kupon,
-        title: "Umumiy Kupon",
+        title: "Ishlangan kunlari",
         count: formatNums(infos[2]),
-        val: "ball",
+        val: "kun",
       },
       {
         icon: mahsulot,
-        title: "Umumiy ball",
+        title: "Mahsulotlar soni",
         count: formatNums(infos[3]),
         val: "ta",
       },

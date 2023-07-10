@@ -58,4 +58,55 @@ const helpers = {
   ],
 };
 
+export const mahsulotTarqatish = [
+         {
+           contractId: 55418,
+           date: "11/11/2022",
+           product: "Ofiyst",
+           amount: 400,
+           payed: 9500000,
+           overallPayment: 10000000,
+         },
+         {
+           contractId: 55418,
+           date: "11/12/2022",
+           product: "Ofiyst",
+           amount: 400,
+           payed: 0,
+           overallPayment: 15000000,
+         },
+         {
+           contractId: 55418,
+           date: "11/11/2022",
+           product: "Ofiyst",
+           amount: 400,
+           payed: 95000000,
+           overallPayment: 1000000,
+         },
+         {
+           contractId: 55418,
+           date: "11/11/2022",
+           product: "Ofiyst",
+           amount: 400,
+           payed: 200000,
+           overallPayment: 10000000,
+         },
+         {
+           contractId: 55418,
+           date: "11/11/2022",
+           product: "Ofiyst",
+           amount: 400,
+           payed: 9500000,
+           overallPayment: 10000000,
+         },
+         {
+           contractId: 55418,
+           date: "11/11/2022",
+           product: "Ofiyst",
+           amount: 400,
+           payed: 9500000,
+           overallPayment: 10000000,
+         },
+       ];
+
 export {menus, helpers}

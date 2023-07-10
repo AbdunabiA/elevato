@@ -48,6 +48,9 @@ const BarChart = ({
 
   const options = {
     responsive: true,
+    onclick: () => {
+      console.log("CLICKED");
+    },
     plugins: {
       legend: {
         display: displayDatasetLabel,

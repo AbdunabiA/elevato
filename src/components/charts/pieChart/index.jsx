@@ -1,11 +1,15 @@
 import { Pie } from "react-chartjs-2"
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { generateUniqueColor } from "services/generateUniqueColors";
+import { useNavigate } from "react-router-dom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = ({
   infos,
+  datas,
+  url,
+  isLabelNavigatable=false,
   datasetLabel,
   width = "100%",
   height = "100%",
@@ -14,10 +18,20 @@ const PieChart = ({
   subtitle,
   textBottom,
 }) => {
+  const navigate = useNavigate()
 const options = {
   responsive: true,
+  // onclick:()=>{
+  //   console.log('CLICKED');
+  // },
   plugins: {
     legend: {
+      onClick:(value1, value2)=>{
+        if(isLabelNavigatable){
+        const id = datas[value2.text].id
+        navigate(`${url}/${id}`)
+      }
+      },
       position: "bottom",
     },
     tooltip: {

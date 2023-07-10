@@ -16,8 +16,22 @@ const Charts = () => {
     ofiyat1: 5000,
     ofiyat2: 40000,
     ofiyat3: 10000,
-    ofiyt4: 100000,
+    ofiyat4: 100000,
   }
+  const mahsulot = {
+    ofiyat1: {
+      id: 1,
+    },
+    ofiyat2: {
+      id: 2,
+    },
+    ofiyat3: {
+      id: 3,
+    },
+    ofiyat4: {
+      id: 4,
+    },
+  };
   const maoshGrafigi = {
     "Qo'qon": 100,
     Andijon: 10,
@@ -55,11 +69,14 @@ const Charts = () => {
       <PieChart
         title={"Mahsulot sotuv ulushi"}
         infos={mahsulotSotuvi}
+        // datas={mahsulot}
+        // isLabelNavigatable={true}
+        // url={'/branches'}
         tooltipVal={"ta"}
         key={3}
       />
       <BarChart
-        title={"Umumiy maosh grafigi (uzs)"}
+        title={"Umumiy sotuv grafigi (uzs)"}
         subtitle={
           "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diamlectus laoreet."
         }
