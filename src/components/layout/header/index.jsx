@@ -19,7 +19,7 @@ const Header = ({ setSideMenu }) => {
     "/statistics": "Statistika",
     "/support":"Qo'llab Quvvatlash",
     "/settings":"Sozlamalar",
-    "/big-leap":"Big Leap Team"
+    "/big-leap":"Big Leap Team",
   };
   return (
     <header>

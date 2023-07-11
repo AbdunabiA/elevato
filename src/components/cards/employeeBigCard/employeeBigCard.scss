@@ -1,0 +1,140 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+.employee-big-card{
+    width: 600px;
+    height: 250px;
+    background: white;
+    border-radius: 13px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (max-width:$xxxl) {
+        width: 500px;
+        height: 200px;
+    }
+    @media (max-width:$sm) {
+        width: 100%;
+        height: auto;
+        gap: 10px;
+        padding: 10px;
+    }
+    h1{
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 120%;
+        color: black;
+        @media (max-width:$xxxl) {
+            font-size: 20px;
+        }
+        @media (max-width:$sm) {
+            font-size: 16px;
+        }
+    }
+    .top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__avatar-wrapper{
+            width: 135px;
+            border-radius: 100%;
+            overflow: hidden;
+            @media (max-width:$xxxl) {
+                width: 100px;
+            }
+            @media (max-width:$sm) {
+                width: 70px;
+            }
+        }
+        .overall-infos{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+            @media (max-width:$sm) {
+                gap: 10px;
+            }
+            p{
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 120%;
+                color: rgba(0, 0, 0, 0.5);
+                @media (max-width:$xxxl) {
+                    font-size: 16px;
+                }
+                @media (max-width:$sm) {
+                    font-size: 13px;
+                    
+                }
+            }
+        }
+    }
+    .bottom{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .name{
+            p{
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 120%;
+                color: rgba(0, 0, 0, 0.75);
+                @media (max-width:$xxxl) {
+                    font-size: 15px;
+                }
+                @media (max-width:$sm) {
+                    font-size: 12px;
+                }
+            }
+        }
+        .tel-nums{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            @media (max-width:$xxxl) {
+                gap: 15px;
+            }
+            @media (max-width:$sm) {
+                gap: 10px;
+            }
+            .label{
+                font-size: 10px;
+                font-weight: 500;
+                line-height: 120%;
+                color: black;
+                @media (max-width:$xxxl) {
+                    font-size: 8px;
+                }
+                @media (max-width:$sm) {
+                    font-size: 7px;
+                }
+            }
+            .tel-num{
+                width: 160px;
+                font-size: 13px;
+                font-weight: 600;
+                line-height: 120%;
+                color: black;
+                background: rgba(245, 247, 249, 1);
+                border-radius: 7px;
+                padding: 10px;
+                @media (max-width:$xxxl) {
+                    font-size: 10px;
+                    width: 120px;
+                }
+                @media (max-width:$sm) {
+                    font-size: 8px;
+                    padding: 5px;
+                    width: 80px;
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+}

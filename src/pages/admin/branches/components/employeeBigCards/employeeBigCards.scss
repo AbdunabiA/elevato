@@ -1,0 +1,21 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+.big-cards{
+    margin-top: 20px;
+    &__wrapper{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        @media (max-width:$xxl) {
+            justify-content: center;
+        }
+    }
+}
