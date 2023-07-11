@@ -1,9 +1,3 @@
+import Statistics from "./pages/statistics";
 
-
-const Statistics = () => {
-  return (
-    <div>Statistics</div>
-  )
-}
-
-export default Statistics
+export {Statistics}
