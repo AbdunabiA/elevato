@@ -1,9 +1,4 @@
+import Products from "./pages/products";
+import ProductsHistory from "./pages/productsHistory";
 
-
-const Product = () => {
-  return (
-    <div>Product</div>
-  )
-}
-
-export default Product
+export {Products, ProductsHistory}

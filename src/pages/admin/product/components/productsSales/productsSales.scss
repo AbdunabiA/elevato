@@ -1,0 +1,46 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+.products-sales{
+    margin-top: 40px;
+    &__info{
+        display: flex;
+        align-items: center;
+        background: white;
+        border-radius: 30px;
+        padding: 30px;
+        @media (max-width:$xl) {
+            flex-direction: column;
+        }
+        @media (max-width:$sm) {
+            padding: 10px;
+            border-radius: 10px;
+        }
+        &__left{
+            width: 100%;
+        }
+        &__right{
+            width: 100%;
+            p{
+                font-size: 20px;
+                font-weight: 400;
+                line-height: 120%;
+                color: rgba(0, 0, 0, 0.75);
+                @media (max-width:$xxl) {
+                    font-size: 18px;
+                }
+                @media (max-width:$md) {
+                    font-size: 16px;
+                }
+                @media (max-width:$sm) {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

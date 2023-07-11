@@ -1,6 +1,7 @@
 import ReactDatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import uz from "date-fns/locale/uz";
+import ru from 'date-fns/locale/ru'
 import calendar from "assets/icons/CalendarIcon.png"; 
 import { Button } from "..";
 import { forwardRef, useRef } from "react";
@@ -9,6 +10,7 @@ import './monthPicker.scss'
 const MonthPicker = ({month, setMonth}) => {
     const dateRef = useRef(null);
     registerLocale("uz", uz);
+    registerLocale("ru", ru);
     const CustomInput = forwardRef(({ onClick, value }, ref) => {
       return (
         <Button
@@ -27,6 +29,7 @@ const MonthPicker = ({month, setMonth}) => {
       closeOnScroll={true}
       onChange={(date) => setMonth(date)}
       dateFormat="MMMM/yyyy"
+      showFullMonthYearPicker
       showMonthYearPicker
       customInput={<CustomInput inputRef={dateRef} />}
     />

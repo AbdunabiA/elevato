@@ -1,5 +1,5 @@
 // import { Home } from "pages/admin";
-import { Home,Branches, Branch } from "pages/admin";
+import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory } from "pages/admin";
 
 
 
@@ -12,17 +12,25 @@ const pages = {
     {
       path: "/branches",
       component: <Branches />,
-      children:[
+      children: [
         {
-          path:'/branches/:id',
-          component:<Branch/>,
-        }
-      ]
+          path: "/branches/:id",
+          component: <Branch />,
+        },
+        {
+          path: "/branches/:id/employees",
+          component: <BranchEmployees />,
+        },
+      ],
     },
-    // {
-    //   path: "/product",
-    //   component: <Product />,
-    // },
+    {
+      path: "/product",
+      component: <Products />,
+    },
+    {
+      path: "/product/history",
+      component: <ProductsHistory />,
+    },
     // {
     //   path: "/money-circulation",
     //   component: <MoneyCirculation />,

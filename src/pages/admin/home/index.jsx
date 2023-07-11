@@ -1,1 +1,3 @@
-export { Home } from "./pages";
+import Home from "./pages/home";
+
+export {Home}

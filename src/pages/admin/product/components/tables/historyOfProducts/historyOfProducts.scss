@@ -1,0 +1,23 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+input{
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid rgba(143, 144, 148, 1);
+    font-size: 18px;
+    &:focus{
+        outline: none;
+    }
+    @media (max-width:$xxl) {
+        font-size: 16px;
+    }
+    @media (max-width:$md) {
+        font-size: 14px;
+    }
+}

@@ -2,7 +2,7 @@ import { Card } from "components/cards";
 import "./cards.scss";
 import shoppingCart from "assets/icons/ShoppingCart.png";
 import mijozlar from "assets/icons/MijozlarIcon.png";
-import nasiya from 'assets/icons/UmumiyNasiyaIcon.png'
+import nasiya from "assets/icons/UmumiyNasiyaIcon.png";
 import mahsulot from "assets/icons/MahsulotIcon.png";
 import { formatNums } from "services/formatNums";
 

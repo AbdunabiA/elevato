@@ -109,4 +109,50 @@ export const mahsulotTarqatish = [
          },
        ];
 
+
+export const mahsulotTarqatish2 = [
+  {
+    date: "11/11/2022",
+    product: "Ofiyst",
+    amount: 400,
+    branch:"Farg'ona",
+    overallPayment: 10000000,
+  },
+  {
+    date: "11/12/2022",
+    product: "Ofiyst",
+    amount: 400,
+    branch:"Qo'qon",
+    overallPayment: 15000000,
+  },
+  {
+    date: "11/11/2022",
+    product: "Ofiyst",
+    amount: 400,
+    branch:"Andijon",
+    overallPayment: 1000000,
+  },
+  {
+    date: "11/11/2022",
+    product: "Ofiyst",
+    amount: 400,
+    branch:"Namangan",
+    overallPayment: 10000000,
+  },
+  {
+    date: "11/11/2022",
+    product: "Ofiyst",
+    amount: 400,
+    branch:"Farg'ona",
+    overallPayment: 10000000,
+  },
+  {
+    date: "11/11/2022",
+    product: "Ofiyst",
+    amount: 400,
+    branch:"Toshkent",
+    overallPayment: 10000000,
+  },
+];
+
 export {menus, helpers}
