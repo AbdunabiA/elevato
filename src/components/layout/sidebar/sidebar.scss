@@ -55,7 +55,7 @@ $xxxxl:1921px;
         text-align: left;
         margin-bottom: 15px;
     }
-    .wrapper{
+    .sidebar-wrapper{
         width: 80%;
         padding: 20px 0px 0px 15px;
         display: flex;
@@ -65,7 +65,7 @@ $xxxxl:1921px;
             gap: 80px;
         }
         @media (max-width:$xxl) {
-            gap: 40px;
+            gap: 30px;
         }
         @media (max-width:$xl) {
             gap: 20px;

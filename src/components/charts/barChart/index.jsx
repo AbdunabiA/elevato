@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { Button } from "components/buttons";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -29,6 +30,8 @@ const BarChart = ({
   title,
   subtitle,
   textBottom,
+  onClick,
+  hasButton,
 }) => {
   const chartData = {
     labels:Object.keys(infos),
@@ -70,7 +73,10 @@ const BarChart = ({
   };
   return (
     <div className="chart-wrapper">
-      {title ? <h1>{title}</h1> : null}
+      <div className="barchart-title">
+        {title ? <h1>{title}</h1> : null}
+        {hasButton?<Button text={"to'liq"} onClick={onClick}/>:null}
+      </div>
       {subtitle ? <p className="subtitle">{subtitle}</p> : null}
       <div className="chart">
         <Bar height={width} width={height} options={options} data={chartData} />

@@ -5,7 +5,9 @@ import { useState } from "react";
 import { getLastMonth } from "services/dates";
 import Cards from "../../components/cards";
 import ProductDistribution from "../../components/tables/productDistribution";
-
+import { EmployeeSmallCard } from "components/cards";
+import EmployeeSmallCards from "../../components/employeeSmallCards";
+import { BranchSalesCirculation } from "../../components/charts";
 const Branch = () => {
   const [staticDate, setStaticDate] = useState(getLastMonth());
   const [month, setMonth] = useState(null);
@@ -22,7 +24,9 @@ const Branch = () => {
           <>
             <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
             <Cards {...{ infos }} />
-            <ProductDistribution/>
+            <EmployeeSmallCards/>
+            <ProductDistribution />
+            <BranchSalesCirculation/>
           </>
         );
       })()}

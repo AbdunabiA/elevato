@@ -4,9 +4,13 @@ import notification from 'assets/icons/NotificationIcon.png'
 import avatar from 'assets/images/Woman.png'
 import hamburger from 'assets/icons/humburger.png'
 import { useLocation} from 'react-router-dom'
+import { Button } from 'components/buttons'
 
 const Header = ({ setSideMenu }) => {
-
+  const options = [
+    {label:"RU", value:"ru"},
+    {label:"UZ", value:"uz"}
+  ]
   const location = useLocation();
   const paths = {
     "/branches": "Filiallar",
@@ -19,8 +23,8 @@ const Header = ({ setSideMenu }) => {
   };
   return (
     <header>
-      <div className="wrapper">
-        <div className="wrapper__left">
+      <div className="header-wrapper">
+        <div className="header-wrapper__left">
           <div
             className="humburger-icon__wrapper"
             onClick={() => setSideMenu(true)}
@@ -38,7 +42,7 @@ const Header = ({ setSideMenu }) => {
             {location.pathname.toLowerCase() === "/" ? "Asosiy panel" : null}
           </h1>
         </div>
-        <div className="wrapper__right">
+        <div className="header-wrapper__right">
           <div className="input__wrapper">
             <label htmlFor="search">
               <img src={searcIcon} alt="icon" />
@@ -51,7 +55,11 @@ const Header = ({ setSideMenu }) => {
           <div className="avatar">
             <img src={avatar} alt="" />
           </div>
-          <button>Chiqish</button>
+          <select className='languages' >
+            <option value="uz-UZ">UZ</option>
+            <option value="ru-RU">RU</option>
+          </select>
+          <Button text={'chiqish'}/>
         </div>
       </div>
     </header>

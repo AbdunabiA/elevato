@@ -27,7 +27,7 @@ const Sidebar = ({sideMenu, setSideMenu}) => {
         >
           <img src={logo} alt="logo" />
         </div>
-        <div className="wrapper">
+        <div className="sidebar-wrapper">
           <div className="menus-wrapper">
             <div>
               <h1>Menu</h1>

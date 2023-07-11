@@ -1,0 +1,93 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+.small-card__wrapper{
+    width: 370px;
+    height: 225px;
+    border-radius: 20px;
+    background: white;
+    padding: 20px;
+    @media (max-width:$xxxl) {
+        width: 320px;
+        height: 200px;
+    }
+    @media (max-width:$xxl) {
+        width: 280px;
+        height: 180px;
+        padding: 16px;
+    }
+    @media (max-width:$md) {
+        width: 100%;
+    }
+    .top{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .user-avatar__wrapper{
+            width: 64px;
+            height: 64px;
+            border-radius: 100%;
+            overflow: hidden;
+            @media (max-width:$xxl) {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        div{
+            h2{
+                font-size: 19px;
+                font-weight: 600;
+                line-height: 120%;
+                color: black;
+                @media (max-width:$xxl) {
+                    font-size: 16px;
+                }
+            }
+            p{
+                font-size: 13px;
+                font-weight: 600;
+                line-height: 120%;
+                color: rgba(0, 0, 0, 0.75);
+                @media (max-width:$xxl) {
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+    .bottom{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        .ball{
+            font-size: 38px;
+            font-weight: 600;
+            line-height: 120%;
+            @media (max-width:$xxxl) {
+                font-size: 34px;
+            }
+            @media (max-width:$xxl) {
+                font-size: 30px;
+            }
+            @media (max-width:$xl) {
+                font-size: 28px;
+            }
+        }
+        .phone{
+            display: flex;
+            p{
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 120%;
+                @media (max-width:$xxl) {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}

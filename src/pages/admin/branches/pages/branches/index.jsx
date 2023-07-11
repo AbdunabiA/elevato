@@ -4,6 +4,8 @@ import moment from "moment/moment";
 import { useState } from "react";
 import { getLastMonth } from "services/dates";
 import Cards from "../../components/cards";
+import BranchesSales from "../../components/branchesSales";
+import { BranchesSalesCirculation } from "../../components/charts";
 
 const Branches = () => {
   const [staticDate, setStaticDate] = useState(getLastMonth());
@@ -21,6 +23,8 @@ const Branches = () => {
           <>
             <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
             <Cards {...{ infos }} />
+            <BranchesSales/>
+            <BranchesSalesCirculation/>
           </>
         );
       })()}

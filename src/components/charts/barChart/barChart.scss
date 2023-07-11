@@ -28,16 +28,22 @@ $xxxxl:1921px;
             padding: 15px;
             gap: 5px;
         }
-        h1{
-            font-size: 30px;
-            font-weight: 600;
-            line-height: 36px;
-            color: black;
-            @media (max-width:$xxl) {
-                font-size: 26px;
-            }
-            @media (max-width:$sm) {
-                font-size: 20px;
+        .barchart-title{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            h1{
+                font-size: 30px;
+                font-weight: 600;
+                line-height: 36px;
+                color: black;
+                @media (max-width:$xxl) {
+                    font-size: 26px;
+                }
+                @media (max-width:$sm) {
+                    font-size: 20px;
+                }
             }
         }
         .subtitle{

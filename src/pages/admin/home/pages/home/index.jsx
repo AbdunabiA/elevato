@@ -13,7 +13,6 @@ const Home = () => {
   // console.log(
   //   moment(month).format("DD-MM-YYYY")
   // );
-
   return (
     <div className="container">
       {/* <GetAll queryKey={[]}> */}
