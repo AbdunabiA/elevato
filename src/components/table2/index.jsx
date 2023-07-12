@@ -1,4 +1,4 @@
-import "./table3.scss";
+import "./table2.scss";
 import qs from "qs";
 import { useLocation, useNavigate } from "react-router-dom";
 import left from "assets/icons/PaginationArrowLeft.png";

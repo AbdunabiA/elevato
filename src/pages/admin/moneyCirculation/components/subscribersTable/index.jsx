@@ -1,5 +1,6 @@
 import Tabale2 from 'components/table2'
 import { obunachilar } from 'assets/db';
+import { formatNums } from 'services/formatNums';
 
 const SubscribersTable = ({data}) => {
     const columns = [
@@ -12,7 +13,7 @@ const SubscribersTable = ({data}) => {
         key: "subscription",
         render: (value) => (
           <>
-            {value} <span style={{ color: "#B2B7C1" }}>UZS</span>
+            {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
           </>
         ),
       },
@@ -21,7 +22,7 @@ const SubscribersTable = ({data}) => {
         key: "all_bonus",
         render: (value) => (
           <>
-            {value} <span style={{ color: "#B2B7C1" }}>UZS</span>
+            {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
           </>
         ),
       },
@@ -30,7 +31,7 @@ const SubscribersTable = ({data}) => {
         key: "clean_out",
         render: (value) => (
           <>
-            {value} <span style={{ color: "#B2B7C1" }}>UZS</span>
+            {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
           </>
         ),
       },
