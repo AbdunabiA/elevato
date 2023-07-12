@@ -1,8 +1,8 @@
-import React from 'react';
 import './table.scss'
 import qs from "qs";
 import { useLocation, useNavigate } from 'react-router-dom';
 import left from 'assets/icons/PaginationArrowLeft.png'
+import React from 'react';
 
 
 
@@ -29,7 +29,7 @@ export default function  Table({ columns, data, total, current=1, perPage=5, has
     return (
       <div>
         <div className={"table__wrapper"}>
-          <table>
+          <table className='table1'>
             <thead>
               <tr>
                 {columns?.map((elem, i) => (

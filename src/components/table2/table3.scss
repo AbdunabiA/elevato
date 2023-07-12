@@ -9,35 +9,76 @@ $xxxxl:1921px;
 .table__wrapper{
     overflow-x: auto;
     width: 100%;
-    .table1{
-        border-collapse: collapse;
-        background: #FCFCFC;
+    margin-top: 40px;
+    .table2{
+        border-collapse: separate;
+        border-spacing: 0 10px;
+        margin-top: -10px; 
         thead{
+            background: #F1F1F1;
             td{
-                font-weight: 700;
+                font-size: 15px;
+                font-weight: 500;
+                line-height: 120%;
+                color: #B1B1B8;
+                background: #F1F1F1;
+                @media (max-width:$md) {
+                    padding: 5px;
+                    font-size: 11px;
+                }
             }
         }
-        td{
-            border: 2px solid #DBDBDB;
-            text-align: center;
-            padding: 20px;
-            font-size: 20px;
+        tbody{
+            tr{
+                cursor: pointer;
+                &:hover{
+                    td{
+                        background-color: #FAFAFA;
+                    }
+                }
+            }
+        }
+
+        td {
+            padding: 25px 10px;
+            background-color: white;
+            font-size: 18px;
             font-weight: 500;
             line-height: 120%;
+            white-space: nowrap;
             @media (max-width:$xxl) {
-                padding: 15px;
-                font-size: 18px;
-            }
-            @media (max-width:$xl) {
-                padding: 10px;
+                padding: 15px 9px;
                 font-size: 16px;
             }
+            @media (max-width:$xl) {
+                padding: 10px 5px;
+                font-size: 13px;
+            }
             @media (max-width:$md) {
-                padding: 5px;
-                font-size: 12px;
+                padding: 10px 5px;
+                font-size: 11px;
             }
             @media (max-width:$sm) {
                 font-size: 10px;
+            }
+
+        }
+        td:first-child {
+            border-left-style: solid;
+            border-top-left-radius: 10px; 
+            border-bottom-left-radius: 10px;
+            @media (max-width:$xl) {
+                border-top-left-radius: 8px; 
+                border-bottom-left-radius: 8px;
+            }
+        }
+        td:last-child {
+            border-right-style: solid;
+            border-bottom-right-radius: 10px; 
+            border-top-right-radius: 10px; 
+            @media (max-width:$xl) {
+                border-bottom-right-radius: 8px; 
+                border-top-right-radius: 8px; 
             }
         }
     }
@@ -70,6 +111,8 @@ $xxxxl:1921px;
             .icon__wrapper{
                 background: #FCFCFC;
                 border: 2px solid #DBDBDB;
+                cursor: pointer;
+                border-radius: 4px;
                 @media (max-width:$md) {
                     width: 28px;
                 }
@@ -81,6 +124,7 @@ $xxxxl:1921px;
                 background: #FCFCFC;
                 padding: 5px;
                 border: 2px solid #DBDBDB;
+                border-radius: 4px;
             }
         }
         .perPage{
@@ -90,6 +134,8 @@ $xxxxl:1921px;
                 line-height: 120%;
                 padding: 4px;
                 border: 2px solid #DBDBDB;
+                border-radius: 4px;
+                cursor: pointer;
                 @media (max-width:$xxl) {
                     font-size: 18px;
                 }

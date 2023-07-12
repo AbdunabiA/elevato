@@ -155,4 +155,47 @@ export const mahsulotTarqatish2 = [
   },
 ];
 
+export const obunachilar = [
+         {
+           full_name: "Alimov Abror Xabibullayevich",
+           subscription: 30000000,
+           all_bonus: 7000000,
+           clean_out: 5000000,
+           date: "15.01.2023",
+           status: "Faol",
+         },
+         {
+           full_name: "Saimov Rustam Saimjonovich",
+           subscription: 3000000,
+           all_bonus: 700000,
+           clean_out: 0,
+           date: "15.01.2023",
+           status: "Faol emas",
+         },
+         {
+           full_name: "Sanginov Otabek Muratovich",
+           subscription: 300000,
+           all_bonus: 70000,
+           clean_out: 5000,
+           date: "15.01.2023",
+           status: "To'xtatilgan",
+         },
+         {
+           full_name: "Nazarov Sanjar Olimovich",
+           subscription: 300000,
+           all_bonus: 0,
+           clean_out: 500000,
+           date: "15.01.2023",
+           status: "Bekor qilingan",
+         },
+         {
+           full_name: "Alimov Abror Xabibullayevich",
+           subscription: 30000000,
+           all_bonus: 7000000,
+           clean_out: 5000000,
+           date: "15.01.2023",
+           status: "Faol",
+         },
+       ];
+
 export {menus, helpers}

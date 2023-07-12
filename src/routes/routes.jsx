@@ -1,5 +1,5 @@
 // import { Home } from "pages/admin";
-import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics } from "pages/admin";
+import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation } from "pages/admin";
 
 
 
@@ -31,10 +31,10 @@ const pages = {
       path: "/product/history",
       component: <ProductsHistory />,
     },
-    // {
-    //   path: "/money-circulation",
-    //   component: <MoneyCirculation />,
-    // },
+    {
+      path: "/money-circulation",
+      component: <MoneyCirculation />,
+    },
     {
       path: "/statistics",
       component: <Statistics />,
