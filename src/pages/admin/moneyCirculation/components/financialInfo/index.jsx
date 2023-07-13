@@ -9,6 +9,8 @@ const FinancialInfo = () => {
       <h1 className="title">Moliyaviy malumotlar</h1>
       <Table2
         data={moliyaviyMalumotlar}
+        hasPagination
+        total={10}
         columns={[
           {
             title: "SANA",
