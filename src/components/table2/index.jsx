@@ -11,6 +11,7 @@ export default function Table2({
   current = 1,
   perPage = 5,
   hasPagination = false,
+  onRowClick,
 }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,6 +38,7 @@ export default function Table2({
         <table className="table2">
           <thead>
             <tr>
+              <td>#</td>
               {columns?.map((elem, i) => (
                 <td key={i}> {elem.title}</td>
               ))}
@@ -44,7 +46,8 @@ export default function Table2({
           </thead>
           <tbody>
             {data?.map((item, inde) => (
-              <tr key={inde}>
+              <tr key={inde} style={onRowClick?{cursor:"pointer"}:{}} onClick={()=>onRowClick(item)}>
+                <td>{inde+1}</td>
                 {columns?.map((elem, index) => (
                   <React.Fragment key={index}>
                     {!elem.render ? (

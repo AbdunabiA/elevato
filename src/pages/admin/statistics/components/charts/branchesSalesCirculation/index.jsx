@@ -27,7 +27,7 @@ const BranchesSalesCirculation = () => {
             "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. Integer tellus ullamcorper sed sagittis venenatis."
           }
           infos={infos}
-          onClick={() => navigate(`1`)}
+          onClick={() => navigate(`/branch/1`)}
         />
         <BarChart
           title={"Farg'ona"}
@@ -39,7 +39,7 @@ const BranchesSalesCirculation = () => {
             "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. Integer tellus ullamcorper sed sagittis venenatis."
           }
           infos={infos}
-          onClick={() => navigate(`2`)}
+          onClick={() => navigate(`/branch/2`)}
         />
         <BarChart
           title={"Andijon"}
@@ -51,7 +51,7 @@ const BranchesSalesCirculation = () => {
             "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. Integer tellus ullamcorper sed sagittis venenatis."
           }
           infos={infos}
-          onClick={() => navigate(`3`)}
+          onClick={() => navigate(`/branch/3`)}
         />
         <BarChart
           title={"Namangan"}
@@ -63,7 +63,7 @@ const BranchesSalesCirculation = () => {
             "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. Integer tellus ullamcorper sed sagittis venenatis."
           }
           infos={infos}
-          onClick={() => navigate(`4`)}
+          onClick={() => navigate(`/branch/4`)}
         />
       </div>
     </div>

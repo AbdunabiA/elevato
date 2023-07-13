@@ -20,7 +20,7 @@ $xxxxl:1921px;
                 font-size: 15px;
                 font-weight: 500;
                 line-height: 120%;
-                color: #B1B1B8;
+                color: black;
                 background: #F1F1F1;
                 @media (max-width:$md) {
                     padding: 5px;
@@ -30,7 +30,6 @@ $xxxxl:1921px;
         }
         tbody{
             tr{
-                cursor: pointer;
                 &:hover{
                     td{
                         background-color: #FAFAFA;

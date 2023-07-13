@@ -6,3 +6,4 @@ export {Products} from './product'
 export {ProductsHistory} from './product'
 export {Statistics} from './statistics'
 export {MoneyCirculation} from './moneyCirculation'
+export { Subscriber } from "./moneyCirculation";

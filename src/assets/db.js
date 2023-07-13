@@ -157,6 +157,7 @@ export const mahsulotTarqatish2 = [
 
 export const obunachilar = [
          {
+           id: 1,
            full_name: "Alimov Abror Xabibullayevich",
            subscription: 30000000,
            all_bonus: 7000000,
@@ -165,6 +166,7 @@ export const obunachilar = [
            status: "Faol",
          },
          {
+           id: 2,
            full_name: "Saimov Rustam Saimjonovich",
            subscription: 3000000,
            all_bonus: 700000,
@@ -173,6 +175,7 @@ export const obunachilar = [
            status: "Faol emas",
          },
          {
+           id: 3,
            full_name: "Sanginov Otabek Muratovich",
            subscription: 300000,
            all_bonus: 70000,
@@ -181,6 +184,7 @@ export const obunachilar = [
            status: "To'xtatilgan",
          },
          {
+           id: 4,
            full_name: "Nazarov Sanjar Olimovich",
            subscription: 300000,
            all_bonus: 0,
@@ -189,6 +193,7 @@ export const obunachilar = [
            status: "Bekor qilingan",
          },
          {
+           id: 5,
            full_name: "Alimov Abror Xabibullayevich",
            subscription: 30000000,
            all_bonus: 7000000,
@@ -198,4 +203,54 @@ export const obunachilar = [
          },
        ];
 
+
+export const moliyaviyMalumotlar = [
+         {
+           subscription: 100000000,
+           kiritilgan_summa: 150000000,
+           yechilgan_summa: 10000000,
+           jami_bonus: 6000000,
+           debet: 60000000,
+         },
+         {
+           date: "15.01.2023",
+           subscription: 1000000,
+           kiritilgan_summa: 15000000,
+           yechilgan_summa: 10000000,
+           jami_bonus: 6000000,
+           debet: 30000000,
+         },
+         {
+           date: "15.01.2023",
+           subscription: 1000000,
+           kiritilgan_summa: 15000000,
+           yechilgan_summa: 10000000,
+           jami_bonus: 6000000,
+           debet: 30000000,
+         },
+         {
+           date: "15.01.2023",
+           subscription: 1000000,
+           kiritilgan_summa: 15000000,
+           yechilgan_summa: 10000000,
+           jami_bonus: 6000000,
+           debet: 30000000,
+         },
+         {
+           date: "15.01.2023",
+           subscription: 1000000,
+           kiritilgan_summa: 15000000,
+           yechilgan_summa: 10000000,
+           jami_bonus: 6000000,
+           debet: 30000000,
+         },
+         {
+           date: "15.01.2023",
+           subscription: 1000000,
+           kiritilgan_summa: 15000000,
+           yechilgan_summa: 10000000,
+           jami_bonus: 6000000,
+           debet: 30000000,
+         },
+       ];
 export {menus, helpers}

@@ -17,9 +17,10 @@ const Header = ({ setSideMenu }) => {
     "/product": "Mahsulot",
     "/money-circulation": "Pul Aylanmasi",
     "/statistics": "Statistika",
-    "/support":"Qo'llab Quvvatlash",
-    "/settings":"Sozlamalar",
-    "/big-leap":"Big Leap Team",
+    "/support": "Qo'llab Quvvatlash",
+    "/settings": "Sozlamalar",
+    "/big-leap": "Big Leap Team",
+    "/subscriber": "Obunachi",
   };
   return (
     <header>

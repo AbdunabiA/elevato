@@ -36,10 +36,10 @@ const HistoryOfProducts = () => {
         <div className="table__title">
           <h1 className="title">Jadval</h1>
           <div className="buttons">
-            <input type="text" placeholder="Qidirish" onChange={(e)=>{
+            <input className="product-search__input" type="text" placeholder="Qidirish" onChange={(e)=>{
                 setTimeout(()=>{
                     setInputVal(e.target.value);
-                }, 1000)
+                }, 500)
                 }}/>
           </div>
         </div>

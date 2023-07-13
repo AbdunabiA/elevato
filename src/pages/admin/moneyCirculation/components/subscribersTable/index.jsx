@@ -1,8 +1,10 @@
 import Tabale2 from 'components/table2'
 import { obunachilar } from 'assets/db';
 import { formatNums } from 'services/formatNums';
+import { useNavigate } from 'react-router-dom';
 
 const SubscribersTable = ({data}) => {
+  const navigate = useNavigate()
     const columns = [
       {
         title: "F.I.SH",
@@ -45,7 +47,7 @@ const SubscribersTable = ({data}) => {
       },
     ];
   return (
-    <Tabale2 {...{columns}} data={obunachilar} hasPagination total={10}/>
+    <Tabale2 {...{columns}} onRowClick={(data)=>navigate(`/subscriber/${data.id}`)} data={obunachilar} hasPagination total={10}/>
   )
 }
 
