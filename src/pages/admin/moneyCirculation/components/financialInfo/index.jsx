@@ -5,8 +5,8 @@ import { formatNums } from 'services/formatNums';
 
 const FinancialInfo = () => {
   return (
-    <div className="financial-info__wrapper">
-      <h1 className="title">Moliyaviy malumotlar</h1>
+    <>
+      <h1 className="title financial-info__title">Moliyaviy malumotlar</h1>
       <Table2
         data={moliyaviyMalumotlar}
         hasPagination
@@ -68,7 +68,7 @@ const FinancialInfo = () => {
           },
         ]}
       />
-    </div>
+    </>
   );
 }
 
