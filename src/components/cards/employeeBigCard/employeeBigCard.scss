@@ -15,6 +15,7 @@ $xxxxl:1921px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
     @media (max-width:$xxxl) {
         width: 500px;
         height: 200px;

@@ -11,6 +11,7 @@ const Header = ({ setSideMenu }) => {
     {label:"RU", value:"ru"},
     {label:"UZ", value:"uz"}
   ]
+  const role = 'admin'
   const location = useLocation();
   const paths = {
     "/branches": "Filiallar",
@@ -21,6 +22,7 @@ const Header = ({ setSideMenu }) => {
     "/settings": "Sozlamalar",
     "/big-leap": "Big Leap Team",
     "/subscriber": "Obunachi",
+    "/employee":"Xodim",
   };
   return (
     <header>
@@ -50,9 +52,13 @@ const Header = ({ setSideMenu }) => {
             </label>
             <input type="text" id="search" placeholder="Qidirish" />
           </div>
-          <div className="notification">
-            <img src={notification} alt="icon" />
-          </div>
+          {
+            role !== 'admin' ? 
+            <div className="notification">
+              <img src={notification} alt="icon" />
+            </div>
+            :null
+          }
           <div className="avatar">
             <img src={avatar} alt="" />
           </div>

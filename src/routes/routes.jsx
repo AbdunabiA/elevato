@@ -1,5 +1,5 @@
 // import { Home } from "pages/admin";
-import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber } from "pages/admin";
+import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee } from "pages/admin";
 
 
 
@@ -42,6 +42,10 @@ const pages = {
     {
       path: "/subscriber/:id",
       component: <Subscriber />,
+    },
+    {
+      path:"/employee/:id",
+      component:<Employee/>
     },
     // {
     //   path: "/settings",

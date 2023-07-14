@@ -2,9 +2,9 @@ import woman from 'assets/images/Woman.png'
 import { formatNums } from 'services/formatNums'
 import './employeeBigCard.scss'
 
-const EmployeeBigCard = () => {
+const EmployeeBigCard = ({onClick}) => {
   return (
-    <div className="employee-big-card">
+    <div className="employee-big-card" onClick={onClick}>
       <div className='top'>
         <div className='top__avatar-wrapper'>
           <img src={woman} alt="img" />

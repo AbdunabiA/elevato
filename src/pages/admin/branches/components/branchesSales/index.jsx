@@ -31,7 +31,7 @@ const BranchesSales = () => {
             datas={datas}
             infos={infos}
             isLabelNavigatable
-            url={"/branches"}
+            url={"/branch"}
             tooltipVal={"ta"}
           />
         </div>

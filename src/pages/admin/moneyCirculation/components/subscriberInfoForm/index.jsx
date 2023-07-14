@@ -103,6 +103,7 @@ const SubscriberInfoForm = () => {
                     name="birth_date"
                     label="Tug'ilgan sana"
                     component={Input}
+                    type='date'
                   />
                   <Field
                     name="email"
