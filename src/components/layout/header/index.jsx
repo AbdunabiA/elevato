@@ -84,7 +84,7 @@ const Header = ({ setSideMenu }) => {
           <div className="avatar">
             <img src={avatar} alt="" />
           </div>
-          <select className='languages' defaultValue={i18n.language} onChange={(e)=>i18n.changeLanguage(e.target.value)}>
+          <select className='languages' defaultValue={i18n.language === 'ru-RU' ? 'ru' : 'uz'} onChange={(e)=>i18n.changeLanguage(e.target.value)}>
             <option value="uz">UZ</option>
             <option value="ru">RU</option>
           </select>
