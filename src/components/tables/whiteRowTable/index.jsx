@@ -4,14 +4,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import left from "assets/icons/PaginationArrowLeft.png";
 import React from "react";
 
-export default function Table2({
+export default function WhiteRowTable({
   columns,
   data,
   total,
   current = 1,
   perPage = 5,
   hasPagination = false,
-  onRowClick,
+  onRowClick=()=>{},
 }) {
   const navigate = useNavigate();
   const location = useLocation();

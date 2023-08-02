@@ -6,10 +6,11 @@ import { getLastMonth } from "services/dates";
 import Cards from "../../components/cards";
 import ProductsSales from "../../components/productsSales";
 import ProductsDistribution from "../../components/tables/productsDistribution";
+import Loader from "components/loader";
+import ProductsTable from "../../components/tables/productsTable";
+import ErrorPage from "components/errorPage";
 
 const Products = () => {
-  const [staticDate, setStaticDate] = useState(getLastMonth());
-  const [month, setMonth] = useState(null);
   
   // console.log(
   //   moment(month).format("DD-MM-YYYY")
@@ -17,19 +18,22 @@ const Products = () => {
   // console.log(staticDate);
   return (
     <div className="container">
-      {/* <GetAll queryKey={[]}> */}
-      {(() => {
-        const infos = [80000000, 591, 8000, 73580];
+      <GetAll queryKey={['admin-products']} url={'/admin-products'}>
+      {({items, isLoading, isError, error}) => {
+        if(isLoading) return <Loader/>
+        if(isError) return <ErrorPage {...{error}}/>
+        console.log(items);
+
         return (
           <>
-            <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
-            <Cards {...{ infos }} />
-            <ProductsSales/>
-            <ProductsDistribution/>
+            <Cards />
+            <ProductsSales data={items.products_diagram} />
+            <ProductsTable data={items.products} />
+            <ProductsDistribution data={items.distribution} />
           </>
         );
-      })()}
-      {/* </GetAll>  */}
+      }}
+      </GetAll> 
     </div>
   );
 };

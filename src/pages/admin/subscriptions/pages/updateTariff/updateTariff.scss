@@ -1,0 +1,47 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+
+.tariff__arrow-circle-left{
+    width: 72px;
+    cursor: pointer;
+    @media (max-width:$xxl) {
+        width: 55px;
+    }
+    @media (max-width:$sm) {
+        width: 45px;
+    }
+}
+.create-tariff__form{
+    width: 1059px;
+    background-color: white;
+    border-radius: 25px;
+    padding: 30px;
+    margin-top: 40px;
+    @media (max-width:$xxl) {
+        width: 900px;
+    }
+    @media (max-width:$xl) {
+        width: 100%;
+    }
+    &__fields{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        @media (max-width:$md) {
+            gap: 20px;
+        }
+    }
+    &__button{
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 20px;
+    }
+}

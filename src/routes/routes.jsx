@@ -1,5 +1,7 @@
 // import { Home } from "pages/admin";
-import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee } from "pages/admin";
+import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee, AddProduct, Subscriptions, CreateTariff, UpdateTariff } from "pages/admin";
+
+import {CustomerHome, CustomerProducts, CustomerMoneyCirculation, CustomerOrders, CustomerSubscriptions} from 'pages/customer'
 
 
 
@@ -24,12 +26,18 @@ const pages = {
       ],
     },
     {
-      path: "/product",
+      path: "/products",
       component: <Products />,
-    },
-    {
-      path: "/product/history",
-      component: <ProductsHistory />,
+      children: [
+        {
+          path: "/products/history",
+          component: <ProductsHistory />,
+        },
+        {
+          path: "/add-product",
+          component: <AddProduct />,
+        },
+      ],
     },
     {
       path: "/money-circulation",
@@ -44,8 +52,20 @@ const pages = {
       component: <Subscriber />,
     },
     {
-      path:"/employee/:id",
-      component:<Employee/>
+      path: "/employee/:id",
+      component: <Employee />,
+    },
+    {
+      path: "/subscriptions",
+      component: <Subscriptions />,
+    },
+    {
+      path: "/subscriptions/create",
+      component: <CreateTariff />,
+    },
+    {
+      path: "/subscriptions/update/:id",
+      component: <UpdateTariff />,
     },
     // {
     //   path: "/settings",
@@ -59,6 +79,28 @@ const pages = {
     //   path: "/big-leap",
     //   component: <BigLeap />,
     // },
+  ],
+  mijoz: [
+    {
+      path: "/",
+      component: <CustomerHome />,
+    },
+    {
+      path: "/products",
+      component: <CustomerProducts />,
+    },
+    {
+      path: "/money-circulation",
+      component: <CustomerMoneyCirculation />,
+    },
+    {
+      path: "/subscriptions",
+      component: <CustomerSubscriptions />,
+    },
+    {
+      path: "/orders",
+      component: <CustomerOrders />,
+    },
   ],
 };
 

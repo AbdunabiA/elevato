@@ -110,6 +110,17 @@ $xxxxl:1921px;
                 flex-direction: column;
                 align-items: start;
                 gap: 20px;
+                .passport_nums{
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    .passport_series{
+                        width: 50px;
+                    }
+                    .passport_num{
+                        width: 180px;
+                    }
+                }
             }
         }
     }

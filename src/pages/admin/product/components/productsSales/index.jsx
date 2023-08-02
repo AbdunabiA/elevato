@@ -1,36 +1,19 @@
 import { PieChart } from "components/charts";
 import "./productsSales.scss";
 
-const ProductsSales = () => {
-  const infos = {
-    Ofiyat1: 5000,
-    Ofiyat2: 12000,
-    Ofiyat3: 9000,
-    Ofiyat4: 10000,
-  };
-  const datas = {
-    Ofiyat1: {
-      id: 1,
-    },
-    Ofiyat2: {
-      id: 2,
-    },
-    Ofiyat3: {
-      id: 3,
-    },
-    Ofiyat4: {
-      id: 4,
-    },
-  };
+const ProductsSales = ({data}) => {
+  const infos = data.reduce((prev, curr)=>{
+    return {...prev, [curr.product]:curr.summa}
+  }, {})
+  
   return (
     <div className="products-sales">
       <h1 className="title">Mahsulotlar savdo ulushi</h1>
       <div className="branches-sales__info">
         <div className="branches-sales__info__left">
           <PieChart
-            datas={datas}
             infos={infos}
-            tooltipVal={"ta"}
+            tooltipVal={"uzs"}
           />
         </div>
         <div className="branches-sales__info__right">

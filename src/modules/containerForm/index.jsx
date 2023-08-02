@@ -14,7 +14,7 @@ const Main = ({
   onSuccess = () => {},
   onError = () => {},
 }) => {
-  const { mutate } = usePost();
+  const { mutate, isLoading } = usePost();
   return (
     <Formik
       initialValues={
@@ -157,6 +157,7 @@ const Main = ({
               setFieldError,
               setFieldTouched,
               errors,
+              isLoading
             })}
           </form>
         );

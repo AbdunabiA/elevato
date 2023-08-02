@@ -1,13 +1,13 @@
-import Table2 from 'components/table2'
-import './financialInfo.scss'
-import { moliyaviyMalumotlar } from 'assets/db'
-import { formatNums } from 'services/formatNums';
+import WhiteRowTable from "components/tables/whiteRowTable";
+import "./financialInfo.scss";
+import { moliyaviyMalumotlar } from "assets/db";
+import { formatNums } from "services/formatNums";
 
 const FinancialInfo = () => {
   return (
     <>
       <h1 className="title financial-info__title">Moliyaviy malumotlar</h1>
-      <Table2
+      <WhiteRowTable
         data={moliyaviyMalumotlar}
         hasPagination
         total={10}
@@ -70,6 +70,6 @@ const FinancialInfo = () => {
       />
     </>
   );
-}
+};
 
-export default FinancialInfo
+export default FinancialInfo;

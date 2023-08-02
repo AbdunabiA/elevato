@@ -3,9 +3,9 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { api, queryBuilder } from "services";
-import { systemSelectors } from "store/system";
+import './asyncSelect.scss'
 
-const asyncSelect = ({
+const AsyncSelect = ({
   field: { value, name },
   form: { setFieldValue, setFieldTouched, errors, touched },
   label,
@@ -22,28 +22,27 @@ const asyncSelect = ({
   searchKey = "",
   onChange = () => {},
   key,
+  lastKeys,
 }) => {
   const loadOptions = async (search, loadedOptions, { page }) => {
     let data = await api.get(queryBuilder(loadOptionsUrl, loadOptionsParams));
-
+    console.log(data);
     return {
       options: search
-        ? get(data, "data.data", []).filter((item) =>
+        ? get(data, `data${lastKeys}`, []).filter((item) =>
             item[searchKey].toLowerCase().includes(search.toLowerCase())
           )
-        : get(data, "data.data", []),
+        : get(data, `data${lastKeys}`, []),
       hasMore: page < get(data, "data.last_page", 1),
       additional: { page: page + 1 },
     };
   };
-  // useEffect(() => {
-  //   loadOptions()
-  // }, [loadOptionsParams?.filter?.region_id]);
-  // const styles = {}
+  
   return (
-    <div className={className}>
-      {label ? <h4>{label}</h4> : null}
+    <label className={`${className} input-field__wrapper`}>
+      {label ? <p className="label">{label}</p> : null}
       <AsyncPaginate
+        className="custom-async-select"
         key={key}
         isSearchable={isSearchable}
         isDisabled={disabled}
@@ -73,12 +72,10 @@ const asyncSelect = ({
         placeholder={placeholder}
       />
       {touched[name] && errors[name] && (
-        <span className="">
-          {errors[name]}
-        </span>
+        <span className="error">{errors[name]}</span>
       )}
-    </div>
+    </label>
   );
 };
 
-export default asyncSelect;
+export default AsyncSelect;

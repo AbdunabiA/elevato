@@ -1,0 +1,15 @@
+.users-products__categories{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    &>p{
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 120%;
+        text-transform: capitalize;
+        padding: 15px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+}

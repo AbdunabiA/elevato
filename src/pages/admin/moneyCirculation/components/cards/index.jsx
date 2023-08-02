@@ -4,38 +4,38 @@ import shoppingCart from "assets/icons/ShoppingCart.png";
 import mijozlar from "assets/icons/MijozlarIcon.png";
 import mahsulot from "assets/icons/MahsulotIcon.png";
 import { formatNums } from "services/formatNums";
+import plus from "assets/icons/AddPlusIconWhite.svg";
+import minus from "assets/icons/CircleMinusIconWhite.svg";
 
 const Cards = ({ infos }) => {
   const cards = [
     {
       icon: shoppingCart,
-      title: "Umumiy Savdo",
+      title: "Hisob raqamidagi summa",
       count: formatNums(infos[0]),
       val: "uzs",
     },
     {
       icon: mijozlar,
-      title: " Umumiy mijozlar soni",
+      title: "Debet",
       count: formatNums(infos[1]),
-      val: "ta",
+      val: "uzs",
     },
     {
       icon: mahsulot,
-      title: "Umumiy obuna summasi",
+      title: "Kirim",
       count: formatNums(infos[2]),
       val: "uzs",
+      right_side: true,
+      right_icon: plus,
     },
     {
       icon: shoppingCart,
-      title: "Umumiy bonus",
+      title: "Chiqim",
       count: formatNums(infos[3]),
       val: "uzs",
-    },
-    {
-      icon: shoppingCart,
-      title: "Umumiy yechilgan pullar",
-      count: formatNums(infos[3]),
-      val: "uzs",
+      right_side: true,
+      right_icon: minus,
     },
   ];
   return (

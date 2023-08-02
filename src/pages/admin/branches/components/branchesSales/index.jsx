@@ -1,13 +1,11 @@
 import { PieChart } from "components/charts"
 import './branchesSales.scss'
 
-const BranchesSales = () => {
-    const infos = {
-        "Qo'qon":5000,
-        "Farg'ona":12000,
-        Andijon:9000,
-        Namangan:10000,
-    }
+const BranchesSales = ({data}) => {
+    
+  const infos = Object.keys(data).reduce((prev, curr)=>{
+    return {...prev, [curr]:data[curr].sales_amount}
+  },{})
     const datas = {
       "Qo'qon": {
         id: 1,

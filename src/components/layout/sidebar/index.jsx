@@ -3,9 +3,11 @@ import { menus, helpers } from 'assets/db';
 import logo from 'assets/images/logo.png'
 import { NavLink, useNavigate } from 'react-router-dom';
 import close from 'assets/icons/close.png'
+import { useTranslation } from 'react-i18next';
 
 
 const Sidebar = ({sideMenu, setSideMenu}) => {
+  const {t} = useTranslation()
   const navigate = useNavigate();
   const role = "admin";
   return (
@@ -30,7 +32,7 @@ const Sidebar = ({sideMenu, setSideMenu}) => {
         <div className="sidebar-wrapper">
           <div className="menus-wrapper">
             <div>
-              <h1>Menu</h1>
+              <h1>{t("Menu")}</h1>
               <div
                 className="close-icon__wrapper"
                 onClick={() => setSideMenu(false)}
@@ -52,7 +54,7 @@ const Sidebar = ({sideMenu, setSideMenu}) => {
                         <div>
                           <img src={menu.icon} alt="icon" />
                         </div>
-                        <p>{menu.title}</p>
+                        <p>{t(`${menu.title}`)}</p>
                       </NavLink>
                     </li>
                   );
@@ -61,7 +63,7 @@ const Sidebar = ({sideMenu, setSideMenu}) => {
             </nav>
           </div>
           <div className="helpers-wrapper">
-            <h1>Yordam</h1>
+            <h1>{t("Yordam")}</h1>
 
             <nav>
               <ul>
@@ -77,7 +79,7 @@ const Sidebar = ({sideMenu, setSideMenu}) => {
                         <div>
                           <img src={menu.icon} alt="icon" />
                         </div>
-                        <p>{menu.title}</p>
+                        <p>{t(`${menu.title}`)}</p>
                       </NavLink>
                     </li>
                   );

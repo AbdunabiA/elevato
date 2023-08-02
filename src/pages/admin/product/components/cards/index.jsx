@@ -1,43 +1,19 @@
-import { Card } from "components/cards";
+import plusIcon from 'assets/icons/blackPlusIcon.png'
 import "./cards.scss";
-import shoppingCart from "assets/icons/ShoppingCart.png";
-import mijozlar from "assets/icons/MijozlarIcon.png";
-import nasiya from "assets/icons/UmumiyNasiyaIcon.png";
-import mahsulot from "assets/icons/MahsulotIcon.png";
-import { formatNums } from "services/formatNums";
+import { useNavigate } from 'react-router-dom';
 
-const Cards = ({ infos }) => {
-  const cards = [
-    {
-      icon: shoppingCart,
-      title: "Umumiy Savdo",
-      count: formatNums(infos[0]),
-      val: "uzs",
-    },
-    {
-      icon: mijozlar,
-      title: "Mijozlar soni",
-      count: formatNums(infos[1]),
-      val: "ta",
-    },
-    {
-      icon: nasiya,
-      title: "Umumiy ish kunlari",
-      count: formatNums(infos[2]),
-      val: "kun",
-    },
-    {
-      icon: mahsulot,
-      title: "Umumiy Mahsulotlar",
-      count: formatNums(infos[3]),
-      val: "ta",
-    },
-  ];
+
+const Cards = () => {
+  const navigate = useNavigate()
+  
   return (
-    <div className="cards">
-      {cards.map((card, i) => {
-        return <Card key={i} {...{ card }} />;
-      })}
+    <div className="cards-add">
+      <div className="cards-add__card" onClick={() => navigate("/add-product")}>
+        <div>
+          <img src={plusIcon} alt="icon" />
+        </div>
+        <h1>Mahsulot qo'shish</h1>
+      </div>
     </div>
   );
 };

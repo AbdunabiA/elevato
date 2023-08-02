@@ -1,3 +1,3 @@
-import BranchesSalesCirculation from "./branchesSalesCirculation";
-import BranchSalesCirculation from "./branchSalesCirculation";
-export {BranchesSalesCirculation, BranchSalesCirculation}
+
+import BranchSalesCirculation from "./branchSalesCirculation"
+export {BranchSalesCirculation}

@@ -15,21 +15,15 @@ const Cards = ({ infos }) => {
       val: "uzs",
     },
     {
-      icon: mijozlar,
-      title: "Mijozlar soni",
-      count: formatNums(infos[1]),
-      val: "ta",
-    },
-    {
       icon: nasiya,
-      title: "Umumiy ish kunlari",
-      count: formatNums(infos[2]),
+      title: "Ish kunlari",
+      count: formatNums(infos[1]),
       val: "kun",
     },
     {
       icon: mahsulot,
-      title: "Umumiy Mahsulotlar",
-      count: formatNums(infos[3]),
+      title: "Mahsulotlar qoldigi",
+      count: formatNums(infos[2]),
       val: "ta",
     },
   ];

@@ -8,7 +8,7 @@ $xxxxl:1921px;
 
 .small-card__wrapper{
     width: 370px;
-    height: 225px;
+    height: 200px;
     border-radius: 20px;
     background: white;
     padding: 20px;
@@ -63,6 +63,7 @@ $xxxxl:1921px;
         display: flex;
         align-items: center;
         flex-direction: column;
+        margin-top: 20px;
         gap: 10px;
         .ball{
             font-size: 38px;

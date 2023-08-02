@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-query";
 import { persister, store, } from "store/index.js";
 import './main.scss'
+import "./i18n";
 
 const queryClient = new QueryClient({
   defaultOptions: {

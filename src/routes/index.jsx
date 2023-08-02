@@ -6,17 +6,14 @@ import {pages, authRoutes} from "./routes";
 // import { get } from "lodash";
 
 const appRoutes = (routes) => {
-  
   return routes.map((route, key) => (
-  
-      <React.Fragment key={key}>
-        <Route
-          path={route.path}
-          element={route.component}
-          />
-        {route.children && appRoutes(route.children)}
-      </React.Fragment>
-
+    <React.Fragment key={key}>
+      <Route
+        path={route.path}
+        element={<Suspense fallback="LOADING...">{route.component}</Suspense>}
+      />
+      {route.children && appRoutes(route.children)}
+    </React.Fragment>
   ));
 };
 

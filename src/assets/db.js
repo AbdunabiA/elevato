@@ -6,108 +6,113 @@ import pulAylanmasi from './icons/PulAylanmasiIcon.png'
 import qollabQuvvatlash from './icons/QollabQuvvatlashIcon.png'
 import sozlamalar from './icons/SozlamalarIcon.png'
 import statistika from './icons/StatistikaIcon.png'
+import obunalar from './icons/obunalarIcon.png'
+import shoppingCart from './icons/ShoppingCart.png'
 
 
-const menus = {
-  admin: [
-    {
-      title: "Asosiy",
-      path: "/",
-      icon: asosiy,
-    },
-    {
-      title: "Filiallar",
-      path: "/branches",
-      icon: filiallar,
-    },
-    {
-      title: "Mahsulot",
-      path: "/product",
-      icon: mahsulot,
-    },
-    {
-      title: "Pul aylanmasi",
-      path: "/money-circulation",
-      icon: pulAylanmasi,
-    },
-    {
-      title: "Statistika",
-      path: "/statistics",
-      icon: statistika,
-    },
-  ],
-};
+export const menus = {
+         admin: [
+           {
+             title: "Asosiy",
+             path: "/",
+             icon: asosiy,
+           },
+           {
+             title: "Filiallar",
+             path: "/branches",
+             icon: filiallar,
+           },
+           {
+             title: "Mahsulotlar",
+             path: "/products",
+             icon: mahsulot,
+           },
+           {
+             title: "Pul aylanmasi",
+             path: "/money-circulation",
+             icon: pulAylanmasi,
+           },
+           {
+             title: "Statistika",
+             path: "/statistics",
+             icon: statistika,
+           },
+           {
+             title: "Obunalar",
+             path: "/subscriptions",
+             icon: obunalar,
+           },
+         ],
+         mijoz: [
+           {
+             title: "Asosiy",
+             path: "/",
+             icon: asosiy,
+           },
+           {
+             title: "Mahsulotlar",
+             path: "/products",
+             icon: mahsulot,
+           },
+           {
+             title: "Pul aylanmasi",
+             path: "/money-circulation",
+             icon: pulAylanmasi,
+           },
+           {
+             title: "Statistika",
+             path: "/statistics",
+             icon: statistika,
+           },
+           {
+             title: "Obunalar",
+             path: "/subscriptions",
+             icon: obunalar,
+           },
+           {
+             title: "Buyurtmalar",
+             path: "/orders",
+             icon: shoppingCart,
+           },
+         ],
+       };
 
-const helpers = {
-  admin: [
-    {
-      title: "Sozlamalar",
-      path: "/settings",
-      icon: sozlamalar,
-    },
-    {
-      title: "Qo'llab quvvatlash",
-      path: "/support",
-      icon: qollabQuvvatlash,
-    },
-    {
-      title: "Big Leap Team",
-      path: "/big-leap",
-      icon: bigLeap,
-    },
-  ],
-};
-
-export const mahsulotTarqatish = [
-         {
-           contractId: 55418,
-           date: "11/11/2022",
-           product: "Ofiyst",
-           amount: 400,
-           payed: 9500000,
-           overallPayment: 10000000,
-         },
-         {
-           contractId: 55418,
-           date: "11/12/2022",
-           product: "Ofiyst",
-           amount: 400,
-           payed: 0,
-           overallPayment: 15000000,
-         },
-         {
-           contractId: 55418,
-           date: "11/11/2022",
-           product: "Ofiyst",
-           amount: 400,
-           payed: 95000000,
-           overallPayment: 1000000,
-         },
-         {
-           contractId: 55418,
-           date: "11/11/2022",
-           product: "Ofiyst",
-           amount: 400,
-           payed: 200000,
-           overallPayment: 10000000,
-         },
-         {
-           contractId: 55418,
-           date: "11/11/2022",
-           product: "Ofiyst",
-           amount: 400,
-           payed: 9500000,
-           overallPayment: 10000000,
-         },
-         {
-           contractId: 55418,
-           date: "11/11/2022",
-           product: "Ofiyst",
-           amount: 400,
-           payed: 9500000,
-           overallPayment: 10000000,
-         },
-       ];
+export const helpers = {
+         admin: [
+           {
+             title: "Sozlamalar",
+             path: "/settings",
+             icon: sozlamalar,
+           },
+           {
+             title: "Qo'llab quvvatlash",
+             path: "/support",
+             icon: qollabQuvvatlash,
+           },
+           {
+             title: "Big Leap Team",
+             path: "/big-leap",
+             icon: bigLeap,
+           },
+         ],
+         mijoz: [
+           {
+             title: "Sozlamalar",
+             path: "/settings",
+             icon: sozlamalar,
+           },
+           {
+             title: "Qo'llab quvvatlash",
+             path: "/support",
+             icon: qollabQuvvatlash,
+           },
+           {
+             title: "Big Leap Team",
+             path: "/big-leap",
+             icon: bigLeap,
+           },
+         ],
+       };
 
 
 export const mahsulotTarqatish2 = [
@@ -253,4 +258,42 @@ export const moliyaviyMalumotlar = [
            debet: 30000000,
          },
        ];
-export {menus, helpers}
+
+export const subscriptionsInfo = [
+         {
+           id: 1,
+           title: "Bronza",
+           sum: 1000000,
+           duration: 30,
+           cashback: 1,
+           subscribers: 100,
+           status: "aktiv",
+         },
+         {
+           id: 2,
+           title: "Bronza",
+           sum: 1000000,
+           duration: 30,
+           cashback: 1,
+           subscribers: 100,
+           status: "aktiv",
+         },
+         {
+           id: 3,
+           title: "Bronza",
+           sum: 1000000,
+           duration: 30,
+           cashback: 1,
+           subscribers: 100,
+           status: "aktiv",
+         },
+         {
+           id: 4,
+           title: "Bronza",
+           sum: 1000000,
+           duration: 30,
+           cashback: 1,
+           subscribers: 100,
+           status: "aktiv",
+         },
+       ];

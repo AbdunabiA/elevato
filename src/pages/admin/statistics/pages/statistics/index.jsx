@@ -5,8 +5,8 @@ import { useState } from "react";
 import { getLastMonth } from "services/dates";
 import Cards from "../../components/cards";
 import OverallStatistics from "../../components/charts/overallStatistics";
-import BranchesSalesStatistics from "../../components/charts/branchesSalesCirculation";
-import BranchesSalesCirculation from "../../components/charts/branchesSalesCirculation";
+import BranchesSalesCirculation from "components/charts/branchesSalesCirculation";
+import Loader from "components/loader";
 
 const Statistics = () => {
   const [staticDate, setStaticDate] = useState(getLastMonth());
@@ -18,19 +18,31 @@ const Statistics = () => {
   // console.log(staticDate);
   return (
     <div className="container">
-      {/* <GetAll queryKey={[]}> */}
-      {(() => {
-        const infos = [80000000, 591, 8000, 73580];
-        return (
-          <>
-            <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
-            <Cards {...{ infos }} />
-            <OverallStatistics/>
-            <BranchesSalesCirculation/>
-          </>
-        );
-      })()}
-      {/* </GetAll>  */}
+      <GetAll
+        queryKey={["statistics-page"]}
+        url={`/admin-statistics/month/${
+          month ? moment(month).format("MM-YYYY") : staticDate
+        }/`}
+      >
+        {({ items, isLoading }) => {
+          if (isLoading) return <Loader />;
+          const infos = [
+            items?.total_income,
+            items?.users,
+            items?.days,
+            items?.products_amount,
+          ];
+          console.log(items);
+          return (
+            <>
+              <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
+              <Cards {...{ infos }} />
+              <OverallStatistics data={items} />
+              <BranchesSalesCirculation data={items.warehouses_diagram} />
+            </>
+          );
+        }}
+      </GetAll>
     </div>
   );
 };

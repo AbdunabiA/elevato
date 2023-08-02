@@ -4,7 +4,7 @@ import { get } from "lodash"
 const GetAll = ({url, queryKey, params, onSuccess, onError, children}) => {
     const data = useGet({url, queryKey, params, onSuccess, onError})
   return children({
-    items: get(data, "data.data.data"),
+    items: get(data, "data.data"),
     meta: {
       total: get(data, "data.data.total"),
       perPage: get(data, "data.data.per_page"),

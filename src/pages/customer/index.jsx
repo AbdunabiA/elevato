@@ -1,0 +1,5 @@
+export {CustomerHome} from './home'
+export {CustomerProducts} from './products'
+export {CustomerMoneyCirculation} from './moneyCirculation'
+export {CustomerOrders} from './orders'
+export {CustomerSubscriptions} from './subscriptions'

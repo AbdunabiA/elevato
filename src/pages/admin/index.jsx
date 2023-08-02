@@ -8,3 +8,7 @@ export {Statistics} from './statistics'
 export {MoneyCirculation} from './moneyCirculation'
 export { Subscriber } from "./moneyCirculation";
 export {Employee} from './branches'
+export {AddProduct} from './product'
+export {Subscriptions} from './subscriptions'
+export {CreateTariff} from './subscriptions'
+export {UpdateTariff} from './subscriptions'

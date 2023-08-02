@@ -1,12 +1,14 @@
-import Table from "components/table";
+import Table from "components/tables/table";
 import { mahsulotTarqatish2 } from "assets/db";
-import './historyOfProducts.scss'
+import "./historyOfProducts.scss";
 import { useState } from "react";
 
 const HistoryOfProducts = () => {
-    const [inputVal, setInputVal] = useState()
-    console.log(inputVal);
-    const filteredData = mahsulotTarqatish2.filter((el)=>el.branch.toLowerCase().includes(inputVal?.toLowerCase()))
+  const [inputVal, setInputVal] = useState();
+  console.log(inputVal);
+  const filteredData = mahsulotTarqatish2.filter((el) =>
+    el.branch.toLowerCase().includes(inputVal?.toLowerCase())
+  );
   const columns = [
     {
       title: "Sana",
@@ -36,16 +38,21 @@ const HistoryOfProducts = () => {
         <div className="table__title">
           <h1 className="title">Jadval</h1>
           <div className="buttons">
-            <input className="product-search__input" type="text" placeholder="Qidirish" onChange={(e)=>{
-                setTimeout(()=>{
-                    setInputVal(e.target.value);
-                }, 500)
-                }}/>
+            <input
+              className="product-search__input"
+              type="text"
+              placeholder="Qidirish"
+              onChange={(e) => {
+                setTimeout(() => {
+                  setInputVal(e.target.value);
+                }, 500);
+              }}
+            />
           </div>
         </div>
         <Table
           columns={columns}
-          data={inputVal?filteredData:mahsulotTarqatish2}
+          data={inputVal ? filteredData : mahsulotTarqatish2}
           hasPagination
           total={12}
         />

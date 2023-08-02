@@ -7,9 +7,12 @@ import {fields} from './formFields'
 import { Button } from 'components/buttons';
 import Modal from 'components/modal';
 import { useState } from 'react';
+import { useGet } from 'crud';
 
 const EmployeeInfoForm = () => {
     const [modal, setModal] = useState(false)
+    const data = useGet({url:'/users-profile', queryKey:['']})
+    console.log(data.data);
   return (
     <ContainerForm fields={fields}>
       {() => (
@@ -49,13 +52,27 @@ const EmployeeInfoForm = () => {
                   component={Input}
                 />
               </div>
-              <div className="fields__inputs">
+              <div
+                className="fields__inputs"
+                style={{ border: "1px solid black" }}
+              >
                 <Field name="address" label="Manzil" component={Input} />
-                <Field
-                  name="passport"
-                  label="Pasport seriyasi"
-                  component={Input}
-                />
+                <div>
+                  <label className="label">Passport seriasi</label>
+                  <div className="passport_nums">
+                    <Field
+                      name="passport_series"
+                      wrapperClassName="passport_series"
+                      component={Input}
+                    />
+                    <Field
+                      name="passport_num"
+                      wrapperClassName="passport_num"
+                      component={Input}
+                    />
+                  </div>
+                </div>
+
                 <Field name="education" label="Ma'lumoti" component={Input} />
                 <Field
                   name="university"
@@ -71,28 +88,42 @@ const EmployeeInfoForm = () => {
           <div className="form-buttons">
             <Button text={"Ishdan olish"} color={"#FF0000"} />
             <Button text="Saqlash" />
-            <Button text={"Parolni ozgartirish"} onClick={()=>setModal(true)}/>
+            <Button
+              text={"Parolni ozgartirish"}
+              onClick={() => setModal(true)}
+            />
           </div>
           {modal ? (
             <Modal onClose={() => setModal(false)}>
-              <ContainerForm 
+              <ContainerForm
                 fields={[
-                    {
-                        name:'username',
-                        required:true,
-                    },
-                    {
-                        name:'password',
-                        required:true,
-                    }
+                  {
+                    name: "username",
+                    required: true,
+                  },
+                  {
+                    name: "password",
+                    required: true,
+                  },
                 ]}
               >
                 {() => (
                   <>
                     <Field name="username" label="Username" component={Input} />
-                    <Field name="password" label="Parol" type='password' component={Input} />
-                    <div style={{display:"flex", justifyContent:"end", marginTop:"20px"}}>
-                        <Button text='saqlash'/>
+                    <Field
+                      name="password"
+                      label="Parol"
+                      type="password"
+                      component={Input}
+                    />
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "end",
+                        marginTop: "20px",
+                      }}
+                    >
+                      <Button text="saqlash" />
                     </div>
                   </>
                 )}

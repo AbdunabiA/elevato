@@ -1,7 +1,7 @@
 import { BarChart } from 'components/charts'
 import React from 'react'
 
-const BranchSalesCirculation = () => {
+const BranchSalesCirculation = ({data}) => {
   const savdo = {
     Du: 6000000,
     Se: 50000000,
@@ -13,8 +13,8 @@ const BranchSalesCirculation = () => {
   };
 
   return (
-    <div style={{marginTop:"40px"}}>
-      <h1 className="title">Farg'ona savdo aylanmalari</h1>
+    <div style={{ marginTop: "40px" }}>
+      <h1 className="title">{data?.warehouse?.name} savdo aylanmalari</h1>
       <div className="charts">
         <BarChart
           title={"Savdo"}
@@ -25,32 +25,8 @@ const BranchSalesCirculation = () => {
           textBottom={
             "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. Integer tellus ullamcorper sed sagittis venenatis."
           }
-          infos={savdo}
-          tooltipVal={"uzs"}
-        />
-        <BarChart
-          title={"Mijozlar maosh grafigi (dona)"}
-          hasButton
-          subtitle={
-            "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. "
-          }
-          textBottom={
-            "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. Integer tellus ullamcorper sed sagittis venenatis."
-          }
-          infos={savdo}
-          tooltipVal={"uzs"}
-        />
-        <BarChart
-          title={"Xodimlar maosh grafigi (uzs)"}
-          hasButton
-          subtitle={
-            "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. "
-          }
-          textBottom={
-            "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. Integer tellus ullamcorper sed sagittis venenatis."
-          }
-          infos={savdo}
-          tooltipVal={"uzs"}
+          infos={data?.sales_diagram}
+          tooltipVal={"$"}
         />
         <BarChart
           title={"Mahsulot grafigi (dona)"}
@@ -61,7 +37,7 @@ const BranchSalesCirculation = () => {
           textBottom={
             "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. Integer tellus ullamcorper sed sagittis venenatis."
           }
-          infos={savdo}
+          infos={data?.products_sales_diagram}
           tooltipVal={"ta"}
         />
       </div>

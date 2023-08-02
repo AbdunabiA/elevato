@@ -1,0 +1,49 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+.wrapper {
+    width: 100%;
+    margin-top: 40px;
+    .table{
+        width: 100%;
+        background: white;
+        padding: 30px;
+        border-radius: 30px;
+        @media (max-width:$xl) {
+            padding: 20px;
+            border-radius: 20px;
+        }
+        @media (max-width:$sm) {
+            padding: 10px;
+            border-radius: 10px;
+        }
+        &__title{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            @media (max-width:$md) {
+                align-items: start;
+                flex-direction: column;
+            }
+            .title{
+                margin-bottom: 0;
+            }
+            .buttons{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                @media (max-width:$sm) {
+                    flex-wrap: wrap;
+                    gap: 10px;
+                }
+            }
+        }
+    }
+}

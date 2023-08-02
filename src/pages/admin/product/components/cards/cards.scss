@@ -6,15 +6,54 @@ $xxl: 1401px;
 $xxxl:1601px;
 $xxxxl:1921px;
 
-.cards{
+.cards-add{
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         justify-content: space-between;
         margin-top: 30px;
         @media (max-width:$xl) {
-            justify-content: space-around;
             gap: 20px;
         }
-        
+        &__card{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 300px;
+            height: 120px;
+            background: #F9C70B;
+            border-radius: 20px;
+            cursor: pointer;
+            // padding: 15px 15px 20px 15px;
+            @media (max-width:$xxxl) {
+                width: 260px;
+                height: 110px;
+            }
+            @media (max-width:$xxl) {
+                width: 240px;
+                height: 100px;
+                gap: 5px;
+                // padding: 10px 10px 15px 10px;
+            }
+            @media (max-width:$xl) {
+                width: 250px;
+                height: 100px;
+            }
+            @media (max-width:$sm) {
+                width: 100%
+            }
+
+            &>h1{
+                font-size: 24px;
+                font-weight: 600;
+                line-height: 120%;
+                @media (max-width:$xxxl) {
+                    font-size: 22px;
+                }
+                @media (max-width:$xxl) {
+                    font-size: 20px;
+                }
+            }
+        }
     }

@@ -6,15 +6,17 @@ import calendar from "assets/icons/CalendarIcon.png";
 import { Button } from "..";
 import { forwardRef, useRef } from "react";
 import './monthPicker.scss'
+import { useTranslation } from "react-i18next";
 
 const MonthPicker = ({month, setMonth}) => {
+    const {t, i18n} = useTranslation()
     const dateRef = useRef(null);
     registerLocale("uz", uz);
     registerLocale("ru", ru);
     const CustomInput = forwardRef(({ onClick, value }, ref) => {
       return (
         <Button
-          text={value ? value : "Oraliq tanlash"}
+          text={value ? value : t("Oyni tanlash")}
           onClick={onClick}
           bref={ref}
           icon={calendar}
@@ -25,7 +27,7 @@ const MonthPicker = ({month, setMonth}) => {
   return (
     <ReactDatePicker
       selected={month}
-      locale={"uz"}
+      locale={i18n.language}
       closeOnScroll={true}
       onChange={(date) => setMonth(date)}
       dateFormat="MMMM/yyyy"

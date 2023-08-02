@@ -5,24 +5,46 @@ import avatar from 'assets/images/Woman.png'
 import hamburger from 'assets/icons/humburger.png'
 import { useLocation} from 'react-router-dom'
 import { Button } from 'components/buttons'
+import { useTranslation } from 'react-i18next'
+import { useEffect, useState } from 'react'
+import { usePost } from 'crud'
+import { storage } from 'services'
 
 const Header = ({ setSideMenu }) => {
-  const options = [
-    {label:"RU", value:"ru"},
-    {label:"UZ", value:"uz"}
-  ]
+  const {t, i18n} = useTranslation()
+
+  const {mutate} = usePost()
+
+  useEffect(()=>{
+    mutate({
+      url: "/login/",
+      values:{
+        "userinput":"elevato",
+        "password":"done7858"
+      },
+      onSuccess:({data})=>{
+        storage.set('token', data?.access)
+      },
+      onError:(error)=>{
+        console.log(error);
+      }
+    });
+  },[])
+
+  
   const role = 'admin'
   const location = useLocation();
   const paths = {
     "/branches": "Filiallar",
-    "/product": "Mahsulot",
-    "/money-circulation": "Pul Aylanmasi",
+    "/product": "Mahsulotlar",
+    "/money-circulation": "Pul aylanmasi",
     "/statistics": "Statistika",
     "/support": "Qo'llab Quvvatlash",
     "/settings": "Sozlamalar",
     "/big-leap": "Big Leap Team",
     "/subscriber": "Obunachi",
     "/employee":"Xodim",
+    "/orders":"Buyurtmalar"
   };
   return (
     <header>
@@ -39,10 +61,10 @@ const Header = ({ setSideMenu }) => {
               if (
                 location.pathname.toLowerCase().includes(item.toLowerCase())
               ) {
-                return paths[item];
+                return t(paths[item]);
               }
             })}
-            {location.pathname.toLowerCase() === "/" ? "Asosiy panel" : null}
+            {location.pathname.toLowerCase() === "/" ? t("Asosiy panel") : null}
           </h1>
         </div>
         <div className="header-wrapper__right">
@@ -50,7 +72,7 @@ const Header = ({ setSideMenu }) => {
             <label htmlFor="search">
               <img src={searcIcon} alt="icon" />
             </label>
-            <input type="text" id="search" placeholder="Qidirish" />
+            <input type="text" id="search" placeholder={t("Qidirish")} />
           </div>
           {
             role !== 'admin' ? 
@@ -62,11 +84,11 @@ const Header = ({ setSideMenu }) => {
           <div className="avatar">
             <img src={avatar} alt="" />
           </div>
-          <select className='languages' >
-            <option value="uz-UZ">UZ</option>
-            <option value="ru-RU">RU</option>
+          <select className='languages' defaultValue={i18n.language} onChange={(e)=>i18n.changeLanguage(e.target.value)}>
+            <option value="uz">UZ</option>
+            <option value="ru">RU</option>
           </select>
-          <Button text={'chiqish'}/>
+          <Button text={t("Chiqish")}/>
         </div>
       </div>
     </header>
