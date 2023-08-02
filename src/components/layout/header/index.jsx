@@ -12,7 +12,7 @@ import { storage } from 'services'
 
 const Header = ({ setSideMenu }) => {
   const {t, i18n} = useTranslation()
-
+  console.log(i18n.language);
   const {mutate} = usePost()
 
   useEffect(()=>{
