@@ -17,9 +17,7 @@ const Header = ({ setSideMenu }) => {
   const navigate = useNavigate()
   const role = storage.get('role')
   
-  useEffect(()=>{
-    if (!role) storage.set("role", "admin");
-  }, [])
+  
 
   useEffect(()=>{
     mutate({

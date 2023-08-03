@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import RoutesWrapper from './routes'
 import { get } from 'lodash';
 import { useEffect } from 'react';
+import { storage } from 'services';
 
 function App() {
   const navigate = useNavigate();
@@ -16,6 +17,11 @@ function App() {
       navigate("/auth/sign-in");
     }
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    let role = storage.get('role')
+    if (!role) storage.set("role", "admin");
+  }, []);
 
   return (
     <RoutesWrapper/>
