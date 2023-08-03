@@ -15,7 +15,7 @@ const Header = ({ setSideMenu }) => {
   // console.log(i18n.language);
   const {mutate} = usePost()
   const navigate = useNavigate()
-  const role = 'admin'
+  const role = 'mijoz'
   
   
 

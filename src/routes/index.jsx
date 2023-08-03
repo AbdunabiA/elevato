@@ -22,19 +22,25 @@ const appRoutes = (routes) => {
 const routesWrapper = () => {
 //   const { isAuthenticated } = useSelector((state) => get(state, "auth"));
 const isAuthenticated = true
-const role = 'admin'
-  return (
-    <Routes>
-      <Route path="*" element={<h2>Not Fonund</h2>} />
-      {isAuthenticated ? (
-        <Route path="/" element={<Layout />}>
-          {appRoutes(pages[role])}
-        </Route>
-      ) : (
-        appRoutes(authRoutes)
-      )}
-    </Routes>
-  );
+// const role =
+  let role = "admin";
+  if (storage.get("role")){
+    let role = storage.get("role")
+  } else {
+    let role = 'admin'
+  }
+    return (
+      <Routes>
+        <Route path="*" element={<h2>Not Fonund</h2>} />
+        {isAuthenticated ? (
+          <Route path="/" element={<Layout />}>
+            {appRoutes(pages[role])}
+          </Route>
+        ) : (
+          appRoutes(authRoutes)
+        )}
+      </Routes>
+    );
   // return <Routes>{appRoutes(privateRoutes)}</Routes>;
 };
 

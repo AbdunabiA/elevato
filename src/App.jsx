@@ -10,6 +10,7 @@ function App() {
   const navigate = useNavigate();
   // const { isAuthenticated } = useSelector((state) => get(state, "auth"));
   const isAuthenticated = true
+  // useEffect()
   useEffect(() => {
     if (isAuthenticated) {
       // navigate("/");

@@ -10,7 +10,12 @@ import { storage } from 'services';
 const Sidebar = ({sideMenu, setSideMenu}) => {
   const {t} = useTranslation()
   const navigate = useNavigate();
-  const role = storage.get('role')
+  let role = 'admin'
+  if (storage.get("role")) {
+    role = storage.get("role");
+  } else {
+    role = "admin";
+  }
   return (
     <>
       {sideMenu ? 

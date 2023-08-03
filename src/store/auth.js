@@ -5,7 +5,8 @@ const initialState = {
 	isFetched: false,
 	isAuthenticated: false,
 	data: {},
-	token: storage.get("token")
+	token: storage.get("token"),
+	role:'admin'
 };
 
 export const authSlice = createSlice({
@@ -36,6 +37,16 @@ export const authSlice = createSlice({
 				isFetched: true,
 				isAuthenticated: true,
 				data: action.payload
+			};
+		},
+		changeRole:(state, action)=>{
+			return {
+				...state,
+				isFetched: true,
+				isAuthenticated: false,
+				token: null,
+				data: {},
+				role:action.payload
 			};
 		}
 	}
