@@ -3,6 +3,7 @@ import Layout  from "../components/layout";
 import { Route, Routes } from "react-router-dom";
 import {pages, authRoutes} from "./routes";
 import { storage } from "services";
+import { useSelector } from "react-redux";
 // import { useSelector } from "react-redux";
 // import { get } from "lodash";
 
@@ -23,12 +24,14 @@ const routesWrapper = () => {
 //   const { isAuthenticated } = useSelector((state) => get(state, "auth"));
 const isAuthenticated = true
 // const role =
-  const [role, setRole] = useState('admin')
-  if (storage.get("role")){
-    setRole(storage.get("role"))
-  } else {
-    setRole('admin')
-  }
+  // const [role, setRole] = useState('admin')
+  // if (storage.get("role") !== role){
+  //   setRole(storage.get("role"))
+  // } else {
+  //   setRole('admin')
+  // }
+  const role = useSelector((state) => state.auth.role);
+
     return (
       <Routes>
         <Route path="*" element={<h2>Not Fonund</h2>} />

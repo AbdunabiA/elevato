@@ -9,14 +9,16 @@ import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
 import { usePost } from 'crud'
 import { storage } from 'services'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeRole } from 'store/auth'
 
 const Header = ({ setSideMenu }) => {
   const {t, i18n} = useTranslation()
   // console.log(i18n.language);
   const {mutate} = usePost()
   const navigate = useNavigate()
-  const role = 'mijoz'
-  
+  const role = useSelector((state) => state.auth.role);
+  const dispatch = useDispatch()
   
 
   useEffect(()=>{
@@ -71,8 +73,8 @@ const Header = ({ setSideMenu }) => {
           </h1>
         </div>
         <div className="header-wrapper__right">
-          <Button text={"Admin"} onClick={() => storage.set("role", "admin")} />
-          <Button text={"Mijoz"} onClick={() => storage.set("role", "mijoz")} />
+          <Button text={"Admin"} onClick={() => dispatch(changeRole('admin'))} />
+          <Button text={"Mijoz"} onClick={() => dispatch(changeRole('mijoz'))} />
           <div className="input__wrapper">
             <label htmlFor="search">
               <img src={searcIcon} alt="icon" />
