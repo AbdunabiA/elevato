@@ -5,16 +5,17 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import close from 'assets/icons/close.png'
 import { useTranslation } from 'react-i18next';
 import { storage } from 'services';
+import { useState } from 'react';
 
 
 const Sidebar = ({sideMenu, setSideMenu}) => {
   const {t} = useTranslation()
   const navigate = useNavigate();
-  let role = 'admin'
+  const [role, setRole] = useState("admin");
   if (storage.get("role")) {
-    role = storage.get("role");
+    setRole(storage.get("role"));
   } else {
-    role = "admin";
+    setRole("admin");
   }
   return (
     <>

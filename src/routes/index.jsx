@@ -1,4 +1,4 @@
-import React, { Suspense} from "react";
+import React, { Suspense, useState} from "react";
 import Layout  from "../components/layout";
 import { Route, Routes } from "react-router-dom";
 import {pages, authRoutes} from "./routes";
@@ -23,11 +23,11 @@ const routesWrapper = () => {
 //   const { isAuthenticated } = useSelector((state) => get(state, "auth"));
 const isAuthenticated = true
 // const role =
-  let role = "admin";
+  const [role, setRole] = useState('admin')
   if (storage.get("role")){
-    let role = storage.get("role")
+    setRole(storage.get("role"))
   } else {
-    let role = 'admin'
+    setRole('admin')
   }
     return (
       <Routes>
