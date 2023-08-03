@@ -1,0 +1,184 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+.subscriber-info-form__wrapper{
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    @media (max-width:$sm) {
+        padding: 15px;
+    }
+    &__top{
+        display: flex;
+        align-items: start;
+        @media (max-width:$md) {
+            flex-direction: column;
+        }
+        &__left{
+            width: 100%;
+            @media (max-width:$sm) {
+                text-align: center;
+            }
+            .img-wrapper{
+                border-radius: 100%;
+                overflow: hidden;
+                width: 200px;
+                @media (max-width:$xxl) {
+                    width: 150px;
+                }
+                @media (max-width:$md) {
+                    width: 120px;
+                }
+                @media (max-width:$sm) {
+                    width: 100px;
+                    margin: 0 auto;
+                }
+            }
+            >h1{
+                @media (max-width:$sm) {
+                    font-size: 24px;
+                }
+            }
+        }
+        &__right{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @media (max-width:$sm) {
+                flex-direction: column;
+            }
+            >div{
+                text-align: center;
+                >h1{
+                    margin-bottom: 0px;
+                    @media (max-width:$sm) {
+                        font-size: 24px;
+                    }
+                }
+                p{
+                    font-size: 28px;
+                    font-weight: 700;
+                    line-height: 110%;
+                    color: rgba(0, 0, 0, 0.5);
+                    @media (max-width:$xxl) {
+                        font-size: 24px;
+                    }
+                    @media (max-width:$xl) {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+    &__middle{
+        display: flex;
+        align-items: center;
+        gap: 200px;
+        margin-top: 20px;
+        @media (max-width:$xl) {
+            gap: 100px;
+        }
+        @media (max-width:$md) {
+            gap: 10px;
+            align-items: start;
+            flex-direction: column;
+        }
+        @media (max-width:$sm) {
+            align-items: center;
+            text-align: center;
+        }
+        .start-work{
+            >h1{
+                font-size: 32px;
+                font-weight: 700;
+                line-height: 120%;
+                @media (max-width:$xxl) {
+                    font-size: 28px;
+                }
+                @media (max-width:$xl) {
+                    font-size: 24px;
+                }
+                @media (max-width:$sm) {
+                    font-size: 20px;
+                }
+            }
+            >p{
+                font-size: 32px;
+                font-weight: 500;
+                line-height: 110%;
+                @media (max-width:$xxl) {
+                    font-size: 28px;
+                }
+                @media (max-width:$xl) {
+                    font-size: 24px;
+                }
+                @media (max-width:$sm) {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    &__bottom{
+        margin-top: 30px;
+        >h1{
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 110%;
+            @media (max-width:$xxl) {
+                font-size: 28px;
+            }
+            @media (max-width:$xl) {
+                font-size: 24px;
+            }
+            @media (max-width:$sm) {
+                font-size: 20px;
+            }
+        }
+        >.fields{
+            display: flex;
+            align-items: start;
+            gap: 260px;
+            margin-top: 20px;
+            @media (max-width:$xl) {
+                gap: 120px;
+            }
+            @media (max-width:$md) {
+                gap: 20px;
+                flex-direction: column;
+            }
+            .fields__inputs{
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 20px;
+                .passport_nums{
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    .passport_series{
+                        width: 50px;
+                    }
+                    .passport_num{
+                        width: 180px;
+                    }
+                }
+            }
+        }
+    }
+    .form-buttons{
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 30px;
+        margin-top: 20px;
+        @media (max-width:$sm) {
+            gap: 10px;
+        }
+    }
+}

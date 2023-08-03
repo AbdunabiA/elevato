@@ -4,12 +4,13 @@ import logo from 'assets/images/logo.png'
 import { NavLink, useNavigate } from 'react-router-dom';
 import close from 'assets/icons/close.png'
 import { useTranslation } from 'react-i18next';
+import { storage } from 'services';
 
 
 const Sidebar = ({sideMenu, setSideMenu}) => {
   const {t} = useTranslation()
   const navigate = useNavigate();
-  const role = "admin";
+  const role = storage.get('role')
   return (
     <>
       {sideMenu ? 

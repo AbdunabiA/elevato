@@ -14,11 +14,7 @@ const CustomerProducts = () => {
     queryKey: ["users-products"],
     url: "users-products",
   });
-  const profile = useGet({
-    queryKey: ["users-profile"],
-    url: "users-profile",
-  });
-  console.log(profile);
+  
   useEffect(()=>{
     setCategory(data?.data[0][`name_${lang}`]);
   },[data])

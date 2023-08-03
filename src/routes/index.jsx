@@ -2,6 +2,7 @@ import React, { Suspense} from "react";
 import Layout  from "../components/layout";
 import { Route, Routes } from "react-router-dom";
 import {pages, authRoutes} from "./routes";
+import { storage } from "services";
 // import { useSelector } from "react-redux";
 // import { get } from "lodash";
 
@@ -21,7 +22,7 @@ const appRoutes = (routes) => {
 const routesWrapper = () => {
 //   const { isAuthenticated } = useSelector((state) => get(state, "auth"));
 const isAuthenticated = true
-const role = "admin";
+const role = storage.get("role");
   return (
     <Routes>
       <Route path="*" element={<h2>Not Fonund</h2>} />

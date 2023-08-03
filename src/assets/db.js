@@ -59,11 +59,11 @@ export const menus = {
              path: "/money-circulation",
              icon: pulAylanmasi,
            },
-           {
-             title: "Statistika",
-             path: "/statistics",
-             icon: statistika,
-           },
+          //  {
+          //    title: "Statistika",
+          //    path: "/statistics",
+          //    icon: statistika,
+          //  },
            {
              title: "Obunalar",
              path: "/subscriptions",

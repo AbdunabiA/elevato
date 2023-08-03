@@ -1,19 +1,33 @@
-import Loader from 'components/loader';
-import { GetAll } from 'modules'
-import React from 'react'
+import Filters from "components/filters";
+import { GetAll } from "modules";
+import React, { useState } from "react";
+import { getLastMonth } from "services/dates";
+import Cards from "../../components/cards";
+import SubscribersTable from "../../components/subscribersTable";
+import moment from "moment";
+import Loader from "components/loader";
+import ErrorPage from "components/errorPage";
 
 const CustomerMoneyCirculation = () => {
-  return (
-    <GetAll queryKey={['customer-money-circulation']} url={'/users-finance/'}>
-        {
-            ({items, isLoading})=>{
-                if(isLoading) return <Loader/>
-                console.log(items);
-                return <div>CustomerMoneyCirculation</div>;
-            }
-        }
-    </GetAll>
-  )
-}
+  const [staticDate, setStaticDate] = useState(getLastMonth());
+  const [month, setMonth] = useState(null);
 
-export default CustomerMoneyCirculation
+  return (
+    <GetAll queryKey={["customer-money-circulation"]} url={"/users-finance/"}>
+      {({ items, isLoading }) => {
+        if (isLoading) return <Loader />;
+        console.log(items);
+        const infos = [50000, 3000, 455, 234]
+        return (
+          <div className="container">
+            <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
+            <Cards {...{ infos }} />
+            <SubscribersTable />
+          </div>
+        );
+      }}
+    </GetAll>
+  );
+};
+
+export default CustomerMoneyCirculation;

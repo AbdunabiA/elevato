@@ -11,12 +11,12 @@ import ErrorPage from 'components/errorPage';
 const MoneyCirculation = () => {
   const [staticDate, setStaticDate] = useState(getLastMonth());
   const [month, setMonth] = useState(null);
-  console.log('render');
+  
   return (
     <div className="container">
       <GetAll
         queryKey={["money-circulation"]}
-        url={`/admin-finance/${
+        url={`/admin-finance/month/${
           month ? moment(month).format("YYYY-MM") : staticDate
         }/`}
       >

@@ -1,7 +1,7 @@
 // import { Home } from "pages/admin";
 import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee, AddProduct, Subscriptions, CreateTariff, UpdateTariff } from "pages/admin";
 
-import {CustomerHome, CustomerProducts, CustomerMoneyCirculation, CustomerOrders, CustomerSubscriptions} from 'pages/customer'
+import {CustomerHome, CustomerProducts, CustomerMoneyCirculation, CustomerOrders, CustomerSubscriptions, CustomerProfile} from 'pages/customer'
 
 
 
@@ -100,6 +100,10 @@ const pages = {
     {
       path: "/orders",
       component: <CustomerOrders />,
+    },
+    {
+      path: "/profile",
+      component: <CustomerProfile />,
     },
   ],
 };
