@@ -18,10 +18,7 @@ function App() {
     }
   }, [isAuthenticated]);
 
-  useEffect(() => {
-    let role = storage.get('role')
-    if (!role) storage.set("role", "admin");
-  }, []);
+ 
 
   return (
     <RoutesWrapper/>

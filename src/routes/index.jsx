@@ -22,7 +22,7 @@ const appRoutes = (routes) => {
 const routesWrapper = () => {
 //   const { isAuthenticated } = useSelector((state) => get(state, "auth"));
 const isAuthenticated = true
-const role = storage.get("role");
+const role = storage.get("role") != 'undefined' ? storage.get("role") : 'admin'
   return (
     <Routes>
       <Route path="*" element={<h2>Not Fonund</h2>} />

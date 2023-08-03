@@ -15,7 +15,7 @@ const Header = ({ setSideMenu }) => {
   // console.log(i18n.language);
   const {mutate} = usePost()
   const navigate = useNavigate()
-  const role = storage.get('role')
+  const role = storage.get("role") != "undefined" ? storage.get("role") : "admin";
   
   
 
