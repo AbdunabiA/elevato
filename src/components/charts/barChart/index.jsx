@@ -25,7 +25,7 @@ const BarChart = ({
   positionDatasetLabel='bottom',
   datasetLabel,
   width = "100%",
-  height = "100%",
+  height = "130%",
   tooltipVal,
   title,
   subtitle,

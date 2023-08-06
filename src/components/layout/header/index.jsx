@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 import { usePost } from 'crud'
 import { storage } from 'services'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeRole } from 'store/auth'
+import { changeRole, signOut } from 'store/auth'
 
 const Header = ({ setSideMenu }) => {
   const {t, i18n} = useTranslation()
@@ -100,7 +100,7 @@ const Header = ({ setSideMenu }) => {
             <option value="uz">UZ</option>
             <option value="ru">RU</option>
           </select>
-          <Button text={t("Chiqish")} />
+          <Button text={t("Chiqish")}  onClick={()=>dispatch(signOut())}/>
         </div>
       </div>
     </header>
