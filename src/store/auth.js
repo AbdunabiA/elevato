@@ -44,7 +44,7 @@ export const authSlice = createSlice({
 			return {
 				...state,
 				isFetched: true,
-				isAuthenticated: false,
+				isAuthenticated: true,
 				token: null,
 				data: {},
 				role:action.payload
