@@ -7,6 +7,7 @@ import './signIn.scss'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signIn } from 'store/auth';
+import { storage } from 'services';
 
 const SignIn = () => {
   const navigate = useNavigate()
