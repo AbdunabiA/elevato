@@ -1,25 +1,33 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import './dropZone.scss'
 import { Button } from "components/buttons";
+import { usePost } from "crud";
+import Loader from "components/loader";
 
 export default function DropZone({
-                 field: { value, name },
-                 form: { setFieldValue, setFieldTouched, errors, touched },
+                //  field: { value, name },
+                //  form: { setFieldValue, setFieldTouched, errors, touched },
+                 photoUrl,
+                 sendUrl,
+                 method='post',
+                 onSuccess=()=>{},
+                 onError=()=>{},
                }) {
-                 const [url, setUrl] = useState(null);
-                 const onDrop = useCallback((acceptedFiles) => {
-                   // console.log(acceptedFiles);
-                   const oFReader = new FileReader();
-                   oFReader.readAsDataURL(acceptedFiles[0]);
-
-                   oFReader.onload = function(e) {
-                     setUrl(e.target.result);
-                     setFieldValue(name, e.target.result);
-                   };
-                   
+                const { mutate, isLoading } = usePost();
+                const ref = useRef(null);
+                const onDrop = useCallback((acceptedFiles) => {
+                  let formData = new FormData();
+                  formData.append("photo", acceptedFiles[0]);
+                  mutate({
+                    url: `${sendUrl}`,
+                    method: method,
+                    values: formData,
+                    onSuccess: (data) => onSuccess(data),
+                    onError: (err) => onError(err),
+                  });
                  }, []);
-                 console.log(value);
+                //  console.log(value);
                  const {
                    getRootProps,
                    getInputProps,
@@ -28,40 +36,39 @@ export default function DropZone({
                
                  return (
                    <>
-                     <div style={{ display: url ? "none" : "block" }}>
+                     <div style={{ display: photoUrl ? "none" : "block" }}>
                        <div
                          {...getRootProps({
                            className: "drop-zone__wrapper",
                          })}
                        >
-                         <input
-                           {...getInputProps()}
-                           onBlur={() => setFieldTouched(name, true)}
-                           name={name}
-                           type="file"
-                         />
+                         <input {...getInputProps()} ref={ref} type="file" />
                          {isDragActive ? (
                            <p>Drop the files here ...</p>
                          ) : (
                            <p>
-                             {touched[name] && errors[name] ? (
-                               <span className="error">Rasm bo'lishi shart</span>
-                             ) : (
-                               "Drag 'n' drop some files here, or click to select files"
-                             )}
+                             {!isLoading ? (
+                               <span className="error">
+                                 Rasm bo'lishi shart. Bu yerga bosing yoki
+                                 rasmni bu yerga qoying
+                               </span>
+                             ) : isLoading ? (
+                               <Loader/>
+                             ) : null}
                            </p>
                          )}
                        </div>
                      </div>
-                     <div style={{ display: url ? "block" : "none" }}>
-                       <img src={url} alt="img" />;
+                     <div style={{ display: photoUrl ? "block" : "none" }}>
+                       <img src={photoUrl} alt="img" />;
                        <Button
                          onClick={() => {
-                           setUrl(null);
-                           setFieldValue(name, '');
+                           ref.current.click();
+                           console.log(ref);
                          }}
-                         color={"red"}
-                         text={"Rasmni o'chirish"}
+                         type={"button"}
+                         text={"Rasmni o'zgartirish"}
+                         disabled={isLoading ? true : false}
                        />
                      </div>
                    </>

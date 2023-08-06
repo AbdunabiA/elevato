@@ -32,7 +32,7 @@ const ProductsDistribution = ({data}) => {
     {
       title: "Umumiy summa",
       key: "overallPayment",
-      render: (value) => `${value}uzs`,
+      render: (value) => `${value}$`,
     },
   ];
   const mahsulotlar = data.reduce((prev, curr)=>{

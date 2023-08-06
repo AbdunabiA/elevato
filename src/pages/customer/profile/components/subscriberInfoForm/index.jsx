@@ -5,39 +5,56 @@ import { Input } from 'components/fields'
 import woman from 'assets/images/Woman.png'
 import { formatNums } from 'services/formatNums'
 import { Button } from 'components/buttons'
+import { get } from 'lodash'
 
-const SubscriberInfoForm = () => {
+const SubscriberInfoForm = ({data}) => {
   return (
     <div className="subscriber-info-form__wrapper">
       <ContainerForm
         fields={[
           {
-            name: "name",
+            name: "first_name",
             type: "string",
             required: true,
+            value: get(data, 'user.first_name', '')
           },
           {
-            name: "surname",
+            name: "last_name",
             type: "string",
             required: true,
+            value:get(data, 'user.last_name', '')
           },
           {
-            name: "phone_num",
+            name: "phone_number",
             type: "string",
             min: 9,
             max: 13,
             required: true,
+            // value : get(data, 'user.phone_number', '')
           },
           {
-            name: "card_num",
+            name: "card_number",
             min: 16,
             required: true,
           },
           {
-            name: "passport",
-            type: "string",
-            min: 7,
+            name: "card_expirey",
+            min: 16,
             required: true,
+          },
+          {
+            name: "passport_num",
+            type: "string",
+            min: 5,
+            required: true,
+            value: get(data, 'user.passport_num', '')
+          },
+          {
+            name: "passport_series",
+            type: "string",
+            min: 2,
+            required: true,
+            value:get(data, 'user.passport_series', '')
           },
           {
             name: "birth_date",
@@ -46,6 +63,7 @@ const SubscriberInfoForm = () => {
           {
             name: "email",
             type: "string",
+            // value:get(data, 'user.email', '')
           },
         ]}
       >
@@ -56,15 +74,19 @@ const SubscriberInfoForm = () => {
                 <div className="img-wrapper">
                   <img src={woman} alt="img" />
                 </div>
-                <h1 className="title">Xurshida Zokirova</h1>
+                <h1 className="title">
+                  {data?.user?.first_name} {data?.user?.last_name}
+                </h1>
               </div>
               <div className="subscriber-info-form__wrapper__top__right">
                 <div>
-                  <h1 className="title">Bronza</h1>
+                  <h1 className="title">
+                    {data?.status?.name}|{data?.status?.cashback}%
+                  </h1>
                   <p>Obuna turi</p>
                 </div>
                 <div>
-                  <h1 className="title">{formatNums(14000000)}</h1>
+                  <h1 className="title">{formatNums(data?.money)}</h1>
                   <p>Hisob raqamidagi summa</p>
                 </div>
               </div>
@@ -83,26 +105,36 @@ const SubscriberInfoForm = () => {
               <h1>Taxrirlash</h1>
               <div className="fields">
                 <div className="fields__inputs">
-                  <Field name="name" label="Ism" component={Input} />
-                  <Field name="surname" label="Familia" component={Input} />
+                  <Field name="first_name" label="Ism" component={Input} />
+                  <Field name="last_name" label="Familia" component={Input} />
                   <Field
-                    name="phone_num"
+                    name="phone_number"
                     label="Telefon raqam"
                     component={Input}
                   />
-                  <Field
-                    name="phone_num2"
-                    label="Plastik malumoti"
-                    component={Input}
-                  />
-                  
+                  <div>
+                    <label>Karta raqami</label>
+                    <div className="card_number">
+                      <Field
+                        name="card_number"
+                        component={Input}
+                        type="number"
+                        wrapperClassName="card_num"
+                      />
+                      <Field
+                        name="card_expirey"
+                        component={Input}
+                        wrapperClassName="card_exp"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div
                   className="fields__inputs"
                   // style={{ border: "1px solid black" }}
                 >
                   <Field
-                    name="address"
+                    name="email"
                     label="Elektron po'chta"
                     component={Input}
                   />
@@ -127,7 +159,6 @@ const SubscriberInfoForm = () => {
                     type="date"
                     component={Input}
                   />
-                  
                 </div>
               </div>
             </div>

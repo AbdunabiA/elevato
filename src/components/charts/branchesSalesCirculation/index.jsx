@@ -43,6 +43,7 @@ const BranchesSalesCirculation = ({data}) => {
                 }
                 infos={el[Object.keys(el)[0]].dat}
                 onClick={() => navigate(`/branch/${el[Object.keys(el)[0]].id}`)}
+                tooltipVal={'$'}
               />
             );
           })

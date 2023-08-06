@@ -13,7 +13,7 @@ const ProductsSales = ({data}) => {
         <div className="branches-sales__info__left">
           <PieChart
             infos={infos}
-            tooltipVal={"uzs"}
+            tooltipVal={"$"}
           />
         </div>
         <div className="branches-sales__info__right">

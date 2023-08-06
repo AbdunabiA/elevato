@@ -67,7 +67,12 @@ const Main = ({
           if (field.required) {
             validationField = validationField.required("Требуется ввод");
           }
-
+          if (field.compare){
+            validationField = validationField.oneOf([
+              Yup.ref(field.compare),
+              null,
+            ]);
+          }
           if (field.min) {
             validationField = validationField.min(
               field.min,

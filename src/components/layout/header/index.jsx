@@ -74,13 +74,16 @@ const Header = ({ setSideMenu }) => {
         </div>
         <div className="header-wrapper__right">
           <Button text={"Admin"} onClick={() => dispatch(changeRole('admin'))} />
-          <Button text={"Mijoz"} onClick={() => dispatch(changeRole('mijoz'))} />
-          <div className="input__wrapper">
+          <Button text={"Mijoz"} onClick={() => dispatch(changeRole('ordinary_user'))} />
+          {
+            role === 'admin' ? <div className="input__wrapper">
             <label htmlFor="search">
               <img src={searcIcon} alt="icon" />
             </label>
             <input type="text" id="search" placeholder={t("Qidirish")} />
-          </div>
+          </div> : null
+          }
+          
           {role !== "admin" ? (
             <div className="notification">
               <img src={notification} alt="icon" />

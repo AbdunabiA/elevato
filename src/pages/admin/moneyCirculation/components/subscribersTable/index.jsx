@@ -17,7 +17,7 @@ const SubscribersTable = ({ data }) => {
       key: "subscription",
       render: (value) => (
         <>
-          {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
+          {formatNums(value)} <span style={{ color: "#B2B7C1" }}>$</span>
         </>
       ),
     },
@@ -26,7 +26,7 @@ const SubscribersTable = ({ data }) => {
       key: "all_bonus",
       render: (value) => (
         <>
-          {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
+          {formatNums(value)} <span style={{ color: "#B2B7C1" }}>$</span>
         </>
       ),
     },
@@ -35,7 +35,7 @@ const SubscribersTable = ({ data }) => {
       key: "clean_out",
       render: (value) => (
         <>
-          {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
+          {formatNums(value)} <span style={{ color: "#B2B7C1" }}>$</span>
         </>
       ),
     },

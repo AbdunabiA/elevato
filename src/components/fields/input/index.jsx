@@ -11,6 +11,8 @@ const Input = ({
   return (
     <label className={`${wrapperClassName} input-field__wrapper`}>
       {label ? <span className="label">{label}</span> : null}
+      <div>
+
       <input
         onBlur={() => setFieldTouched(name, true)}
         name={name}
@@ -19,10 +21,11 @@ const Input = ({
         onChange={(e) => setFieldValue(name, e.target.value)}
         placeholder={placeholder}
         className='custom-input'
-      />
+        />
+      </div>
       {touched[name] && errors[name] ? (
         <span className="error">{errors[name]}</span>
-      ) : null}
+        ) : null}
     </label>
   );
 };

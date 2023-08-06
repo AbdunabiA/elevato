@@ -17,9 +17,10 @@ export const authSlice = createSlice({
 			return {
 				...state,
 				isFetched: true,
-				isAuthenticated: true,
-				token: action.payload.token,
-				data: action.payload.user
+				isAuthenticated: action.payload.isAuthenticated,
+				token: action.payload.access,
+				data: action.payload.user,
+				role:action.payload.user_role
 			};
 		},
 		signOut: state => {

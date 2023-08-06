@@ -18,7 +18,7 @@ const SubscriptionsTable = ({data}) => {
         key: "price",
         render: (value) => (
           <>
-            {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
+            {formatNums(value)} <span style={{ color: "#B2B7C1" }}>$</span>
           </>
         ),
       },

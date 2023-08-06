@@ -24,8 +24,8 @@ const Charts = () => {
   return (
     <div className="charts-wrapper">
       <div className="charts">
-        <BarChart infos={chart1} />
-        <BarChart infos={chart2} />
+        <BarChart infos={chart1} title={'Daromad grafigi'}/>
+        <BarChart infos={chart2} title={'Mahsulot grafigi'}/>
       </div>
     </div>
   );

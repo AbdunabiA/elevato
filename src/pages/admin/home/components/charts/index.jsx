@@ -16,7 +16,7 @@ const Charts = ({data}) => {
       <h1 className="title">Umumiy statistika</h1>
       <div className="charts">
       <BarChart
-        title={"Daromad grafigi (uzs)"}
+        title={"Daromad grafigi ($)"}
         subtitle={
           "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diamlectus laoreet."
         }
@@ -24,7 +24,7 @@ const Charts = ({data}) => {
           "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diamlectus laoreet."
         }
         infos={data.revenues_data}
-        tooltipVal={"M uzs"}
+        tooltipVal={"$"}
         key={1}
       />
       <BarChart
@@ -45,11 +45,11 @@ const Charts = ({data}) => {
         // datas={mahsulot}
         // isLabelNavigatable={true}
         // url={'/branches'}
-        tooltipVal={"ta"}
+        tooltipVal={"$"}
         key={3}
       />
       <BarChart
-        title={"Obunalar grafigi (uzs)"}
+        title={"Obunalar grafigi ($)"}
         subtitle={
           "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diamlectus laoreet."
         }
@@ -57,7 +57,7 @@ const Charts = ({data}) => {
           "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diamlectus laoreet."
         }
         infos={obunalar}
-        tooltipVal={"M uzs"}
+        tooltipVal={"$"}
         key={4}
       />
     </div>

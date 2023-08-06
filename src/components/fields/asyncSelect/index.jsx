@@ -47,7 +47,8 @@ const AsyncSelect = ({
         isSearchable={isSearchable}
         isDisabled={disabled}
         name={name}
-        value={value}
+        defaultValue={value}
+        // value={value}
         isMulti={isMulti}
         debounceTimeout={300}
         getOptionLabel={(option) =>

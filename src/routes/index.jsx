@@ -1,9 +1,10 @@
 import React, { Suspense, useState} from "react";
 import Layout  from "../components/layout";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import {pages, authRoutes} from "./routes";
 import { storage } from "services";
 import { useSelector } from "react-redux";
+import { get } from "lodash";
 // import { useSelector } from "react-redux";
 // import { get } from "lodash";
 
@@ -21,20 +22,14 @@ const appRoutes = (routes) => {
 
 
 const routesWrapper = () => {
-//   const { isAuthenticated } = useSelector((state) => get(state, "auth"));
-const isAuthenticated = true
-// const role =
-  // const [role, setRole] = useState('admin')
-  // if (storage.get("role") !== role){
-  //   setRole(storage.get("role"))
-  // } else {
-  //   setRole('admin')
-  // }
+  const { isAuthenticated } = useSelector((state) => get(state, "auth"));
+// const isAuthenticated = true
+
   const role = useSelector((state) => state.auth.role);
 
     return (
       <Routes>
-        <Route path="*" element={<h2>Not Fonund</h2>} />
+        <Route path="*" element={<h2>Not Fonund <Link to={'/sign-in'}>Login page</Link></h2>} />
         {isAuthenticated ? (
           <Route path="/" element={<Layout />}>
             {appRoutes(pages[role])}

@@ -46,7 +46,7 @@ const OverallStatistics = ({data}) => {
           // datas={mahsulot}
           // isLabelNavigatable={true}
           // url={'/branches'}
-          tooltipVal={"uzs"}
+          tooltipVal={"$"}
           key={3}
         />
         <BarChart

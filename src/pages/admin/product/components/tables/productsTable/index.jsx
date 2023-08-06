@@ -23,6 +23,7 @@ const ProductsTable = ({ data }) => {
     {
       title: "Narxi",
       key: "price",
+      render:(val)=>`${val}$`
     },
     {
       title: "Kategoriya",
@@ -39,13 +40,14 @@ const ProductsTable = ({ data }) => {
     },
     {
       title: "Taxrirlash",
-      render: (value, row) => <Link to={``}>Batafsil</Link>,
+      render: (value, row) => <Link to={`/update-product/${row.id}`}>Batafsil</Link>,
     },
   ];
   const mahsulotlar = data.reduce((prev, curr) => {
     return [
       ...prev,
       {
+        id:curr.id,
         name: curr.name,
         price: formatNums(curr.price),
         category: curr.category[`name_${lang}`],

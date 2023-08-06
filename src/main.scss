@@ -51,15 +51,7 @@ $xxl: 1401px;
 $xxxl:1601px;
 $xxxxl:1921px;
 
-:root{
-    --sm: 578px;
-    --md: 769px;
-    --lg: 993px;
-    --xl: 1201px;
-    --xxl: 1401px;  
-    --xxxl:1601px;
-    --xxxxl:1921px;
-}
+
 // $main-font: 'Manrope', sans-serif;
 
 $mainBg: #F1F1F1;
@@ -110,11 +102,43 @@ $mainBg: #F1F1F1;
 }
 
 
+.container1{
+    width: 100%;
+    max-width: 1600px;
+    padding: 0px 20px;
+    // border: 1px solid black;
+    margin: 0 auto;
+    @include xxxxl{
+        max-width: $xxxl;
+        // margin: 0 auto;
+    }
+    @include xxxl{
+        max-width: $xxl;
+    }
+    @include xxl{
+        max-width: $xl;
+    }
+    @include xl{
+        max-width: $lg;
+        padding: 0px 10px;
+    }
+    @include lg{
+        max-width: $md;
+    }
+    @include md{
+        max-width: $sm;
+    }
+    @include sm{
+        width: 90%;
+    }
+    
+}
+
 .container{
     width: 100%;
     max-width: 1300px;
     padding: 20px 0px 20px 20px;
-    // border: 1px solid black;
+    border: 1px solid black;
     @include xxxxl{
         max-width: 1300px;
         // margin: 0 auto;
@@ -142,6 +166,7 @@ $mainBg: #F1F1F1;
     }
     
 }
+
 .title{
     font-size: 36px;
     font-weight: 700;

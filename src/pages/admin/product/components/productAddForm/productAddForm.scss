@@ -1,10 +1,32 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
 .product-add-fields{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-top: 40px;
+    @media (max-width:$md) {
+        flex-direction: column;
+        gap: 15px;
+    }
     &__left, &__right{
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
+    
 }
+.add-product__button{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: end;
+        gap: 20px;
+        margin-top: 20px;
+    }

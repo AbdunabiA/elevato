@@ -40,6 +40,9 @@ const Cards = ({ infos }) => {
   ];
   return (
     <div className="cards">
+      <div className="bonus-card">
+        <h1 className="bonus-card__title">Kunlik bonus</h1>
+      </div>
       {cards.map((card, i) => {
         return <Card key={i} {...{ card }} />;
       })}

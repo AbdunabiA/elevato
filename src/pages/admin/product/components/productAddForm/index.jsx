@@ -6,11 +6,13 @@ import { Button } from "components/buttons";
 import { useTranslation } from "react-i18next";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 
 const ProductAddForm = () => {
   const {i18n} = useTranslation()
   const lang = i18n.language
+  const navigate = useNavigate()
   return (
     <ContainerForm 
       fields={[
@@ -38,15 +40,10 @@ const ProductAddForm = () => {
           name:'about_ru',
           required:true,
         },
-        {
-          name:'photo',
-          required:true,
-        }
       ]}
       url="/admin-products/"
       onSuccess={(data)=>{
-        console.log(data);
-        toast.success("Qo'shildi")
+        navigate(`/update-product/${data?.id}`)
       }}
       onError={(error)=>{
         toast.error(error?.message)
@@ -72,12 +69,6 @@ const ProductAddForm = () => {
                             component={Input}
                             type="number"
                           />
-
-                          <Field
-                            name="about_uz"
-                            label="Batafsil UZ"
-                            component={TextArea}
-                          />
                         </div>
                         <div className="product-add-fields__right">
                           <Field
@@ -96,6 +87,17 @@ const ProductAddForm = () => {
                             label="Ishlab chiqaruvchi"
                             component={Input}
                           />
+                        </div>
+                      </div>
+                      <div className="product-add-fields">
+                        <div className="product-add-fields__left">
+                          <Field
+                            name="about_uz"
+                            label="Batafsil UZ"
+                            component={TextArea}
+                          />
+                        </div>
+                        <div className="product-add-fields__right">
                           <Field
                             name="about_ru"
                             label="Batafsil RU"
@@ -104,13 +106,9 @@ const ProductAddForm = () => {
                         </div>
                       </div>
                     </div>
-                    <div>
-                      <Field name="photo" component={DropZone} />
-                      {/* <DropZone /> */}
-                    </div>
-                    <div className="">
+                    <div className="add-product__button">
                       <Button
-                        text={"submit"}
+                        text={"Saqlash"}
                         onClick={handleSubmit}
                         type={"submit"}
                         disabled={isLoading ? true : false}

@@ -43,7 +43,7 @@ export const menus = {
              icon: obunalar,
            },
          ],
-         mijoz: [
+         ordinary_user: [
            {
              title: "Asosiy",
              path: "/",
@@ -95,7 +95,7 @@ export const helpers = {
              icon: bigLeap,
            },
          ],
-         mijoz: [
+         ordinary_user: [
            {
              title: "Sozlamalar",
              path: "/settings",
@@ -172,7 +172,7 @@ export const obunachilar = [
          },
          {
            id: 2,
-           full_name: "Saimov Rustam Saimjonovich",
+           full_name: "Alimov Abror Xabibullayevich",
            subscription: 3000000,
            all_bonus: 700000,
            clean_out: 0,
@@ -181,7 +181,7 @@ export const obunachilar = [
          },
          {
            id: 3,
-           full_name: "Sanginov Otabek Muratovich",
+           full_name: "Alimov Abror Xabibullayevich",
            subscription: 300000,
            all_bonus: 70000,
            clean_out: 5000,
@@ -190,7 +190,7 @@ export const obunachilar = [
          },
          {
            id: 4,
-           full_name: "Nazarov Sanjar Olimovich",
+           full_name: "Alimov Abror Xabibullayevich",
            subscription: 300000,
            all_bonus: 0,
            clean_out: 500000,

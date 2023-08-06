@@ -1,9 +1,9 @@
 // import { Home } from "pages/admin";
-import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee, AddProduct, Subscriptions, CreateTariff, UpdateTariff } from "pages/admin";
+import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee, AddProduct, Subscriptions, CreateTariff, UpdateTariff, UpdateProduct } from "pages/admin";
 
 import {CustomerHome, CustomerProducts, CustomerMoneyCirculation, CustomerOrders, CustomerSubscriptions, CustomerProfile} from 'pages/customer'
 
-
+import { SignIn, SignUp } from "pages/authPages";
 
 const pages = {
   admin: [
@@ -37,6 +37,10 @@ const pages = {
           path: "/add-product",
           component: <AddProduct />,
         },
+        {
+          path:'/update-product/:id',
+          component:<UpdateProduct/>
+        }
       ],
     },
     {
@@ -80,7 +84,7 @@ const pages = {
     //   component: <BigLeap />,
     // },
   ],
-  mijoz: [
+  ordinary_user: [
     {
       path: "/",
       component: <CustomerHome />,
@@ -109,8 +113,15 @@ const pages = {
 };
 
 const authRoutes = [
-
-]
+  {
+    path: "/sign-in",
+    component: <SignIn />,
+  },
+  {
+    path: "/sign-up",
+    component: <SignUp />,
+  },
+];
 
 
 export {pages, authRoutes}

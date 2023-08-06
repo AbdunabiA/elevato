@@ -11,8 +11,8 @@ import { useGet } from 'crud';
 
 const EmployeeInfoForm = () => {
     const [modal, setModal] = useState(false)
-    const data = useGet({url:'/users-profile', queryKey:['']})
-    console.log(data.data);
+    // const data = useGet({url:'/users-profile', queryKey:['']})
+    // console.log(data.data);
   return (
     <ContainerForm fields={fields}>
       {() => (

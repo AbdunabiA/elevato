@@ -1,4 +1,3 @@
-import React from 'react'
 import EmployeeBigCards from '../../components/employeeBigCards';
 import { GetAll } from 'modules';
 import Loader from 'components/loader';
@@ -7,17 +6,20 @@ import { useParams } from 'react-router-dom';
 
 const BranchEmployees = () => {
   const {id} = useParams()
-  console.log(id);
+  // console.log(id);
   return (
     <div className="container">
-      <GetAll queryKey={['employees']} url='/admin-employees'>
-        {({items, isLoading, isError, error}) => {
-          if(isLoading) return <Loader/>
-          if(isError) return <ErrorPage {...{error}}/>
+      <GetAll
+        queryKey={["admin-branch"]}
+        url={`/admin-warehouses/${id}/month/2023-07`}
+      >
+        {({ items, isLoading, isError, error }) => {
+          if (isLoading) return <Loader />;
+          if (isError) return <ErrorPage {...{ error }} />;
           console.log(items);
           return (
             <>
-              <EmployeeBigCards />
+              <EmployeeBigCards data={items}/>
             </>
           );
         }}

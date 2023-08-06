@@ -157,6 +157,17 @@ $xxxxl:1921px;
                 flex-direction: column;
                 align-items: start;
                 gap: 20px;
+                .card_number{
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    .card_exp{
+                        width: 50px;
+                    }
+                    .card_num{
+                        width: 180px;
+                    }
+                }
                 .passport_nums{
                     display: flex;
                     align-items: center;

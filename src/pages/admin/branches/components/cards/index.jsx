@@ -12,7 +12,7 @@ const Cards = ({ infos }) => {
       icon: shoppingCart,
       title: "Umumiy Savdo",
       count: formatNums(infos[0]),
-      val: "uzs",
+      val: "$",
     },
     {
       icon: nasiya,
