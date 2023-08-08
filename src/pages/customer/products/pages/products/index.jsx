@@ -17,7 +17,7 @@ const CustomerProducts = () => {
   
   useEffect(()=>{
     setCategory(data?.data[0][`name_${lang}`]);
-  },[data])
+  },[lang])
   if (isLoading) return <Loader />;
   // console.log(data);
   return (
