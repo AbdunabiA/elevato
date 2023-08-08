@@ -5,10 +5,19 @@ import Cards from '../../components/cards';
 import { getLastMonth } from 'services/dates';
 import Filters from 'components/filters';
 import Charts from '../../components/carts';
+import Modal from 'components/modal';
+import { useEffect } from 'react';
+import { storage } from 'services';
 
 const CustomerHome = () => {
   const [staticDate, setStaticDate] = useState(getLastMonth());
   const [month, setMonth] = useState(null);
+  const [modal, setModal] = useState(null)
+  useEffect(()=>{
+    if(storage.get('modalOpened') != 'true'){
+      setModal(true)
+    }
+  }, [])
   return (
     <GetAll queryKey={['']}>
       {
@@ -20,6 +29,18 @@ const CustomerHome = () => {
               <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
               <Cards {...{ infos }} />
               <Charts/>
+              {
+                modal ? (
+                  <Modal onClose={()=>{
+                    setModal(false);
+                    storage.set('modalOpened', 'true')
+                  }}>
+                    <p style={{width:'500px'}}>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab itaque deleniti voluptatibus adipisci debitis doloremque repellat illum doloribus. Pariatur, ipsum!
+                    </p>
+                  </Modal>
+                ) : null
+              }
             </div>
           );
         }
