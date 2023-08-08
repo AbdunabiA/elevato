@@ -9,7 +9,8 @@ import { storage } from 'services';
 function App() {
   const navigate = useNavigate();
   const { isAuthenticated } = useSelector((state) => get(state, "auth"));
-  // const isAuthenticated = true
+
+    
   const location = useLocation()
   useEffect(() => {
     if(!isAuthenticated) {

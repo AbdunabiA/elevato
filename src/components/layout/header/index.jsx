@@ -19,23 +19,6 @@ const Header = ({ setSideMenu }) => {
   const navigate = useNavigate()
   const role = useSelector((state) => state.auth.role);
   const dispatch = useDispatch()
-  
-
-  useEffect(()=>{
-    mutate({
-      url: "/login/",
-      values:{
-        "userinput":"elevato",
-        "password":"done7858"
-      },
-      onSuccess:({data})=>{
-        storage.set('token', data?.access)
-      },
-      onError:(error)=>{
-        console.log(error);
-      }
-    });
-  },[])
 
   
   const location = useLocation();

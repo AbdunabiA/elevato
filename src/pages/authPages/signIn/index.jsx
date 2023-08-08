@@ -59,6 +59,7 @@ const SignIn = () => {
                 storage.set("token", data?.access);
                 dispatch(signIn({...data, isAuthenticated:true}))
                 navigate('/')
+                console.log(data);
               }}
               onError={(error)=>{
                 console.log(error);

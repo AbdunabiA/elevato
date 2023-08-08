@@ -60,11 +60,11 @@ const SubscriberInfoForm = ({data}) => {
             name: "birth_date",
             required: true,
           },
-          {
-            name: "email",
-            type: "string",
-            // value:get(data, 'user.email', '')
-          },
+          // {
+          //   name: "email",
+          //   type: "string",
+          //   // value:get(data, 'user.email', '')
+          // },
         ]}
       >
         {() => (
@@ -133,11 +133,11 @@ const SubscriberInfoForm = ({data}) => {
                   className="fields__inputs"
                   // style={{ border: "1px solid black" }}
                 >
-                  <Field
+                  {/* <Field
                     name="email"
                     label="Elektron po'chta"
                     component={Input}
-                  />
+                  /> */}
                   <div>
                     <label className="label">Passport seriasi</label>
                     <div className="passport_nums">
