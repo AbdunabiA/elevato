@@ -17,7 +17,7 @@ const Employee = () => {
           return (
             <>
               <h1 className="title">Xodim</h1>
-              <EmployeeInfoForm />
+              <EmployeeInfoForm data={items}/>
             </>
           );
         }}

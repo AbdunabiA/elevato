@@ -73,8 +73,8 @@ const Header = ({ setSideMenu }) => {
           </h1>
         </div>
         <div className="header-wrapper__right">
-          <Button text={"Admin"} onClick={() => dispatch(changeRole('admin'))} />
-          <Button text={"Mijoz"} onClick={() => dispatch(changeRole('ordinary_user'))} />
+          {/* <Button text={"Admin"} onClick={() => dispatch(changeRole('admin'))} />
+          <Button text={"Mijoz"} onClick={() => dispatch(changeRole('ordinary_user'))} /> */}
           {
             role === 'admin' ? <div className="input__wrapper">
             <label htmlFor="search">

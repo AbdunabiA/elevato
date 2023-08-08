@@ -32,10 +32,10 @@ const EmployeeBigCard = ({data}) => {
             <p className="label">Telefon raqam</p>
             <p className="tel-num">{data.phone_number}</p>
           </div>
-          <div>
+          {/* <div>
             <p className="label">Telefon raqam2</p>
             <p className="tel-num">+998900000000</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -17,19 +17,11 @@ const EmployeeSmallCard = ({data}) => {
       <div className="bottom">
         {/* <h1 className="ball">5000 ball</h1> */}
         {
-          data.phone_number ? <div className="phone">
+          data?.phone_number ? <div className="phone">
           <div>
             <img src={phone} alt="phone" />
           </div>
           <p>{data?.phone_number}</p>
-        </div> : null
-        }
-        {
-          data.phone_number2 ? <div className="phone">
-          <div>
-            <img src={phone} alt="phone" />
-          </div>
-          <p>+998 90 000 00 00</p>
         </div> : null
         }
       </div>

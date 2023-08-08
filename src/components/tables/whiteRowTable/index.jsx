@@ -15,30 +15,29 @@ export default function WhiteRowTable({
   const location = useLocation();
   const params = qs.parse(location.search, { ignoreQueryPrefix: true });
   const [page, setPage] = useState(+get(params, 'page', 1));
-  const [perPage, setPerPage] = useState(+get(params, 'perPage', 5));
+  const [perPage, setPerPage] = useState(()=>{+get(params, 'perPage', 5)});
   const total = data.length;
   const pagesAmount = Math.ceil(total / perPage);
   const handlePageChange = (val) => {
     if (page > 1 && val < 0) {
       navigate({ search: qs.stringify({ ...params, page: page + val }) });
-      // setPage((prev) => prev + val);
     }
     if (page < pagesAmount && val > 0) {
       navigate({ search: qs.stringify({ ...params, page: page + val }) });
-      // setPage((prev) => prev + val);
     }
   };
   const perPageChange = (e) => {
     if (page < pagesAmount || page > 1 || perPage > +e.target.value) {
-      navigate({
-          search: qs.stringify({ ...params, perPage: +e.target.value }),
+
+      navigate({search: qs.stringify({ ...params, perPage: +e.target.value })});
+      if (+e.target.value > total) {
+        navigate({
+          search: qs.stringify({
+            ...params,
+            page: 1,
+            perPage: +e.target.value,
+          }),
         });
-        console.log(perPage, +e.target.value);
-      // setPerPage(+e.target.value);
-      if (perPage > total) {
-        console.log('hello');
-        navigate({ search: qs.stringify({ ...params, page: '1' }) });
-        // setPage(1);
       }
     }
   };
@@ -46,7 +45,7 @@ export default function WhiteRowTable({
     setPage(+get(params, 'page', 1))
     setPerPage(+get(params, 'perPage', 5))
   }, [params.page, params.perPage])
-  // console.log(perPage, total);
+
   const from = page * perPage - perPage;
   const to = page * perPage;
   const paginatedData = data.slice(from, to);
@@ -56,7 +55,7 @@ export default function WhiteRowTable({
         <table className="table2">
           <thead>
             <tr>
-              <td>#</td>
+              {/* <td>#</td> */}
               {columns?.map((elem, i) => (
                 <td key={i}> {elem.title}</td>
               ))}
@@ -69,7 +68,7 @@ export default function WhiteRowTable({
                 style={onRowClick ? { cursor: "pointer" } : {}}
                 onClick={() => onRowClick(item)}
               >
-                <td>{inde + 1}</td>
+                {/* <td>{inde + 1}</td> */}
                 {columns?.map((elem, index) => (
                   <React.Fragment key={index}>
                     {!elem.render ? (

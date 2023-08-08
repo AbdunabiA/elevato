@@ -7,7 +7,7 @@ $xxxl:1601px;
 $xxxxl:1921px;
 
 .employee-big-card{
-    width: 600px;
+    width: 550px;
     height: 250px;
     background: white;
     border-radius: 13px;
@@ -17,7 +17,7 @@ $xxxxl:1921px;
     justify-content: space-between;
     cursor: pointer;
     @media (max-width:$xxxl) {
-        width: 500px;
+        width: 480px;
         height: 200px;
     }
     @media (max-width:$sm) {

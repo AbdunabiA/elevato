@@ -153,7 +153,7 @@ const UpdateProduct = () => {
                                 disabled={deleteLoading ? true: false}
                               />
                               <Button
-                                text={"O'zgartirish"}
+                                text={"Saqlash"}
                                 onClick={handleSubmit}
                                 type={"submit"}
                                 disabled={isLoading ? true : false}

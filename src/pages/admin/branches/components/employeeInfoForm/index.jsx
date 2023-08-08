@@ -3,60 +3,79 @@ import './employeeInfoForm.scss'
 import woman from 'assets/images/Woman.png'
 import { Field } from 'formik';
 import { Input, TextArea } from 'components/fields';
-import {fields} from './formFields'
 import { Button } from 'components/buttons';
 import Modal from 'components/modal';
 import { useState } from 'react';
 import { useGet } from 'crud';
+import moment from 'moment';
 
-const EmployeeInfoForm = () => {
-    const [modal, setModal] = useState(false)
+const EmployeeInfoForm = ({data}) => {
+    // const [modal, setModal] = useState(false)
     // const data = useGet({url:'/users-profile', queryKey:['']})
     // console.log(data.data);
   return (
-    <ContainerForm fields={fields}>
-      {() => (
+    <ContainerForm
+      fields={[
+        {
+          name: "first_name",
+          requred: true,
+          value: data?.first_name,
+        },
+        {
+          name: "last_name",
+          required: true,
+          value: data.last_name,
+        },
+        {
+          name: "phone_number",
+          required: true,
+          value: data?.phone_number,
+        },
+      ]}
+    >
+      {({ handleSubmit, isLoading }) => (
         <div className="employee-info-form">
           <div className="employee-info-form__top">
             <div className="employee-info-form__top__left">
               <div>
-                <img className="img-wrapper" src={woman} alt="" />
+                <img
+                  className="img-wrapper"
+                  src={`https://elevato.pythonanywhere.com/${data?.photo}`}
+                  alt=""
+                />
               </div>
-              <h1 className="title">Xurshida Zokirova</h1>
+              <h1 className="title">{data?.first_name} {data?.last_name}</h1>
             </div>
             <div className="employee-info-form__top__right">
               <h1>Ish boshlagan sanasi</h1>
-              <p>12.04.2018</p>
+              <p>{moment(data?.date).format('DD.MM.YYYY')}</p>
             </div>
           </div>
           <div className="employee-info-form__bottom">
             <h1>Taxrirlash</h1>
             <div className="fields">
               <div className="fields__inputs">
-                <Field name="name" label="Ism" component={Input} />
-                <Field name="surname" label="Familia" component={Input} />
+                <Field name="first_name" label="Ism" component={Input} />
+                <Field name="last_name" label="Familia" component={Input} />
                 <Field
-                  name="phone_num"
+                  name="phone_number"
                   label="Telefon raqam"
                   component={Input}
                 />
-                <Field
+                {/* <Field
                   name="phone_num2"
                   label="Telefon raqam 2"
                   component={Input}
-                />
-                <Field
+                /> */}
+                {/* <Field
                   name="birth_date"
                   label="Tug'ilgan sana"
                   type="date"
                   component={Input}
-                />
+                /> */}
               </div>
-              <div
-                className="fields__inputs"
-                style={{ border: "1px solid black" }}
-              >
-                <Field name="address" label="Manzil" component={Input} />
+              <div className="fields__inputs">
+                {/* <Field name="address" label="Manzil" component={Input} /> */}
                 <div>
                   <label className="label">Passport seriasi</label>
                   <div className="passport_nums">
@@ -73,12 +92,12 @@ const EmployeeInfoForm = () => {
                   </div>
                 </div>
 
-                <Field name="education" label="Ma'lumoti" component={Input} />
+                {/* <Field name="education" label="Ma'lumoti" component={Input} />
                 <Field
                   name="university"
                   label="Tamomlagan oliygohi"
                   component={Input}
-                />
+                /> */}
               </div>
             </div>
             <div className="textarea">
@@ -87,13 +106,17 @@ const EmployeeInfoForm = () => {
           </div>
           <div className="form-buttons">
             <Button text={"Ishdan olish"} color={"#FF0000"} />
-            <Button text="Saqlash" />
             <Button
+              text="Saqlash"
+              onClick={handleSubmit}
+              disabled={isLoading ? true : false}
+            />
+            {/* <Button
               text={"Parolni ozgartirish"}
               onClick={() => setModal(true)}
-            />
+            /> */}
           </div>
-          {modal ? (
+          {/* {modal ? (
             <Modal onClose={() => setModal(false)}>
               <ContainerForm
                 fields={[
@@ -129,7 +152,7 @@ const EmployeeInfoForm = () => {
                 )}
               </ContainerForm>
             </Modal>
-          ) : null}
+          ) : null} */}
         </div>
       )}
     </ContainerForm>

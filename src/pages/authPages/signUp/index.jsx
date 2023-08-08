@@ -1,6 +1,6 @@
 import logo from "assets/icons/LogoWithoutBg.svg";
 import { Button } from "components/buttons";
-import { Input } from "components/fields";
+import { DropZone, Input } from "components/fields";
 import { Field } from "formik";
 import { ContainerForm } from "modules";
 import "./signUp.scss";
@@ -11,15 +11,46 @@ import { signIn } from "store/auth";
 import { storage } from "services";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const SignUp = () => {
   const navigate = useNavigate()
-  const [userInfo, setUserInfo] = useState({ phone_number: false, phone_verified:false });
+  const [userInfo, setUserInfo] = useState({ phone_number: false, phone_verified:false});
   const dispatch = useDispatch()
+  const [minut, setMinut] = useState(1);
+  const [sec, setSec] = useState(59);
+  
+
+  const startCounting = () => {
+    setMinut(1);
+    setSec(59);
+    const interval = setInterval(() => {
+      if (sec > 0) {
+        setSec(prev => prev - 1);
+      }
+      if (sec === 0) {
+        if (minut === 0) {
+          clearInterval(interval);
+        } else {
+          setSec(59);
+          setMinut(prev => prev - 1);
+        }
+      }
+    }, 1000);
+  };
+  function resendCode() {
+    startCounting()
+    axios.get('/new-verify/').then((data)=>{
+      console.log(data);
+    })
+    .catch((error)=>{
+      toast.error(error.message)
+    })
+  }
   
   return (
     <div className="container1">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="login-wrapper">
         <div className="login-wrapper__left">
           <div className="login-wrapper__left__logo">
@@ -47,7 +78,6 @@ const SignUp = () => {
             <p className="login-wrapper__right__redirect">
               Akkauntingiz mavjudmi?
               <span onClick={() => navigate("/sign-in")}>
-                {" "}
                 Bu yerga bosing!
               </span>
             </p>
@@ -102,32 +132,48 @@ const SignUp = () => {
                     ]
                   : [
                       {
-                        name: "verify",
+                        name: "code",
                         required: true,
                       },
                     ]
               }
               url={
-                !userInfo?.phone_number ? "/signup/" : userInfo?.phone_verified ? '/change-user-info/':'/verify/'
+                !userInfo?.phone_number
+                  ? "/signup/"
+                  : userInfo?.phone_verified
+                  ? "/change-user-info/"
+                  : "/verify/"
+              }
+              method={
+                !userInfo?.phone_number
+                  ? "post"
+                  : userInfo?.phone_verified
+                  ? "put"
+                  : "post"
               }
               onSuccess={(data) => {
                 console.log(data);
-                if(!userInfo?.phone_number){
-                  setUserInfo((prev)=>{
-                    return {...prev, phone_number:true}
-                  })
+                if (!userInfo?.phone_number) {
+                  setUserInfo((prev) => {
+                    return { ...prev, phone_number: true };
+                  });
                   dispatch(signIn({ ...data, isAuthenticated: false }));
-                  storage.set('token', data?.access)
+                  storage.set("token", data?.access);
+                  startCounting()
                 } else if (!userInfo?.phone_verified) {
                   setUserInfo((prev) => {
                     return { ...prev, phone_verified: true };
                   });
+                  dispatch(signIn({ ...data, isAuthenticated: false }));
+                  storage.set("token", data?.access);
                 } else {
-                  console.log('SUCCESSFUL');
+                  storage.remove('token')
+                  clearInterval(interval);
+                  navigate({ pathname: "/sign-in" , replace:true});
                 }
               }}
               onError={(error) => {
-                toast.error(error?.message)
+                toast.error(error?.message);
               }}
             >
               {({ handleSubmit, isLoading }) => {
@@ -203,12 +249,25 @@ const SignUp = () => {
                         </div>
                       </div>
                     ) : (
-                      <Field
-                        name="verify"
-                        label="Parol"
-                        component={Input}
-                        wrapperClassName={"login-input"}
-                      />
+                      <>
+                        <Field
+                          name="code"
+                          label="Parol"
+                          component={Input}
+                          wrapperClassName={"login-input"}
+                        />
+                        {sec === 0 && minut === 0 ? (
+                          <Button
+                            text="kodni qayta yuborish"
+                            onClick={() => resendCode()}
+                          />
+                        ) : (
+                          <p className={""}>
+                            {minut < 10 ? `0${minut}` : minut} :
+                            {sec < 10 ? `0${sec}` : sec}
+                          </p>
+                        )}
+                      </>
                     )}
                     {/* <p>Elektron pochta orqali kirish</p> */}
                     <div className="login-page__button-wrapper">
