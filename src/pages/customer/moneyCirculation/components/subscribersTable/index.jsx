@@ -4,16 +4,18 @@ import { formatNums } from "services/formatNums";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import './subscribersTable.scss'
+import { useTranslation } from "react-i18next";
 
 const SubscribersTable = ({ data }) => {
+  const {t} = useTranslation()
   const navigate = useNavigate();
   const columns = [
     {
-      title: "F.I.SH",
+      title: t("F.I.SH"),
       key: "full_name",
     },
     {
-      title: "Obuna Summasi",
+      title: t("Obuna Summasi"),
       key: "subscription",
       render: (value) => (
         <>
@@ -21,17 +23,17 @@ const SubscribersTable = ({ data }) => {
         </>
       ),
     },
+    // {
+    //   title: t("Jami bonus"),
+    //   key: "all_bonus",
+    //   render: (value) => (
+    //     <>
+    //       {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
+    //     </>
+    //   ),
+    // },
     {
-      title: "Jami bonus",
-      key: "all_bonus",
-      render: (value) => (
-        <>
-          {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
-        </>
-      ),
-    },
-    {
-      title: "Yechilgan summa",
+      title: t("Yechilgan summa"),
       key: "clean_out",
       render: (value) => (
         <>
@@ -40,11 +42,11 @@ const SubscribersTable = ({ data }) => {
       ),
     },
     {
-      title: "Sana",
+      title: t("Sana"),
       key: "date",
     },
     {
-      title: "Holati",
+      title: t("Holati"),
       key: "status",
     },
   ];

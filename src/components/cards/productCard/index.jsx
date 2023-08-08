@@ -5,7 +5,7 @@ import cartIcon from 'assets/icons/ShoppingCart.png'
 import './productCard.scss'
 
 const ProductCard = ({data}) => {
-  const {i18n} = useTranslation()
+  const {t, i18n} = useTranslation()
   const lang = i18n.language
   const [count, setCount] = useState(1)
   const overallValue = count * data.price
@@ -23,15 +23,15 @@ const ProductCard = ({data}) => {
           </p>
         </div>
         <div className="product-card__info__about">
-          <h2>Batafsil</h2>
+          <h2>{t("Batafsil")}</h2>
           <p>{data[`about_${lang}`]}</p>
         </div>
         <h3 className="product-card__info__manufacturer">
-          Ishlab chiqaruvchi: <span>{data.manufacturer}</span>
+          {t("Ishlab chiqaruvchi")}: <span>{data.manufacturer}</span>
         </h3>
         <div className="product-card__info__count-wrapper">
           <div>
-            <span className="product-counter__label">Soni</span> <br />
+            <span className="product-counter__label">{t("Soni")}</span> <br />
             <input
               type="number"
               // value={count}
@@ -39,12 +39,12 @@ const ProductCard = ({data}) => {
             />
           </div>
           <div>
-            <span className="product-ovaerall-value">Umumiy summa</span> <br />
+            <span className="product-ovaerall-value">{t("Umumiy summa")}</span> <br />
             <span>{overallValue}</span>
           </div>
         </div>
         <div className="product-button__wrapper">
-          <Button text="Buyurtma berish" icon={cartIcon} />
+          <Button text={t("Buyurtma berish")} icon={cartIcon} />
         </div>
       </div>
     </div>

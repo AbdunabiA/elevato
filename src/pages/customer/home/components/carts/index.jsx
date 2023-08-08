@@ -1,8 +1,10 @@
 import { BarChart } from 'components/charts'
 import './charts.scss'
 import { Pie } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
 
 const Charts = () => {
+  const {t} = useTranslation()
     const chart1 = {
       ["19-7-2023"]: 42,
       ["10-7-2023"]: 44,
@@ -24,8 +26,8 @@ const Charts = () => {
   return (
     <div className="charts-wrapper">
       <div className="charts">
-        <BarChart infos={chart1} title={'Daromad grafigi'}/>
-        <BarChart infos={chart2} title={'Mahsulot grafigi'}/>
+        <BarChart infos={chart1} title={t('Daromad grafigi')}/>
+        <BarChart infos={chart2} title={t('Mahsulot grafigi')}/>
       </div>
     </div>
   );

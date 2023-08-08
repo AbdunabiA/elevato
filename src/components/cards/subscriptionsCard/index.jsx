@@ -1,12 +1,14 @@
+import { useTranslation } from 'react-i18next';
 import './subscriptionCard.scss'
 
 const SubscriptionCard = ({data}) => {
+  const {t} = useTranslation()
   return (
     <div className="subscription-card">
       <div>
         <h2 className="subscription-card__name ">{data?.name}</h2>
         <p className="subscription-card__price">
-          <span>{data?.price}$</span>/oyiga
+          <span>{data?.price}$</span>/{t("oyiga")}
         </p>
       </div>
       <p className="subscription-card__about">

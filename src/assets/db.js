@@ -89,11 +89,6 @@ export const helpers = {
              path: "/support",
              icon: qollabQuvvatlash,
            },
-           {
-             title: "Big Leap Team",
-             path: "/big-leap",
-             icon: bigLeap,
-           },
          ],
          ordinary_user: [
            {
@@ -105,11 +100,6 @@ export const helpers = {
              title: "Qo'llab quvvatlash",
              path: "/support",
              icon: qollabQuvvatlash,
-           },
-           {
-             title: "Big Leap Team",
-             path: "/big-leap",
-             icon: bigLeap,
            },
          ],
        };
