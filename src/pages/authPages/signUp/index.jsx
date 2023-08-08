@@ -166,9 +166,10 @@ const SignUp = () => {
                   });
                   dispatch(signIn({ ...data, isAuthenticated: false }));
                   storage.set("token", data?.access);
+                  clearInterval(interval);
                 } else {
                   storage.remove('token')
-                  clearInterval(interval);
+                  // clearInterval(interval);
                   navigate({ pathname: "/sign-in" , replace:true});
                 }
               }}

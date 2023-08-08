@@ -19,7 +19,7 @@ const ProductCard = ({data}) => {
           <h1>{data.name}</h1>
           <p>
             {data.price}
-            <span>UZS</span>
+            <span>$</span>
           </p>
         </div>
         <div className="product-card__info__about">

@@ -1,3 +1,11 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
 .product-card{
     width: 1235px;
     display: flex;
@@ -6,14 +14,26 @@
     padding: 30px;
     border-radius: 32px;
     gap: 30px;
+    @media (max-width:$xxxl) {
+        width: 100%;
+    }
+    @media (max-width:$md) {
+        flex-direction: column;
+    }
     &__img{
         width: 60%;
+        @media (max-width:$md) {
+            width: 100%;
+        }
     }
     &__info{
         width: 100%;
         display: flex;
         flex-direction: column;
         gap: 20px;
+        @media (max-width:$xxl) {
+            gap: 15px;
+        }
         &__title-price{
             display: flex;
             align-items: center;
@@ -24,6 +44,13 @@
                 line-height: 120%;
                 text-transform: capitalize;
                 color: black;
+
+                @media (max-width:$xxl) {
+                    font-size: 26px;
+                }
+                @media (max-width:$sm) {
+                    font-size: 20px;
+                }
             }
             &>p{
                 font-weight: 700;
@@ -34,6 +61,12 @@
                     font-size: 20px;
                     color:  #B2B7C1;
                 }
+                @media (max-width:$xxl) {
+                    font-size: 23px ;
+                }
+                @media (max-width:$sm) {
+                    font-size: 18px;
+                }
             }
         }
         &__about{
@@ -42,12 +75,24 @@
                 font-weight: 600;
                 line-height: 110%;
                 columns: black;
+                @media (max-width:$xxl) {
+                    font-size: 17px;
+                }
+                @media (max-width:$sm) {
+                    font-size: 15px;
+                }
             }
             &>p{
                 font-size: 14px;
                 font-weight: 400;
                 line-height: 190%;
                 margin-top: 10px;
+                @media (max-width:$xxl) {
+                    font-size: 13px;
+                }
+                @media (max-width:$sm) {
+                    font-size: 12px;
+                }
             }
         }
         &__manufacturer{
@@ -58,6 +103,12 @@
             &>span{
                 font-weight: 600;
                 color: #F9C70B;
+            }
+            @media (max-width:$xxl) {
+                font-size: 14px;
+            }
+            @media (max-width:$sm) {
+                font-size: 13px;
             }
         }
         &__count-wrapper{

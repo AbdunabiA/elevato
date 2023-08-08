@@ -36,7 +36,10 @@ export default function DropZone({
                
                  return (
                    <>
-                     <div style={{ display: photoUrl ? "none" : "block" }}>
+                     <div
+                       style={{ display: photoUrl ? "none" : "block" }}
+                       onClick={() => ref.current.click()}
+                     >
                        <div
                          {...getRootProps({
                            className: "drop-zone__wrapper",
@@ -53,7 +56,7 @@ export default function DropZone({
                                  rasmni bu yerga qoying
                                </span>
                              ) : isLoading ? (
-                               <Loader/>
+                               <Loader />
                              ) : null}
                            </p>
                          )}
@@ -62,10 +65,7 @@ export default function DropZone({
                      <div style={{ display: photoUrl ? "block" : "none" }}>
                        <img src={photoUrl} alt="img" />;
                        <Button
-                         onClick={() => {
-                           ref.current.click();
-                           console.log(ref);
-                         }}
+                         onClick={() => ref.current.click()}
                          type={"button"}
                          text={"Rasmni o'zgartirish"}
                          disabled={isLoading ? true : false}
