@@ -5,42 +5,46 @@ import { Field } from "formik";
 import { ContainerForm } from "modules";
 import "./signUp.scss";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { signIn } from "store/auth";
-import { storage } from "services";
+import { api, storage } from "services";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const SignUp = () => {
   const navigate = useNavigate()
   const [userInfo, setUserInfo] = useState({ phone_number: false, phone_verified:false});
   const dispatch = useDispatch()
+  const {t} = useTranslation()
   const [minut, setMinut] = useState(1);
   const [sec, setSec] = useState(59);
   
 
-  const startCounting = () => {
-    setMinut(1);
-    setSec(59);
-    const interval = setInterval(() => {
-      if (sec > 0) {
-        setSec(prev => prev - 1);
-      }
-      if (sec === 0) {
-        if (minut === 0) {
-          clearInterval(interval);
-        } else {
-          setSec(59);
-          setMinut(prev => prev - 1);
-        }
-      }
-    }, 1000);
-  };
+   useEffect(() => {
+     const interval = setInterval(() => {
+       if (sec > 0) {
+         setSec(sec - 1);
+       }
+       if (sec === 0) {
+         if (minut === 0) {
+           clearInterval(interval);
+         } else {
+           setSec(59);
+           setMinut(minut - 1);
+         }
+       }
+     }, 1000);
+
+     return () => {
+       clearInterval(interval);
+     };
+   }, [sec]);
   function resendCode() {
-    startCounting()
-    axios.get('/new-verify/').then((data)=>{
+    setSec(59)
+    setMinut(1)
+    api.get('/new-verify/').then((data)=>{
       console.log(data);
     })
     .catch((error)=>{
@@ -65,7 +69,7 @@ const SignUp = () => {
             <div className="yellow-square"></div>
           </div>
           <div className="login-wrapper__left__texts">
-            <h2>Xush kelibsiz!</h2>
+            <h2>{t("Xush kelibsiz")}!</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur. Integer morbi interdum
               odio ac. Duis sit habitant gravida sit vulputate ac pulvinar.
@@ -74,11 +78,11 @@ const SignUp = () => {
         </div>
         <div className="login-wrapper__right">
           <div>
-            <h1 className="login-wrapper__right__title">Akkaunt yarating!</h1>
+            <h1 className="login-wrapper__right__title">{t("Akkaunt yarating")}!</h1>
             <p className="login-wrapper__right__redirect">
-              Akkauntingiz mavjudmi?
+              {t("Akkauntingiz mavjudmi")}?
               <span onClick={() => navigate("/sign-in")}>
-                Bu yerga bosing!
+                {t("Bu yerga bosing")}!
               </span>
             </p>
             <ContainerForm
@@ -109,11 +113,13 @@ const SignUp = () => {
                       {
                         name: "password",
                         required: true,
+                        min:8,
                       },
                       {
                         name: "confirm_password",
                         compare: "password",
                         required: true,
+                        min:8
                       },
                       {
                         name: "passport_series",
@@ -129,6 +135,9 @@ const SignUp = () => {
                         name: "offer_id",
                         required: true,
                       },
+                      {
+                        name:"dateOfBirth"
+                      }
                     ]
                   : [
                       {
@@ -152,21 +161,22 @@ const SignUp = () => {
                   : "post"
               }
               onSuccess={(data) => {
-                console.log(data);
+                // console.log(data);
                 if (!userInfo?.phone_number) {
                   setUserInfo((prev) => {
                     return { ...prev, phone_number: true };
                   });
                   dispatch(signIn({ ...data, isAuthenticated: false }));
                   storage.set("token", data?.access);
-                  startCounting()
+                  setSec(59)
+                  setMinut(1)
                 } else if (!userInfo?.phone_verified) {
                   setUserInfo((prev) => {
                     return { ...prev, phone_verified: true };
                   });
                   dispatch(signIn({ ...data, isAuthenticated: false }));
                   storage.set("token", data?.access);
-                  clearInterval(interval);
+                  // clearInterval(interval);
                 } else {
                   storage.remove('token')
                   // clearInterval(interval);
@@ -183,7 +193,7 @@ const SignUp = () => {
                     {!userInfo?.phone_number ? (
                       <Field
                         name="email_phone_number"
-                        label="Telefon raqam"
+                        label={t("Telefon raqam")}
                         component={Input}
                         wrapperClassName={"login-input"}
                       />
@@ -192,38 +202,40 @@ const SignUp = () => {
                         <div className="registration-fields__inputs">
                           <Field
                             name="first_name"
-                            label="Ism"
+                            label={t("Ism")}
                             component={Input}
                             wrapperClassName={"login-input"}
                           />
                           <Field
                             name="last_name"
-                            label="Familiya"
+                            label={t("Familiya")}
                             component={Input}
                             wrapperClassName={"login-input"}
                           />
                           <Field
                             name="username"
-                            label="Username"
+                            label={t("Login")}
                             component={Input}
                             wrapperClassName={"login-input"}
                           />
                           <Field
                             name="password"
-                            label="Parol"
+                            label={t("Parol")}
                             component={Input}
                             wrapperClassName={"login-input"}
+                            type="password"
                           />
                         </div>
                         <div className="registration-fields__inputs">
                           <Field
                             name="confirm_password"
-                            label="Parolni tasdiqlang"
+                            label={t("Parolni tasdiqlang")}
                             component={Input}
                             wrapperClassName={"login-input"}
+                            type="password"
                           />
                           <div className="registration-fields__inputs__passport">
-                            <label>Passport seria-raqam</label>
+                            <label>{t("Passport seria")}</label>
                             <div>
                               <Field
                                 name="passport_series"
@@ -243,9 +255,16 @@ const SignUp = () => {
                           </div>
                           <Field
                             name="offer_id"
-                            label="Taklif id"
+                            label={t("Taklif id")}
                             component={Input}
                             wrapperClassName={"login-input"}
+                          />
+                          <Field
+                            name="dateOfBirth"
+                            label={t("Tug'ilgan sana")}
+                            component={Input}
+                            wrapperClassName={"login-input"}
+                            type="date"
                           />
                         </div>
                       </div>
@@ -253,13 +272,14 @@ const SignUp = () => {
                       <>
                         <Field
                           name="code"
-                          label="Parol"
+                          label={t("Parol")}
                           component={Input}
                           wrapperClassName={"login-input"}
+                          type="password"
                         />
                         {sec === 0 && minut === 0 ? (
                           <Button
-                            text="kodni qayta yuborish"
+                            text={t("kodni qayta yuborish")}
                             onClick={() => resendCode()}
                           />
                         ) : (
@@ -273,7 +293,7 @@ const SignUp = () => {
                     {/* <p>Elektron pochta orqali kirish</p> */}
                     <div className="login-page__button-wrapper">
                       <Button
-                        text="Yuborish"
+                        text={t("Yuborish")}
                         onClick={handleSubmit}
                         type={"submit"}
                         disabled={isLoading ? true : false}

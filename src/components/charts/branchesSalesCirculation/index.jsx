@@ -2,8 +2,10 @@ import { BarChart } from "components/charts";
 import { useNavigate } from "react-router-dom";
 import './branchesSalesCirculation.scss'
 import moment from "moment";
+import { useTranslation } from "react-i18next";
 
 const BranchesSalesCirculation = ({data}) => {
+  const {t} = useTranslation()
   
     const branches = Object.keys(data).reduce((prev,curr)=>{
       return [
@@ -26,7 +28,7 @@ const BranchesSalesCirculation = ({data}) => {
     const navigate = useNavigate()
   return (
     <div className="branches-sales-circulation">
-      <h1 className="title">Fililallar savdo aylanmalari (uzs)</h1>
+      <h1 className="title">{t("Fililallar savdo aylanmalari")} ($)</h1>
       <div className="charts">
         {
           branches.map((el, i)=>{

@@ -8,11 +8,13 @@ import Modal from 'components/modal';
 import { useState } from 'react';
 import { useGet } from 'crud';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 const EmployeeInfoForm = ({data}) => {
     // const [modal, setModal] = useState(false)
     // const data = useGet({url:'/users-profile', queryKey:['']})
     // console.log(data.data);
+    const {t} = useTranslation()
   return (
     <ContainerForm
       fields={[
@@ -47,7 +49,7 @@ const EmployeeInfoForm = ({data}) => {
               <h1 className="title">{data?.first_name} {data?.last_name}</h1>
             </div>
             <div className="employee-info-form__top__right">
-              <h1>Ish boshlagan sanasi</h1>
+              <h1>{t("Ish boshlagan sanasi")}</h1>
               <p>{moment(data?.date).format('DD.MM.YYYY')}</p>
             </div>
           </div>
@@ -59,7 +61,7 @@ const EmployeeInfoForm = ({data}) => {
                 <Field name="last_name" label="Familia" component={Input} />
                 <Field
                   name="phone_number"
-                  label="Telefon raqam"
+                  label={t("Telefon raqam")}
                   component={Input}
                 />
                 {/* <Field

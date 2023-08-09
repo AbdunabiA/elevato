@@ -8,8 +8,10 @@ import file2 from "assets/icons/ButtonFileIconArrowUp.svg";
 import { Button } from "components/buttons";
 import moment from "moment";
 import { formatNums } from "services/formatNums";
+import { useTranslation } from "react-i18next";
 
 const ProductDistribution = ({data}) => {
+  const {t} = useTranslation()
   const columns = [
     {
       title: "Sana",
@@ -48,13 +50,13 @@ const ProductDistribution = ({data}) => {
   console.log(data);
   return (
     <div className="wrapper">
-      <h1 className="title">Mahsulot tarqatish</h1>
+      <h1 className="title">{t("Mahsulot tarqatish")}</h1>
       <div className="table">
         <div className="table__title">
-          <h1 className="title">Tarix</h1>
+          <h1 className="title">{t("Tarix")}</h1>
           <div className="buttons">
-            <Button text={"Tarixni ko'rish"} icon={file} />
-            <Button text={"Mahsulot yuporish"} icon={file2} />
+            <Button text={t("Tarixni ko'rish")} icon={file} />
+            <Button text={t("Mahsulot yuborish")} icon={file2} />
           </div>
         </div>
         <Table columns={columns} data={mahsulotlar} hasPagination total={12} />

@@ -3,18 +3,20 @@ import WhiteRowTable from "components/tables/whiteRowTable"
 import { formatNums } from "services/formatNums";
 import { subscriptionsInfo } from "assets/db";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 const SubscriptionsTable = ({data}) => {
   const navigate = useNavigate()
+  const {t} = useTranslation()
   const filteredData = data.filter(el => el.deleted !== true)
     const columns = [
       {
-        title: "obuna nomlari",
+        title: t("obuna nomlari"),
         key: "name",
       },
       {
-        title: "ulanish summasi",
+        title: t("ulanish summasi"),
         key: "price",
         render: (value) => (
           <>
@@ -23,7 +25,7 @@ const SubscriptionsTable = ({data}) => {
         ),
       },
       {
-        title: "bonus",
+        title: t("Bonus"),
         key: "daily_bonus",
         render: (value) => (
           <>
@@ -32,7 +34,7 @@ const SubscriptionsTable = ({data}) => {
         ),
       },
       {
-        title: "keshbek",
+        title: t("Keshbek"),
         key: "cashback",
         render: (value) => (
           <>
@@ -41,16 +43,16 @@ const SubscriptionsTable = ({data}) => {
         ),
       },
       {
-        title:"Oylik bonus",
+        title:t("Oylik bonus"),
         key:"monthly_bonus",
         render:(value)=> `${value}$`
       },
       {
-        title:"Tahrirlash",
-        render:(_, row)=><Button text={'Batafsil'} onClick={()=>navigate(`/subscriptions/update/${row.id}`)}/>
+        title:t("Taxrirlash"),
+        render:(_, row)=><Button text={t('Batafsil')} onClick={()=>navigate(`/subscriptions/update/${row.id}`)}/>
       },
       {
-        title:"holati",
+        title:t("Holati"),
         key:"deleted",
         render:(value)=><span>{value}</span>
       }

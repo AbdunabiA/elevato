@@ -1,23 +1,16 @@
 import { BarChart } from 'components/charts'
-import React from 'react'
+import { useTranslation } from 'react-i18next';
+
 
 const BranchSalesCirculation = ({data}) => {
-  const savdo = {
-    Du: 6000000,
-    Se: 50000000,
-    Cho: 110000000,
-    Pa: 90000000,
-    Ju: 67000000,
-    Sha: 60000000,
-    Yak: 45000000,
-  };
+  const {t} = useTranslation()
 
   return (
     <div style={{ marginTop: "40px" }}>
-      <h1 className="title">{data?.warehouse?.name} savdo aylanmalari</h1>
+      <h1 className="title">{data?.warehouse?.name} {t("savdo aylanmalari")}</h1>
       <div className="charts">
         <BarChart
-          title={"Savdo"}
+          title={t("Savdo")}
           hasButton
           subtitle={
             "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. "
@@ -29,7 +22,7 @@ const BranchSalesCirculation = ({data}) => {
           tooltipVal={"$"}
         />
         <BarChart
-          title={"Mahsulot grafigi (dona)"}
+          title={`${t("Mahsulot grafigi")} (${t("dona")})`}
           hasButton
           subtitle={
             "*Lorem ipsum dolor sit amet consectetur. Sit ante curabitur diam lectus laoreet. "

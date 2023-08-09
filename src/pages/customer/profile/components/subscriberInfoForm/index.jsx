@@ -6,8 +6,10 @@ import woman from 'assets/images/Woman.png'
 import { formatNums } from 'services/formatNums'
 import { Button } from 'components/buttons'
 import { get } from 'lodash'
+import { useTranslation } from 'react-i18next'
 
 const SubscriberInfoForm = ({data}) => {
+  const {t} = useTranslation()
   return (
     <div className="subscriber-info-form__wrapper">
       <ContainerForm
@@ -16,13 +18,13 @@ const SubscriberInfoForm = ({data}) => {
             name: "first_name",
             type: "string",
             required: true,
-            value: get(data, 'user.first_name', '')
+            value: get(data, "user.first_name", ""),
           },
           {
             name: "last_name",
             type: "string",
             required: true,
-            value:get(data, 'user.last_name', '')
+            value: get(data, "user.last_name", ""),
           },
           {
             name: "phone_number",
@@ -30,35 +32,38 @@ const SubscriberInfoForm = ({data}) => {
             min: 9,
             max: 13,
             required: true,
-            // value : get(data, 'user.phone_number', '')
+            value: get(data, "user.phone_number", ""),
           },
           {
             name: "card_number",
             min: 16,
             required: true,
+            value: get(data, "card.number", ""),
           },
           {
             name: "card_expirey",
             min: 16,
             required: true,
+            value: get(data, "card.expire", ""),
           },
           {
             name: "passport_num",
             type: "string",
             min: 5,
             required: true,
-            value: get(data, 'user.passport_num', '')
+            value: get(data, "user.passport_num", ""),
           },
           {
             name: "passport_series",
             type: "string",
             min: 2,
             required: true,
-            value:get(data, 'user.passport_series', '')
+            value: get(data, "user.passport_series", ""),
           },
           {
             name: "birth_date",
             required: true,
+            value: get(data, "user.dateOfBirth", ""),
           },
           // {
           //   name: "email",
@@ -83,51 +88,49 @@ const SubscriberInfoForm = ({data}) => {
                   <h1 className="title">
                     {data?.status?.name}|{data?.status?.cashback}%
                   </h1>
-                  <p>Obuna turi</p>
+                  <p>{t("Obuna turi")}</p>
                 </div>
                 <div>
-                  <h1 className="title">{formatNums(data?.money)}</h1>
-                  <p>Hisob raqamidagi summa</p>
+                  <h1 className="title">{formatNums(data?.money)}$</h1>
+                  <p>{t("Hisob raqamidagi summa")}</p>
                 </div>
               </div>
             </div>
             <div className="subscriber-info-form__wrapper__middle">
               <div className="start-work">
-                <h1>Ish boshlangan sanasi:</h1>
+                <h1>{t("Ish boshlagan sanasi")}:</h1>
                 <p>12.04.2018</p>
               </div>
-              <div className="start-work">
-                <h1>Keyingi obuna to’lovi kuni</h1>
+              {/* <div className="start-work">
+                <h1>{t("Keyingi obuna to’lovi kuni")}:</h1>
                 <p>12.04.2023</p>
-              </div>
+              </div> */}
             </div>
             <div className="subscriber-info-form__wrapper__bottom">
-              <h1>Taxrirlash</h1>
+              <h1>{t("Taxrirlash")}</h1>
               <div className="fields">
                 <div className="fields__inputs">
-                  <Field name="first_name" label="Ism" component={Input} />
-                  <Field name="last_name" label="Familia" component={Input} />
+                  <Field name="first_name" label={t("Ism")} component={Input} />
                   <Field
-                    name="phone_number"
-                    label="Telefon raqam"
+                    name="last_name"
+                    label={t("Familiya")}
                     component={Input}
                   />
-                  <div>
-                    <label>Karta raqami</label>
-                    <div className="card_number">
+
+                  
                       <Field
                         name="card_number"
+                        label={t("Karta raqami")}
                         component={Input}
                         type="number"
                         wrapperClassName="card_num"
                       />
                       <Field
                         name="card_expirey"
+                        label={t('Karta amal qlish muddati')}
                         component={Input}
                         wrapperClassName="card_exp"
                       />
-                    </div>
-                  </div>
                 </div>
                 <div
                   className="fields__inputs"
@@ -139,7 +142,7 @@ const SubscriberInfoForm = ({data}) => {
                     component={Input}
                   /> */}
                   <div>
-                    <label className="label">Passport seriasi</label>
+                    <label className="label">{t("Passport seria")}</label>
                     <div className="passport_nums">
                       <Field
                         name="passport_series"
@@ -155,8 +158,13 @@ const SubscriberInfoForm = ({data}) => {
                   </div>
                   <Field
                     name="birth_date"
-                    label="Tug'ilgan sana"
+                    label={t("Tug'ilgan sana")}
                     type="date"
+                    component={Input}
+                  />
+                  <Field
+                    name="phone_number"
+                    label={t("Telefon raqam")}
                     component={Input}
                   />
                 </div>

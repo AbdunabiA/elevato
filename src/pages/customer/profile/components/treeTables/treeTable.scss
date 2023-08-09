@@ -1,0 +1,42 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+
+.tree-title__wrapper{
+    text-align: center;
+    margin-top: 40px;
+}
+.tree-table__wrapper{
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 30px;
+    @media (max-width:$sm) {
+        padding: 10px;
+    }
+    .tree-table-title__wrapper{
+        text-align: center;
+        .tree-table-title{
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 44px;
+            @media (max-width:$xxl) {
+                font-size: 30px;
+            }
+            @media (max-width:$xl) {
+                font-size: 28px;
+            }
+            @media (max-width:$lg) {
+                font-size: 26px;
+            }
+            @media (max-width:$sm) {
+                font-size: 24px;
+            }
+        }
+    }
+}

@@ -5,32 +5,34 @@ import mijozlar from "assets/icons/MijozlarIcon.png";
 import nasiya from "assets/icons/UmumiyNasiyaIcon.png";
 import mahsulot from "assets/icons/MahsulotIcon.png";
 import { formatNums } from "services/formatNums";
+import { useTranslation } from "react-i18next";
 
 const Cards = ({ infos }) => {
+  const {t, i18n} = useTranslation()
   const cards = [
     {
       icon: shoppingCart,
-      title: "Umumiy Savdo",
+      title: t("Umumiy savdo"),
       count: formatNums(infos[0]),
       val: "$",
     },
     {
       icon: mijozlar,
-      title: "Mijozlar soni",
+      title: t("Mijozlar soni"),
       count: formatNums(infos[1]),
-      val: "ta",
+      val: i18n.language == "ru" ? "" : "ta",
     },
     {
       icon: nasiya,
-      title: "Umumiy ish kunlari",
+      title: t("Ishlagan kunlari"),
       count: formatNums(infos[2]),
-      val: "kun",
+      val: t("kun"),
     },
     {
       icon: mahsulot,
-      title: "Umumiy Mahsulotlar",
+      title: t("Mahsulotlar soni"),
       count: formatNums(infos[3]),
-      val: "ta",
+      val: i18n.language == "ru" ? "" : "ta",
     },
   ];
   return (

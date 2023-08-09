@@ -6,27 +6,29 @@ import kupon from "assets/icons/KuponIcon.png";
 import plusIcon from 'assets/icons/blackPlusIcon.png'
 import { formatNums } from "services/formatNums";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Cards = ({ infos }) => {
   const navigate = useNavigate()
+  const {t, i18n} = useTranslation()
   const cards = [
     {
       icon: shoppingCart,
-      title: "Umumiy obuna summasi",
+      title: t("Umumiy obuna summasi"),
       count: formatNums(infos[0]),
       val: "$",
     },
     {
       icon: mijozlar,
-      title: "Bonus",
+      title: t("Bonus"),
       count: formatNums(infos[1]),
       val: "$",
     },
     {
       icon: kupon,
-      title: "Foydalanuvchilar",
+      title: t("Foydalanuvchilar"),
       count: formatNums(infos[2]),
-      val: "ta",
+      val: i18n.language == 'ru' ? "" : "ta",
     },
   ];
   return (
@@ -35,7 +37,7 @@ const Cards = ({ infos }) => {
         return <Card key={i} {...{ card }} />;
       })}
       <div className="add-tariff" onClick={()=>navigate('/subscriptions/create/')}>
-        <h2 className="add-tariff__title">Tarif yaratish</h2>
+        <h2 className="add-tariff__title">{t("Tarif yaratish")}</h2>
         <div>
           <img src={plusIcon} alt="" />
         </div>

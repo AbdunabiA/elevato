@@ -158,14 +158,14 @@ $xxxxl:1921px;
                 align-items: start;
                 gap: 20px;
                 .card_number{
-                    display: flex;
-                    align-items: center;
+                    // display: flex;
+                    // align-items: center;
                     gap: 5px;
                     .card_exp{
-                        width: 50px;
+                        min-width: 50px;
                     }
                     .card_num{
-                        width: 180px;
+                        min-width: 180px;
                     }
                 }
                 .passport_nums{

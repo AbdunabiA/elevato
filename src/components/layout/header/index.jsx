@@ -77,7 +77,7 @@ const Header = ({ setSideMenu }) => {
           </div>
           <select
             className="languages"
-            defaultValue={i18n.language === "ru-RU" ? "ru" : "uz"}
+            value={i18n.language}
             onChange={(e) => i18n.changeLanguage(e.target.value)}
           >
             <option value="uz">UZ</option>

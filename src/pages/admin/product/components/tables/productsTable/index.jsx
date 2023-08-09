@@ -15,22 +15,23 @@ const ProductsTable = ({ data }) => {
   const {i18n} = useTranslation()
   const lang = i18n.language
   const navigate = useNavigate();
+  const {t} = useTranslation()
   const columns = [
     {
-      title: "Nomi",
+      title: t("Nomi"),
       key: "name",
     },
     {
-      title: "Narxi",
+      title: t("Narxi"),
       key: "price",
       render:(val)=>`${val}$`
     },
     {
-      title: "Kategoriya",
+      title: t("Kategoriya"),
       key: "category",
     },
     {
-      title: "Xolati",
+      title: t("Xolati"),
       key: "deleted",
       render: (value) => (
         <span style={{ color: value ? "#FF0000" : "#16FF01" }}>
@@ -39,7 +40,7 @@ const ProductsTable = ({ data }) => {
       ),
     },
     {
-      title: "Taxrirlash",
+      title: t("Taxrirlash"),
       render: (value, row) => <Link to={`/update-product/${row.id}`}>Batafsil</Link>,
     },
   ];
@@ -57,7 +58,7 @@ const ProductsTable = ({ data }) => {
   }, []);
   return (
     <div className="wrapper">
-      <h1 className="title">Mahsulotlar ro'yxati</h1>
+      <h1 className="title">{t("Mahsulotlar ro'yxati")}</h1>
       <div className="table">
         <div className="table__title">
           <h1 className="title"></h1>

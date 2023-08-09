@@ -1,32 +1,20 @@
 import { PieChart } from "components/charts"
 import './branchesSales.scss'
+import { useTranslation } from "react-i18next"
 
 const BranchesSales = ({data}) => {
+  const {t} = useTranslation()
     
   const infos = Object.keys(data).reduce((prev, curr)=>{
     return {...prev, [curr]:data[curr].sales_amount}
   },{})
-    const datas = {
-      "Qo'qon": {
-        id: 1,
-      },
-      "Farg'ona": {
-        id: 2,
-      },
-      "Andijon": {
-        id: 3,
-      },
-      "Namangan": {
-        id: 4,
-      },
-    };
+    
   return (
     <div className="branches-sales">
-      <h1 className="title">Filiallar savdo ulushi</h1>
+      <h1 className="title">{t("Filiallar savdo ulushi")}</h1>
       <div className="branches-sales__info">
         <div className="branches-sales__info__left">
           <PieChart
-            datas={datas}
             infos={infos}
             isLabelNavigatable
             url={"/branch"}

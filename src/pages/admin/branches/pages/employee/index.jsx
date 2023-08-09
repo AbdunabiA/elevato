@@ -4,9 +4,11 @@ import EmployeeInfoForm from '../../components/employeeInfoForm'
 import { useParams } from 'react-router-dom'
 import Loader from 'components/loader'
 import ErrorPage from 'components/errorPage'
+import { useTranslation } from 'react-i18next'
 
 const Employee = () => {
   const {id} = useParams()
+  const {t} = useTranslation()
   return (
     <div className="container">
       <GetAll queryKey={["admin-employee"]} url={`/admin-employees/${id}`}>
@@ -16,7 +18,7 @@ const Employee = () => {
           console.log(items);
           return (
             <>
-              <h1 className="title">Xodim</h1>
+              <h1 className="title">{t("Xodim")}</h1>
               <EmployeeInfoForm data={items}/>
             </>
           );

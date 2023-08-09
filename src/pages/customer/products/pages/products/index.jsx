@@ -19,7 +19,7 @@ const CustomerProducts = () => {
     setCategory(data?.data[0][`name_${lang}`]);
   },[lang])
   if (isLoading) return <Loader />;
-  // console.log(data);
+  console.log(data);
   return (
             <div className='container'>
               <div className='users-products__categories'>

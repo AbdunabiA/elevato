@@ -81,24 +81,24 @@ export const helpers = {
          admin: [
            {
              title: "Sozlamalar",
-             path: "/settings",
+             path: "/",
              icon: sozlamalar,
            },
            {
              title: "Qo'llab quvvatlash",
-             path: "/support",
+             path: "/",
              icon: qollabQuvvatlash,
            },
          ],
          ordinary_user: [
            {
              title: "Sozlamalar",
-             path: "/settings",
+             path: "/",
              icon: sozlamalar,
            },
            {
              title: "Qo'llab quvvatlash",
-             path: "/support",
+             path: "/",
              icon: qollabQuvvatlash,
            },
          ],

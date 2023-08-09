@@ -9,28 +9,30 @@ import { Button } from "components/buttons";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import { formatNums } from "services/formatNums";
+import { useTranslation } from "react-i18next";
 
 const ProductsDistribution = ({data}) => {
   const navigate = useNavigate();
+  const {t} = useTranslation()
   const columns = [
     {
-      title: "Sana",
+      title: t("Sana"),
       key: "date",
     },
     {
-      title: "Mahsulot",
+      title: t("Mahsulot"),
       key: "product",
     },
     {
-      title: "Miqdori",
+      title: t("Miqdori"),
       key: "amount",
     },
     {
-      title: "Filial",
+      title: t("Filial"),
       key: "branch",
     },
     {
-      title: "Umumiy summa",
+      title: t("Umumiy summa"),
       key: "overallPayment",
       render: (value) => `${value}$`,
     },
@@ -49,17 +51,17 @@ const ProductsDistribution = ({data}) => {
   }, [])
   return (
     <div className="wrapper">
-      <h1 className="title">Mahsulot sotuvi</h1>
+      <h1 className="title">{t("Mahsulot sotuvi")}</h1>
       <div className="table">
         <div className="table__title">
-          <h1 className="title">Tarixi</h1>
+          <h1 className="title">{t("Tarix")}</h1>
           <div className="buttons">
             <Button
-              text={"Tarixni ko'rish"}
+              text={t("Tarixni ko'rish")}
               icon={file}
               onClick={() => navigate("history")}
             />
-            <Button text={"Mahsulot yuporish"} icon={file2} />
+            <Button text={t("Mahsulot yuborish")} icon={file2} />
           </div>
         </div>
         <Table

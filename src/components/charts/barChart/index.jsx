@@ -10,6 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { Button } from "components/buttons";
+import { useTranslation } from "react-i18next";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -33,6 +34,7 @@ const BarChart = ({
   onClick,
   hasButton,
 }) => {
+  const {t} = useTranslation()
   const chartData = {
     labels:Object.keys(infos),
     datasets: [
@@ -75,7 +77,7 @@ const BarChart = ({
     <div className="chart-wrapper">
       <div className="barchart-title">
         {title ? <h1>{title}</h1> : null}
-        {hasButton?<Button text={"to'liq"} onClick={onClick}/>:null}
+        {hasButton?<Button text={t("to'liq")} onClick={onClick}/>:null}
       </div>
       {subtitle ? <p className="subtitle">{subtitle}</p> : null}
       <div className="chart">

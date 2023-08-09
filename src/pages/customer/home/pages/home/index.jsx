@@ -35,7 +35,7 @@ const CustomerHome = () => {
                     setModal(false);
                     storage.set('modalOpened', 'true')
                   }}>
-                    <p style={{width:'500px'}}>
+                    <p style={{maxWidth:'700px', padding:"20px 5px"}}>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab itaque deleniti voluptatibus adipisci debitis doloremque repellat illum doloribus. Pariatur, ipsum!
                     </p>
                   </Modal>

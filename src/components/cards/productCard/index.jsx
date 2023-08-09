@@ -34,7 +34,7 @@ const ProductCard = ({data}) => {
             <span className="product-counter__label">{t("Soni")}</span> <br />
             <input
               type="number"
-              // value={count}
+              value={count}
               onChange={(e) => setCount(e.target.value)}
             />
           </div>

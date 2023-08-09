@@ -8,10 +8,12 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signIn } from 'store/auth';
 import { storage } from 'services';
+import { useTranslation } from 'react-i18next';
 
 const SignIn = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const {t} = useTranslation()
   return (
     <div className="container1">
       <div className="login-wrapper">
@@ -28,7 +30,7 @@ const SignIn = () => {
             <div className="yellow-square"></div>
           </div>
           <div className="login-wrapper__left__texts">
-            <h2>Xush kelibsiz!</h2>
+            <h2>{t("Xush kelibsiz")}!</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur. Integer morbi interdum
               odio ac. Duis sit habitant gravida sit vulputate ac pulvinar.
@@ -38,10 +40,10 @@ const SignIn = () => {
         <div className="login-wrapper__right">
           <div>
             <h1 className="login-wrapper__right__title">
-              Akkauntingizga kiring!
+              {t("Akkauntingizga kiring")}!
             </h1>
             <p className="login-wrapper__right__redirect">
-              Akkauntingiz mavjud emasmi? <span onClick={()=>navigate('/sign-up')}>Bu yerga bosing!</span>
+              {t("Akkauntingiz mavjud emasmi")}? <span onClick={()=>navigate('/sign-up')}>{t("Bu yerga bosing")}!</span>
             </p>
             <ContainerForm 
               fields={[
@@ -70,20 +72,21 @@ const SignIn = () => {
                   <>
                     <Field
                       name="userinput"
-                      label="Login"
+                      label={t("Login")}
                       component={Input}
                       wrapperClassName={"login-input"}
                     />
                     <Field
                       name="password"
-                      label="Parol"
+                      label={t("Parol")}
                       component={Input}
                       wrapperClassName={"login-input"}
+                      type='password'
                     />
                     {/* <p>Elektron pochta orqali kirish</p> */}
                     <div className="login-page__button-wrapper">
                       <Button
-                        text="Kirish"
+                        text={t("Kirish")}
                         onClick={handleSubmit}
                         type={'submit'}
                         disabled={isLoading ? true : false}

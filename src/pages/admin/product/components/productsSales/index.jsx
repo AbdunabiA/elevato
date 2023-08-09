@@ -1,14 +1,15 @@
 import { PieChart } from "components/charts";
 import "./productsSales.scss";
+import { useTranslation } from "react-i18next";
 
 const ProductsSales = ({data}) => {
   const infos = data.reduce((prev, curr)=>{
     return {...prev, [curr.product]:curr.summa}
   }, {})
-  
+  const {t} = useTranslation()
   return (
     <div className="products-sales">
-      <h1 className="title">Mahsulotlar savdo ulushi</h1>
+      <h1 className="title">{t("Mahsulotlar savdo ulushi")}</h1>
       <div className="branches-sales__info">
         <div className="branches-sales__info__left">
           <PieChart
