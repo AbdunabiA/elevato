@@ -1,7 +1,7 @@
 // import { Home } from "pages/admin";
 import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee, AddProduct, Subscriptions, CreateTariff, UpdateTariff, UpdateProduct } from "pages/admin";
 
-import {CustomerHome, CustomerProducts, CustomerMoneyCirculation, CustomerOrders, CustomerSubscriptions, CustomerProfile} from 'pages/customer'
+import {CustomerHome, CustomerProducts, CustomerMoneyCirculation, CustomerOrders, CustomerSubscriptions, CustomerProfile, CustomerNotifications} from 'pages/customer'
 
 import { SignIn, SignUp } from "pages/authPages";
 
@@ -109,6 +109,10 @@ const pages = {
       path: "/profile",
       component: <CustomerProfile />,
     },
+    {
+      path:'/notifications',
+      component:<CustomerNotifications/>
+    }
   ],
 };
 

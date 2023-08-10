@@ -7,7 +7,7 @@ import { useLocation, useNavigate} from 'react-router-dom'
 import { Button } from 'components/buttons'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
-import { usePost } from 'crud'
+import { useGet, usePost } from 'crud'
 import { storage } from 'services'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeRole, signOut } from 'store/auth'
@@ -20,6 +20,8 @@ const Header = ({ setSideMenu }) => {
   const role = useSelector((state) => state.auth.role);
   const dispatch = useDispatch()
 
+  // const {data} = useGet({url:'/users-notifications/', queryKey:['users-notification']})
+  // console.log('notif',data);
   
   const location = useLocation();
   const paths = {
@@ -32,7 +34,8 @@ const Header = ({ setSideMenu }) => {
     "/big-leap": "Big Leap Team",
     "/subscriber": "Obunachi",
     "/employee":"Xodim",
-    "/orders":"Buyurtmalar"
+    "/orders":"Buyurtmalar",
+    "/notifications":"Xabarlar"
   };
   return (
     <header>
@@ -68,7 +71,7 @@ const Header = ({ setSideMenu }) => {
           }
           
           {role !== "admin" ? (
-            <div className="notification">
+            <div className="notification" onClick={()=>navigate('/notifications')}>
               <img src={notification} alt="icon" />
             </div>
           ) : null}

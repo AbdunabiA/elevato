@@ -17,7 +17,12 @@ const CustomerMoneyCirculation = () => {
       {({ items, isLoading }) => {
         if (isLoading) return <Loader />;
         console.log(items);
-        const infos = [items?.total_money, items?.bet, items?.bonus, items?.expense]
+        const infos = [
+          items?.total_money,
+          items?.on_progress,
+          items?.bet,
+          items?.expense,
+        ];
         return (
           <div className="container">
             <Filters {...{ staticDate, setStaticDate, month, setMonth }} />

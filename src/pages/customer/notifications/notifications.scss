@@ -1,0 +1,20 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+.users-notification__wrapper{
+    background-color: white;
+    margin-top: 40px;
+    padding: 40px;
+    border-radius: 20px;
+    @media (max-width:$md) {
+        padding: 10px;
+    }
+    >p{
+        margin-top: 20px;
+    }
+}
