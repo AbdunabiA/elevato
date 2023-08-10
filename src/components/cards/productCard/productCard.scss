@@ -124,6 +124,21 @@ $xxxxl:1921px;
                     @media (max-width:$xl) {
                         gap: 10px;
                     }
+                    &>label>input{
+                        width: 100%;
+                        font-size: 18px;
+                        font-weight: 500;
+                        line-height: 120%;
+                        color: black;
+
+                        padding: 5px;
+                        border-radius: 6px;
+                        border: none;
+                        background: #F5F7F9;
+                        &:focus{
+                            outline:none
+                        }
+                    }
                 }
                 
             }

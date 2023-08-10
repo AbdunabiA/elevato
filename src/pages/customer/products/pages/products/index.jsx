@@ -15,10 +15,10 @@ const CustomerProducts = () => {
     url: "users-products",
   });
   const [category, setCategory] = useState(data?.data[0][`name_${lang}`]);
-  console.log(category);
+  // console.log(category);
   useEffect(()=>{
     setCategory(data?.data[0][`name_${lang}`]);
-  },[lang])
+  },[lang, data])
   if (isLoading) return <Loader />;
   if (isError) return <ErrorPage {...{error}}/>
   console.log(data);

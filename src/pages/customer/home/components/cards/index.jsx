@@ -11,6 +11,8 @@ import { usePost } from "crud";
 import { useState } from "react";
 import Loader from "components/loader";
 import Modal from "components/modal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const Cards = ({ infos }) => {
@@ -49,6 +51,7 @@ const Cards = ({ infos }) => {
   ];
   return (
     <div className="cards">
+      <ToastContainer/>
       <div
         className="bonus-card"
         onClick={() => {
@@ -57,14 +60,14 @@ const Cards = ({ infos }) => {
             method: "post",
             values: { active: true },
             onSuccess: (data) => {
-              setBonusModal({show:true, data:data.data})
-              console.log(data)
+              setBonusModal({ show: true, data: data.data });
             },
             onError: (error) => {
-              console.log(error);
+              toast.error(error.message)
             },
           });
         }}
+        style={isLoading ? {background:"white"} : {}}
       >
         {isLoading ? (
           <Loader />
@@ -72,15 +75,17 @@ const Cards = ({ infos }) => {
           <h1 className="bonus-card__title">{t("Kunlik bonus")}</h1>
         )}
       </div>
-      {
-        bonusModal.show ? <Modal onClose={()=>setBonusModal({show:false, data:null})}>
-        <div style={{padding:"20px"}}>
-          <h2>{bonusModal?.data?.message[i18n.language]}</h2>
-          <p style={{marginTop:"10px"}}>{t("Keyingi bonus")}:{bonusModal?.data?.next_bonus}</p>
-        </div>
-      </Modal> : null
-      }
-      
+      {bonusModal.show ? (
+        <Modal onClose={() => setBonusModal({ show: false, data: null })}>
+          <div style={{ padding: "20px" }}>
+            <h2>{bonusModal?.data?.message[i18n.language]}</h2>
+            <p style={{ marginTop: "10px" }}>
+              {t("Keyingi bonus")}:{bonusModal?.data?.next_bonus}
+            </p>
+          </div>
+        </Modal>
+      ) : null}
+
       {cards.map((card, i) => {
         return <Card key={i} {...{ card }} />;
       })}

@@ -8,12 +8,15 @@ import { Field } from 'formik';
 import { AsyncSelect, Input } from 'components/fields';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { usePost } from 'crud';
 
 
 const ProductCard = ({data}) => {
   const {t, i18n} = useTranslation()
   const lang = i18n.language
   const [count, setCount] = useState(1)
+  const overallValue = count * data?.price
+  const {mutate:orderProduct, isLoading, isError, error} = usePost()
   
   return (
     <div className="product-card">
@@ -37,82 +40,64 @@ const ProductCard = ({data}) => {
         </h3>
         <div className="product-card__info__count-wrapper">
           <ToastContainer />
-          <ContainerForm
-            fields={[
-              {
-                name: "amount",
-                required: true,
-              },
-              {
-                name: "warehouse",
-                required: true,
-                type: "object",
-                onSubmitValue: (value) => value?.id,
-              },
-              {
-                product: data.id,
-              },
-            ]}
-            url="/users-products/order/"
-            onSuccess={() => {toast.success('SUCCESSFUL')}}
-            onError={(error)=>{toast.error(error?.message)}}
-          >
-            {({ handleSubmit, isLoading, values }) => {
-              const overallValue = values.amount * data.price;
+          <ContainerForm>
+            {({ values }) => {
               return (
                 <>
-                <div className='product-order-fields'>
-                  <div className='product-order-inputs'>
-                  <Field
-                    type="number"
-                    value={1}
-                    onChange={(e) => setCount(e.target.value)}
-                    name="amount"
-                    label={t("Soni")}
-                    component={Input}
-                    defaultValue={1}
-                    />
-                  <label className='product-order-input'>
-                    <span>{t("Umumiy summa")}</span> <br />
-                    <input
-                      type="text"
-                      value={overallValue ? overallValue : data.price}
+                  <div className="product-order-fields">
+                    <div className="product-order-inputs">
+                      <label>
+                        <span>{t("Soni")}</span> <br />
+                        <input
+                          type="number"
+                          value={count}
+                          onChange={(e) => setCount(e.target.value)}
+                        />
+                      </label>
+                      <label className="product-order-input">
+                        <span>{t("Umumiy summa")}</span> <br />
+                        <input type="text" value={overallValue} disabled />
+                      </label>
+                      <Field
+                        name="warehouse"
+                        label={t("Filial")}
+                        component={AsyncSelect}
+                        loadOptionsUrl={"/warehouses/"}
+                        optionLabel={`name`}
+                        optionValue={`name`}
+                        isSearchable
+                        searchKey="name"
                       />
-                  </label>
-                  <Field
-                    name="warehouse"
-                    label={t("Filial")}
-                    component={AsyncSelect}
-                    loadOptionsUrl={"/warehouses/"}
-                    optionLabel={`name`}
-                    optionValue={`name`}
+                    </div>
+                  </div>
+                  <div className="product-button__wrapper">
+                    <Button
+                      text={t("Buyurtma berish")}
+                      icon={cartIcon}
+                      onClick={() => {
+                        orderProduct({
+                          url: "/users-products/order/",
+                          values: {
+                            amount: count,
+                            product: data?.id,
+                            warehouse: values?.warehouse,
+                          },
+                          onSuccess: () => {
+                            toast.success("SUCCESSFUL");
+                          },
+                          onError: (error) => {
+                            toast.error(error?.message);
+                          },
+                        });
+                      }}
+                      disabled={isLoading ? true : false}
+                      type={'button'}
                     />
                   </div>
-                </div>
-                <div className="product-button__wrapper">
-                  <Button 
-                    text={t("Buyurtma berish")} 
-                    icon={cartIcon} 
-                    onClick={handleSubmit}
-                    disabled={isLoading ? true : false}
-                    />
-                </div>
                 </>
               );
             }}
           </ContainerForm>
-          {/* <div>
-            <span className="product-counter__label">{t("Soni")}</span> <br />
-            <input
-              type="number"
-              value={count}
-              onChange={(e) => setCount(e.target.value)}
-            />
-          </div>
-          <div>
-            <span className="product-ovaerall-value">{t("Umumiy summa")}</span> <br />
-            <span>{overallValue}</span>
-          </div> */}
         </div>
       </div>
     </div>

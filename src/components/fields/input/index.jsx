@@ -8,7 +8,7 @@ const Input = ({
   field: { value, name },
   form: { setFieldValue, setFieldTouched, errors, touched },
   disabled = false,
-  defaultValue,
+  // defaultValue,
 }) => {
   return (
     <label className={`${wrapperClassName} input-field__wrapper`}>
@@ -23,7 +23,7 @@ const Input = ({
           placeholder={placeholder}
           className="custom-input"
           disabled={disabled}
-          defaultValue={defaultValue ? defaultValue : ""}
+          // defaultValue={defaultValue ? defaultValue : ""}
         />
       </div>
       {touched[name] && errors[name] ? (
