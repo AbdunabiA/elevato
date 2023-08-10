@@ -22,7 +22,7 @@ const CustomerMoneyCirculation = () => {
           <div className="container">
             <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
             <Cards {...{ infos }} />
-            <SubscribersTable />
+            <SubscribersTable data={items?.money}/>
           </div>
         );
       }}

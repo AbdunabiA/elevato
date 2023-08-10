@@ -36,7 +36,7 @@ const TreeTables = ({data}) => {
         <h1 className='title'>{t("Shajara")}</h1>
       </div>
       {
-        data.map((el, i)=>{
+        data?.map((el, i)=>{
           return (
             <div key={i} className='tree-table__wrapper'>
               <div className='tree-table-title__wrapper'>

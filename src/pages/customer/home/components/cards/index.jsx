@@ -7,10 +7,16 @@ import { formatNums } from "services/formatNums";
 import plus from "assets/icons/AddPlusIconWhite.svg";
 import minus from "assets/icons/CircleMinusIconWhite.svg";
 import { useTranslation } from "react-i18next";
+import { usePost } from "crud";
+import { useState } from "react";
+import Loader from "components/loader";
+import Modal from "components/modal";
 
 
 const Cards = ({ infos }) => {
   const {t, i18n} = useTranslation()
+  const {mutate:dailyBonus, isLoading, isError, error} = usePost()
+  const [bonusModal, setBonusModal] = useState({show:false, data:null})
   const cards = [
     {
       icon: shoppingCart,
@@ -43,9 +49,38 @@ const Cards = ({ infos }) => {
   ];
   return (
     <div className="cards">
-      <div className="bonus-card">
-        <h1 className="bonus-card__title">{t("Kunlik bonus")}</h1>
+      <div
+        className="bonus-card"
+        onClick={() => {
+          dailyBonus({
+            url: "/users-get-daily-bonus/",
+            method: "post",
+            values: { active: true },
+            onSuccess: (data) => {
+              setBonusModal({show:true, data:data.data})
+              console.log(data)
+            },
+            onError: (error) => {
+              console.log(error);
+            },
+          });
+        }}
+      >
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <h1 className="bonus-card__title">{t("Kunlik bonus")}</h1>
+        )}
       </div>
+      {
+        bonusModal.show ? <Modal onClose={()=>setBonusModal({show:false, data:null})}>
+        <div style={{padding:"20px"}}>
+          <h2>{bonusModal?.data?.message[i18n.language]}</h2>
+          <p style={{marginTop:"10px"}}>{t("Keyingi bonus")}:{bonusModal?.data?.next_bonus}</p>
+        </div>
+      </Modal> : null
+      }
+      
       {cards.map((card, i) => {
         return <Card key={i} {...{ card }} />;
       })}

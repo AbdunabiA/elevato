@@ -2,11 +2,12 @@ import { ContainerForm } from 'modules'
 import './subscriberInfoForm.scss'
 import { Field } from 'formik'
 import { Input } from 'components/fields'
-import woman from 'assets/images/Woman.png'
+import avatar from 'assets/images/avatar.png'
 import { formatNums } from 'services/formatNums'
 import { Button } from 'components/buttons'
 import { get } from 'lodash'
 import { useTranslation } from 'react-i18next'
+import moment from 'moment'
 
 const SubscriberInfoForm = ({data}) => {
   const {t} = useTranslation()
@@ -65,6 +66,11 @@ const SubscriberInfoForm = ({data}) => {
             required: true,
             value: get(data, "user.dateOfBirth", ""),
           },
+          {
+            name: "offer_id",
+            required: true,
+            value: get(data, "user.offer_id", ""),
+          },
           // {
           //   name: "email",
           //   type: "string",
@@ -77,7 +83,14 @@ const SubscriberInfoForm = ({data}) => {
             <div className="subscriber-info-form__wrapper__top">
               <div className="subscriber-info-form__wrapper__top__left">
                 <div className="img-wrapper">
-                  <img src={woman} alt="img" />
+                  {!data?.user?.photo ? (
+                    <img src={avatar} alt="img" />
+                  ) : (
+                    <img
+                      src={`https://elevato.pythonanywhere.com${data?.user?.photo}`}
+                      alt="img"
+                    />
+                  )}
                 </div>
                 <h1 className="title">
                   {data?.user?.first_name} {data?.user?.last_name}
@@ -99,7 +112,7 @@ const SubscriberInfoForm = ({data}) => {
             <div className="subscriber-info-form__wrapper__middle">
               <div className="start-work">
                 <h1>{t("Ish boshlagan sanasi")}:</h1>
-                <p>12.04.2018</p>
+                <p>{moment(data?.user?.date).format("DD.MM.YYYY")}</p>
               </div>
               {/* <div className="start-work">
                 <h1>{t("Keyingi obuna to’lovi kuni")}:</h1>
@@ -117,20 +130,19 @@ const SubscriberInfoForm = ({data}) => {
                     component={Input}
                   />
 
-                  
-                      <Field
-                        name="card_number"
-                        label={t("Karta raqami")}
-                        component={Input}
-                        type="number"
-                        wrapperClassName="card_num"
-                      />
-                      <Field
-                        name="card_expirey"
-                        label={t('Karta amal qlish muddati')}
-                        component={Input}
-                        wrapperClassName="card_exp"
-                      />
+                  <Field
+                    name="card_number"
+                    label={t("Karta raqami")}
+                    component={Input}
+                    type="number"
+                    wrapperClassName="card_num"
+                  />
+                  <Field
+                    name="card_expirey"
+                    label={t("Karta amal qlish muddati")}
+                    component={Input}
+                    wrapperClassName="card_exp"
+                  />
                 </div>
                 <div
                   className="fields__inputs"
@@ -165,6 +177,11 @@ const SubscriberInfoForm = ({data}) => {
                   <Field
                     name="phone_number"
                     label={t("Telefon raqam")}
+                    component={Input}
+                  />
+                  <Field
+                    name="offer_id"
+                    label={t("Taklif id")}
                     component={Input}
                   />
                 </div>

@@ -112,14 +112,29 @@ $xxxxl:1921px;
             }
         }
         &__count-wrapper{
-            display: flex;
-            align-items: center;
-            gap: 30px;
+            .product-order-fields{
+                .product-order-inputs{
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 30px;
+                    @media (max-width:$xxl) {
+                        gap: 20px;
+                    }
+                    @media (max-width:$xl) {
+                        gap: 10px;
+                    }
+                }
+                
+            }
+            .product-button__wrapper{
+                    display: flex;
+                    align-items: center;
+                    justify-content: end;
+                    margin-top: 10px;
+                }
+            
         }
-        .product-button__wrapper{
-            display: flex;
-            align-items: center;
-            justify-content: end;
-        }
+        
     }
 }

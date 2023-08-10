@@ -9,6 +9,8 @@ import { useDispatch } from 'react-redux';
 import { signIn } from 'store/auth';
 import { storage } from 'services';
 import { useTranslation } from 'react-i18next';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignIn = () => {
   const navigate = useNavigate()
@@ -16,6 +18,7 @@ const SignIn = () => {
   const {t} = useTranslation()
   return (
     <div className="container1">
+      <ToastContainer/>
       <div className="login-wrapper">
         <div className="login-wrapper__left">
           <div className="login-wrapper__left__logo">
@@ -61,9 +64,9 @@ const SignIn = () => {
                 storage.set("token", data?.access);
                 dispatch(signIn({...data, isAuthenticated:true}))
                 navigate('/')
-                console.log(data);
               }}
               onError={(error)=>{
+                toast.error(error?.response?.data?.message[0]);
                 console.log(error);
               }}
             >

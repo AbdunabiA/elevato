@@ -26,13 +26,13 @@ const AsyncSelect = ({
 }) => {
   const loadOptions = async (search, loadedOptions, { page }) => {
     let data = await api.get(queryBuilder(loadOptionsUrl, loadOptionsParams));
-    console.log(data);
+    console.log(data.data);
     return {
       options: search
         ? get(data, `data${lastKeys}`, []).filter((item) =>
             item[searchKey].toLowerCase().includes(search.toLowerCase())
           )
-        : get(data, `data${lastKeys}`, []),
+        : get(data, `data${lastKeys ? lastKeys : ''}`, []),
       hasMore: page < get(data, "data.last_page", 1),
       additional: { page: page + 1 },
     };

@@ -6,7 +6,7 @@ const Products = ({data, category, lang}) => {
   return (
     <div className="customer-products">
       {
-        data.data.filter((el) => el[`name_${lang}`] === category)
+        data?.data.filter((el) => el[`name_${lang}`] === category)
         .map((prod)=>{
             return prod?.products?.map((elem, i)=>{
                if(!elem.deleted) return (

@@ -7,47 +7,29 @@ import './subscribersTable.scss'
 import { useTranslation } from "react-i18next";
 
 const SubscribersTable = ({ data }) => {
-  const {t} = useTranslation()
+  const {t, i18n} = useTranslation()
   const navigate = useNavigate();
+  const dataCorrected = data.reduce((total, curr)=>{
+    return [...total, {amount:curr.amount, full_name:`${curr.user.first_name} ${curr.user.last_name}`, comment_ru:curr.comment_ru, comment_uz:curr.comment_uz}]
+  }, [])
+  console.log(dataCorrected);
   const columns = [
     {
       title: t("F.I.SH"),
       key: "full_name",
     },
     {
-      title: t("Obuna Summasi"),
-      key: "subscription",
+      title: t("Summa"),
+      key: "amount",
       render: (value) => (
         <>
-          {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
+          {formatNums(value)} <span style={{ color: "#B2B7C1" }}>$</span>
         </>
       ),
-    },
-    // {
-    //   title: t("Jami bonus"),
-    //   key: "all_bonus",
-    //   render: (value) => (
-    //     <>
-    //       {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
-    //     </>
-    //   ),
-    // },
-    {
-      title: t("Yechilgan summa"),
-      key: "clean_out",
-      render: (value) => (
-        <>
-          {formatNums(value)} <span style={{ color: "#B2B7C1" }}>UZS</span>
-        </>
-      ),
-    },
-    {
-      title: t("Sana"),
-      key: "date",
     },
     {
       title: t("Holati"),
-      key: "status",
+      key: `comment_${i18n.language}`,
     },
   ];
   return (
@@ -58,7 +40,7 @@ const SubscribersTable = ({ data }) => {
       <WhiteRowTable
         {...{ columns }}
         onRowClick={(data) => navigate(`/subscriber/${data.id}`)}
-        data={obunachilar}
+        data={dataCorrected}
         hasPagination
         total={10}
       />
