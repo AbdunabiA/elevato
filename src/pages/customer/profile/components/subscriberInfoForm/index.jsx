@@ -8,9 +8,14 @@ import { Button } from 'components/buttons'
 import { get } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import moment from 'moment'
+import { useState } from 'react'
+import Modal from 'components/modal'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SubscriberInfoForm = ({data}) => {
   const {t} = useTranslation()
+  const [passwordModal, setPasswordModal] = useState(false)
   return (
     <div className="subscriber-info-form__wrapper">
       <ContainerForm
@@ -43,7 +48,6 @@ const SubscriberInfoForm = ({data}) => {
           },
           {
             name: "card_expirey",
-            min: 16,
             required: true,
             value: get(data, "card.expire", ""),
           },
@@ -66,19 +70,22 @@ const SubscriberInfoForm = ({data}) => {
             required: true,
             value: get(data, "user.dateOfBirth", ""),
           },
-          {
-            name: "offer_id",
-            required: true,
-            value: get(data, "user.offer_id", ""),
-          },
           // {
           //   name: "email",
           //   type: "string",
           //   // value:get(data, 'user.email', '')
           // },
         ]}
+        url='/change-user-info/'
+        method={'patch'}
+        onSuccess={()=>{
+          toast.success("successful")
+        }}
+        onError={(error)=>{
+          toast.error(error.message)
+        }}
       >
-        {() => (
+        {({handleSubmit, isLoading:patchLoading}) => (
           <>
             <div className="subscriber-info-form__wrapper__top">
               <div className="subscriber-info-form__wrapper__top__left">
@@ -179,20 +186,85 @@ const SubscriberInfoForm = ({data}) => {
                     label={t("Telefon raqam")}
                     component={Input}
                   />
-                  <Field
-                    name="offer_id"
-                    label={t("Taklif id")}
-                    component={Input}
-                  />
+                  <div>
+                    <span>{t("Taklif id")}</span>
+                    <div 
+                      className='profile-offer-id'
+                      onClick={(e)=>{
+                        navigator.clipboard.writeText(e.target.innerText);
+                        toast.success('COPIED')
+                      }}
+                    >
+                      {data.user.offer_id}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            {
+              passwordModal ? (
+                <Modal onClose={()=>setPasswordModal(false)}>
+                  <ContainerForm
+                    fields={[
+                      {
+                        name:'password',
+                        required:true,
+                        min:8
+                      },
+                      {
+                        name:'confirm_password',
+                        required:true,
+                        min:8
+                      }
+                    ]}
+                  >
+                    {
+                      ({handleSubmit:submitPassword, isLoading:passwordLoading})=>{
+                        return (
+                          <>
+                            <Field
+                              component={Input}
+                              name="password"
+                              label={t("Parol")}
+                            />
+                            <Field
+                              component={Input}
+                              name="confirm_password"
+                              label={t("Parolni tasdiqlang")}
+                            />
+                            <div>
+                              <Button 
+                                text={t('Saqlash')} 
+                                onClick={submitPassword}
+                                disabled={passwordLoading ? true : false}
+                                type={'submit'}
+                              />
+                            </div>
+                          </>
+                        );
+                      }
+                    }
+                  </ContainerForm>
+                </Modal>
+              ) : null
+            }
             <div className="form-buttons">
-              <Button text="saqlash" />
+              {/* <Button 
+                text={t("Parol o'zgartirish")} 
+                type={'button'}
+                onClick={()=>setPasswordModal(true)}
+              /> */}
+              <Button 
+                text="saqlash" 
+                onClick={handleSubmit} 
+                disabled={patchLoading ? true : false}
+                type={'submit'}
+              />
             </div>
           </>
         )}
       </ContainerForm>
+      <ToastContainer/>
     </div>
   );
 }

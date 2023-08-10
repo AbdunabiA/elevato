@@ -22,7 +22,7 @@ const CustomerSubscriptions = () => {
                 return (
                   <div className='container'>
                     {
-                      i18n.language == 'ru' || i18n.language == "ru-RU" ? <h1 className='title'>Ваш тарив <Link>{data?.data?.status?.name}</Link></h1> : <h1 className='title'>Siz <Link>{data?.data?.status?.name}</Link> tarifiga obuna bo'lgansiz</h1>
+                      i18n.language == 'ru' || i18n.language == "ru-RU" ? <h1 className='title'>Ваш тариф <Link>{data?.data?.status?.name}</Link></h1> : <h1 className='title'>Siz <Link>{data?.data?.status?.name}</Link> tarifiga obuna bo'lgansiz</h1>
                     }
                     <div className='subscriptions-cards'>
                       {

@@ -168,6 +168,19 @@ $xxxxl:1921px;
                         min-width: 180px;
                     }
                 }
+                .profile-offer-id{
+                    width: 100%;
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 120%;
+                    color: black;
+
+                    padding: 5px;
+                    border-radius: 6px;
+                    border: none;
+                    background: #F5F7F9;
+                    cursor: pointer;
+                }
                 .passport_nums{
                     display: flex;
                     align-items: center;

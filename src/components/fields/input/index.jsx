@@ -8,6 +8,7 @@ const Input = ({
   field: { value, name },
   form: { setFieldValue, setFieldTouched, errors, touched },
   disabled = false,
+  onClick=()=>{}
   // defaultValue,
 }) => {
   return (
@@ -23,6 +24,7 @@ const Input = ({
           placeholder={placeholder}
           className="custom-input"
           disabled={disabled}
+          onClick={onClick}
           // defaultValue={defaultValue ? defaultValue : ""}
         />
       </div>

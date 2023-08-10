@@ -4,6 +4,7 @@ import Loader from 'components/loader';
 import { GetAll } from 'modules'
 import React from 'react'
 import Cards from '../../components/cards';
+import OrderedProductCard from 'components/cards/orderedProductCard';
 
 const CustomerOrders = () => {
   return (
@@ -15,7 +16,8 @@ const CustomerOrders = () => {
         console.log(items);
         return (
           <div className="container">
-            <Cards infos={infos}/>
+            <Cards infos={infos} />
+            {/* <OrderedProductCard /> */}
             {items?.orders?.map((prod) => {
               return prod?.products?.map((elem, i) => {
                 if (!elem.deleted)
