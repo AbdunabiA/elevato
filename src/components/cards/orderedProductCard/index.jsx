@@ -18,22 +18,25 @@ const OrderedProductCard = ({ data }) => {
   return (
     <div className="product-card">
       <div className="product-card__img">
-        <img src={`https://elevato.pythonanywhere.com/${data?.photo}`} alt="" />
+        <img
+          src={`https://elevato.pythonanywhere.com/${data?.product.photo}`}
+          alt=""
+        />
       </div>
       <div className="product-card__info">
         <div className="product-card__info__title-price">
-          <h1>{data?.name}</h1>
+          <h1>{data?.product.name}</h1>
           <p>
-            {data?.price}
+            {data?.product.price}
             <span>$</span>
           </p>
         </div>
         <div className="product-card__info__about">
           <h2>{t("Batafsil")}</h2>
-          <p>{data && data[`about_${lang}`]}</p>
+          <p>{data && data?.product[`about_${lang}`]}</p>
         </div>
         <h3 className="product-card__info__manufacturer">
-          {t("Ishlab chiqaruvchi")}: <span>{data?.manufacturer}</span>
+          {t("Ishlab chiqaruvchi")}: <span>{data?.product.manufacturer}</span>
         </h3>
         <div className="product-card__info__count-wrapper">
           <ToastContainer />
@@ -41,11 +44,15 @@ const OrderedProductCard = ({ data }) => {
           <div className="product-order-inputs">
             <div>
               <p>{t("Soni")}</p>
-              <p>{123}</p>
+              <p>{data?.amount}</p>
             </div>
             <div>
               <p>{t("Umumiy summa")}</p>
-              <p>{1234567890}$</p>
+              <p>{data?.amount * data?.product?.price}$</p>
+            </div>
+            <div>
+              <p>{t("Filial")}</p>
+              <p>{data?.warehouse?.name}</p>
             </div>
           </div>
           <div className="product-button__wrapper">

@@ -5,6 +5,7 @@ import { GetAll } from 'modules'
 import React from 'react'
 import Cards from '../../components/cards';
 import OrderedProductCard from 'components/cards/orderedProductCard';
+import './orders.scss'
 
 const CustomerOrders = () => {
   return (
@@ -18,15 +19,13 @@ const CustomerOrders = () => {
           <div className="container">
             <Cards infos={infos} />
             {/* <OrderedProductCard /> */}
-            {items?.orders?.map((prod) => {
-              return prod?.products?.map((elem, i) => {
-                if (!elem.deleted)
+            {items?.orders?.map((prod, i) => {
+                if (!prod.deleted)
                   return (
-                    <React.Fragment key={i}>
-                      <ProductCard data={elem} />
-                    </React.Fragment>
+                    <div className='ordered-products__wrapper' key={i}>
+                      <OrderedProductCard data={prod} />
+                    </div>
                   );
-              });
             })}
           </div>
         );
