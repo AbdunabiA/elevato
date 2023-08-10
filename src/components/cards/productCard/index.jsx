@@ -80,7 +80,7 @@ const ProductCard = ({data}) => {
                           values: {
                             amount: count,
                             product: data?.id,
-                            warehouse: values?.warehouse,
+                            warehouse: values?.warehouse?.id,
                           },
                           onSuccess: () => {
                             toast.success("SUCCESSFUL");
