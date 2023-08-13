@@ -14,7 +14,7 @@ const CustomerOrders = () => {
         if (isLoading) return <Loader />;
         if(isError) return <ErrorPage {...{error}}/>
         const infos = [items?.total_orders, items?.active_orders]
-        console.log(items);
+        // console.log(items);
         return (
           <div className="container">
             <Cards infos={infos} />

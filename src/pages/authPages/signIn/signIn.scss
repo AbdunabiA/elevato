@@ -27,6 +27,28 @@ $xxxxl:1921px;
             @media (max-width:$xxl) {
                 height: 60%;
             }
+            @keyframes slideInRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(100%);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            @keyframes slideInLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-100%);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
             .black-square{
                 width: 45%;
                 height: 25%;
@@ -35,6 +57,8 @@ $xxxxl:1921px;
                 left: 30%;
                 border-radius: 16px;
                 background: black;
+                animation: slideInLeft 1s;
+
                 @media (max-width:$xxl) {
                     width: 32%;
                     top: 25%;
@@ -51,6 +75,8 @@ $xxxxl:1921px;
                 z-index: 1;
                 border-radius: 10px;
                 box-shadow: -5px 9px 21px 4px rgba(0, 0, 0, 0.08);
+
+                animation: slideInRight 1s;
                 @media (max-width:$xxl) {
                     width: 28%;
                     top: 42%;
@@ -65,6 +91,7 @@ $xxxxl:1921px;
                 right: 25%;
                 border-radius: 16px;
                 background: #F9C70B;
+                animation: slideInLeft 1s;
                 @media (max-width:$xxl) {
                     width: 40%;
                     top: 60%;

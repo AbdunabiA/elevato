@@ -4,7 +4,7 @@ import { Input } from 'components/fields';
 import { Field } from 'formik';
 import { ContainerForm } from 'modules';
 import './signIn.scss'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signIn } from 'store/auth';
 import { storage } from 'services';
@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 const SignIn = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const location = useLocation()
   const {t} = useTranslation()
   return (
     <div className="container1">
@@ -63,11 +64,13 @@ const SignIn = () => {
               onSuccess={(data)=>{
                 storage.set("token", data?.access);
                 dispatch(signIn({...data, isAuthenticated:true}))
+                // console.log(location.pathname);
+                // navigate({pathname:location?.state ? location.state : '/'})
                 navigate('/')
               }}
               onError={(error)=>{
                 toast.error(error?.response?.data?.message[0]);
-                console.log(error);
+                // console.log(error);
               }}
             >
               {({handleSubmit, isLoading}) => {

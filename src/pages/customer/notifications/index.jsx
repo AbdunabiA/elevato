@@ -17,7 +17,7 @@ export const CustomerNotifications = () => {
         ({items, isLoading, isError, error}) => {
           if(isLoading) return <Loader/>
           if(isError) return <ErrorPage {...{error}}/>
-          console.log(items);
+          // console.log(items);
           return (
             <div className="container">
               <div
@@ -28,7 +28,7 @@ export const CustomerNotifications = () => {
               </div>
               {items?.map((notif, i) => {
                 return (
-                  <div className="users-notification__wrapper">
+                  <div key={i} className="users-notification__wrapper">
                     <h2>{notif[`title_${lang}`]}</h2>
                     <p>{notif[`message_${lang}`]}</p>
                   </div>

@@ -34,7 +34,7 @@ const MoneyCirculation = () => {
             <>
               <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
               <Cards {...{ infos }} />
-              <SubscribersTable />
+              <SubscribersTable data={items?.users_payments}/>
             </>
           );
         }}

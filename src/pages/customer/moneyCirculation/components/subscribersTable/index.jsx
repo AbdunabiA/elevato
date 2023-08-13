@@ -12,7 +12,7 @@ const SubscribersTable = ({ data }) => {
   const dataCorrected = data.reduce((total, curr)=>{
     return [...total, {amount:curr.amount, full_name:`${curr.user.first_name} ${curr.user.last_name}`, comment_ru:curr.comment_ru, comment_uz:curr.comment_uz}]
   }, [])
-  console.log(dataCorrected);
+  // console.log(dataCorrected);
   const columns = [
     {
       title: t("F.I.SH"),
@@ -39,10 +39,9 @@ const SubscribersTable = ({ data }) => {
       </div>
       <WhiteRowTable
         {...{ columns }}
-        onRowClick={(data) => navigate(`/subscriber/${data.id}`)}
+        // onRowClick={(data) => navigate(`/subscriber/${data.id}`)}
         data={dataCorrected}
         hasPagination
-        total={10}
       />
     </>
   );

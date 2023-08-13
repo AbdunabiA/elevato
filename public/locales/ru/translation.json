@@ -2,7 +2,7 @@
   "Asosiy": "Основной",
   "Filiallar": "Филиалы",
   "Mahsulotlar": "Товары",
-  "Pul aylanmasi": "Расчет денег",
+  "Pul aylanmasi": "Циркуляция денег",
   "Statistika": "Статистика",
   "Sozlamalar": "Настройки",
   "Qo'llab quvvatlash": "Поддержка",
@@ -118,5 +118,8 @@
   "Obuna Summasi":"Сумма подписки",
   "Parol o'zgartirish":"Изменить пароль",
   "Sotuv grafigi":"График продаж",
-  "Xabarlar":"Уведомления"
+  "Xabarlar":"Уведомления",
+  "Kiritilgan pul":"Введенный деньги",
+  "Progress":"Прогресс",
+  "Yechib olingan pul":"Снятые деньги"
 }

@@ -9,14 +9,27 @@ import { useTranslation } from "react-i18next";
 const SubscribersTable = ({ data }) => {
   const navigate = useNavigate();
   const {t} = useTranslation()
+  const dataCorrected = data.reduce((total, curr)=>{
+    return [
+      ...total,
+      {
+        ["bet"]: curr?.bet,
+        ["on_progress"]: curr?.on_progress,
+        ["expense"]: curr?.expense,
+        ["status"]: curr?.status?.name,
+        full_name: `${curr?.first_name} ${curr?.last_name}`,
+      },
+    ];
+  }, [])
+  // console.log(dataCorrected);
   const columns = [
     {
       title: t("F.I.SH"),
       key: "full_name",
     },
     {
-      title: t("Obuna Summasi"),
-      key: "subscription",
+      title: t("Kiritilgan pul"),
+      key: "bet",
       render: (value) => (
         <>
           {formatNums(value)} <span style={{ color: "#B2B7C1" }}>$</span>
@@ -24,8 +37,8 @@ const SubscribersTable = ({ data }) => {
       ),
     },
     {
-      title: t("Yechilgan summa"),
-      key: "clean_out",
+      title: t("Progress"),
+      key: "on_progress",
       render: (value) => (
         <>
           {formatNums(value)} <span style={{ color: "#B2B7C1" }}>$</span>
@@ -33,11 +46,16 @@ const SubscribersTable = ({ data }) => {
       ),
     },
     {
-      title: t("Sana"),
-      key: "date",
+      title: t("Yechib olingan pul"),
+      key: "expense",
+      render: (value) => (
+        <>
+          {formatNums(value)} <span style={{ color: "#B2B7C1" }}>$</span>
+        </>
+      ),
     },
     {
-      title: t("Holati"),
+      title: t("Status"),
       key: "status",
     },
   ];
@@ -48,8 +66,8 @@ const SubscribersTable = ({ data }) => {
       </div>
       <WhiteRowTable
         {...{ columns }}
-        onRowClick={(data) => navigate(`/subscriber/${data.id}`)}
-        data={obunachilar}
+        // onRowClick={(data) => navigate(`/subscriber/${data.id}`)}
+        data={dataCorrected}
         hasPagination
         total={10}
       />

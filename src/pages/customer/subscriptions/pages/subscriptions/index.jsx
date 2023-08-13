@@ -5,6 +5,7 @@ import { GetAll } from 'modules'
 import { Link } from 'react-router-dom';
 import './subscriptions.scss'
 import { useTranslation } from 'react-i18next';
+import ErrorPage from 'components/errorPage';
 
 const CustomerSubscriptions = () => {
   const {data} = useGet({
@@ -16,9 +17,10 @@ const CustomerSubscriptions = () => {
   return (
     <GetAll queryKey={['customer-subscriptions']} url={'/users-status-packages'}>
         {
-            ({items, isLoading})=>{
+            ({items, isLoading, isError, error})=>{
                 if(isLoading) return <Loader/>
-                console.log(items);
+                if(isError) return <ErrorPage {...{error}}/>
+                // console.log(items);
                 return (
                   <div className='container'>
                     {

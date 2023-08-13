@@ -7,7 +7,6 @@ import Filters from 'components/filters';
 import Charts from '../../components/carts';
 import Modal from 'components/modal';
 import { useEffect } from 'react';
-import { storage } from 'services';
 import ErrorPage from 'components/errorPage';
 import { useTranslation } from 'react-i18next';
 import './home.scss'
@@ -33,7 +32,7 @@ const CustomerHome = () => {
       {({ items, isLoading, isError, error }) => {
         if (isLoading) return <Loader />;
         if (isError) return <ErrorPage error={error}/>
-        console.log(items);
+        // console.log(items);
         const infos = [items?.bonus, items?.cashback, items?.followers_count];
         return (
           <div className="container">

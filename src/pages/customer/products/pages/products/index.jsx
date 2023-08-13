@@ -21,7 +21,7 @@ const CustomerProducts = () => {
   },[lang, data])
   if (isLoading) return <Loader />;
   if (isError) return <ErrorPage {...{error}}/>
-  console.log(data);
+  // console.log(data);
   return (
             <div className='container'>
               <div className='users-products__categories'>

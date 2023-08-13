@@ -1,7 +1,7 @@
 import Filters from "components/filters";
 import { GetAll } from "modules";
 import React, { useState } from "react";
-import { getLastMonth } from "services/dates";
+import { thisMonth } from "services/dates";
 import Cards from "../../components/cards";
 import SubscribersTable from "../../components/subscribersTable";
 import moment from "moment";
@@ -9,14 +9,15 @@ import Loader from "components/loader";
 import ErrorPage from "components/errorPage";
 
 const CustomerMoneyCirculation = () => {
-  const [staticDate, setStaticDate] = useState(getLastMonth());
+  const [staticDate, setStaticDate] = useState(thisMonth());
   const [month, setMonth] = useState(null);
 
   return (
     <GetAll queryKey={["customer-money-circulation"]} url={"/users-finance/"}>
-      {({ items, isLoading }) => {
+      {({ items, isLoading, isError, error }) => {
         if (isLoading) return <Loader />;
-        console.log(items);
+        if (isError) return <ErrorPage {...{error}}/>
+        // console.log(items);
         const infos = [
           items?.total_money,
           items?.on_progress,
