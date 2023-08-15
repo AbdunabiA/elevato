@@ -7,7 +7,7 @@ import { usePost } from "crud";
 
 const Main = ({
   url = "",
-  method,
+  method='post',
   params={},
   children,
   fields,
