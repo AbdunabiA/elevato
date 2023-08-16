@@ -9,6 +9,7 @@ import Charts from "../../components/charts";
 import { useTranslation } from "react-i18next";
 import Loader from "components/loader";
 
+
 const Home = () => {
   const [staticDate, setStaticDate] = useState(getLastMonth());
   const [month, setMonth] = useState(null);
@@ -23,7 +24,7 @@ const Home = () => {
         url={`/admin-main/month/${
           month ? moment(month).format("YYYY-MM") : staticDate
         }/`}
-        onError={(error)=>console.log('ERROR', error)}
+        onError={()=>{}}
       >
         {({items, isLoading, isError, error}) => {
         if(isLoading) return <Loader/>

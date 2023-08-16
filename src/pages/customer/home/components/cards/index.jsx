@@ -13,6 +13,7 @@ import Loader from "components/loader";
 import Modal from "components/modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Coins from "components/coins";
 
 
 const Cards = ({ infos }) => {
@@ -75,6 +76,10 @@ const Cards = ({ infos }) => {
           <h1 className="bonus-card__title">{t("Kunlik bonus")}</h1>
         )}
       </div>
+      {
+        isLoading ? <Coins/> : null
+      }
+
       {bonusModal.show ? (
         <Modal onClose={() => setBonusModal({ show: false, data: null })}>
           <div style={{ padding: "20px" }}>

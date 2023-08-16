@@ -191,7 +191,9 @@ const SubscriberInfoForm = ({data}) => {
                     <div 
                       className='profile-offer-id'
                       onClick={(e)=>{
-                        navigator.clipboard.writeText(e.target.innerText);
+                        navigator.clipboard.writeText(
+                          `https://elevatto.netlify.app/sign-up?id=${e.target.innerText}`
+                        );
                         toast.success('COPIED')
                       }}
                     >
