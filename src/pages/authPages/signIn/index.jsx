@@ -11,15 +11,17 @@ import { storage } from 'services';
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import qs from "qs";
 
 const SignIn = () => {
+  const location = useLocation();
+  const params = qs.parse(location.search, { ignoreQueryPrefix: true });
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const location = useLocation()
   const {t} = useTranslation()
   return (
     <div className="container1">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="login-wrapper">
         <div className="login-wrapper__left">
           <div className="login-wrapper__left__logo">
@@ -47,33 +49,36 @@ const SignIn = () => {
               {t("Akkauntingizga kiring")}!
             </h1>
             <p className="login-wrapper__right__redirect">
-              {t("Akkauntingiz mavjud emasmi")}? <span onClick={()=>navigate('/sign-up')}>{t("Bu yerga bosing")}!</span>
+              {t("Akkauntingiz mavjud emasmi")}?{" "}
+              <span onClick={() => navigate({ pathname: "/sign-up", search:qs.stringify(params) })}>
+                {t("Bu yerga bosing")}!
+              </span>
             </p>
-            <ContainerForm 
+            <ContainerForm
               fields={[
                 {
-                  name:'userinput',
-                  required:true,
+                  name: "userinput",
+                  required: true,
                 },
                 {
-                  name:'password',
-                  required:true,
-                }
+                  name: "password",
+                  required: true,
+                },
               ]}
-              url='/login/'
-              onSuccess={(data)=>{
+              url="/login/"
+              onSuccess={(data) => {
                 storage.set("token", data?.access);
-                dispatch(signIn({...data, isAuthenticated:true}))
+                dispatch(signIn({ ...data, isAuthenticated: true }));
                 // console.log(location.pathname);
                 // navigate({pathname:location?.state ? location.state : '/'})
-                navigate('/')
+                navigate("/");
               }}
-              onError={(error)=>{
+              onError={(error) => {
                 toast.error(error?.response?.data?.message[0]);
                 // console.log(error);
               }}
             >
-              {({handleSubmit, isLoading}) => {
+              {({ handleSubmit, isLoading }) => {
                 return (
                   <>
                     <Field
@@ -87,14 +92,14 @@ const SignIn = () => {
                       label={t("Parol")}
                       component={Input}
                       wrapperClassName={"login-input"}
-                      type='password'
+                      type="password"
                     />
                     {/* <p>Elektron pochta orqali kirish</p> */}
                     <div className="login-page__button-wrapper">
                       <Button
                         text={t("Kirish")}
                         onClick={handleSubmit}
-                        type={'submit'}
+                        type={"submit"}
                         disabled={isLoading ? true : false}
                       />
                     </div>

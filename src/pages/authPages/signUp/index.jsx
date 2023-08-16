@@ -1,10 +1,10 @@
 import logo from "assets/icons/LogoWithoutBg.svg";
 import { Button } from "components/buttons";
-import { DropZone, Input } from "components/fields";
+import { Input } from "components/fields";
 import { Field } from "formik";
 import { ContainerForm } from "modules";
 import "./signUp.scss";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { signIn } from "store/auth";
@@ -12,9 +12,13 @@ import { api, storage } from "services";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
+import qs from "qs";
+import { get } from "lodash";
 
 const SignUp = () => {
   const navigate = useNavigate()
+  const location = useLocation();
+  const params = qs.parse(location.search, { ignoreQueryPrefix: true });
   const [userInfo, setUserInfo] = useState({ phone_number: false, phone_verified:false});
   const dispatch = useDispatch()
   const {t} = useTranslation()
@@ -78,10 +82,12 @@ const SignUp = () => {
         </div>
         <div className="login-wrapper__right">
           <div>
-            <h1 className="login-wrapper__right__title">{t("Akkaunt yarating")}!</h1>
+            <h1 className="login-wrapper__right__title">
+              {t("Akkaunt yarating")}!
+            </h1>
             <p className="login-wrapper__right__redirect">
               {t("Akkauntingiz mavjudmi")}?
-              <span onClick={() => navigate("/sign-in")}>
+              <span onClick={() => navigate({ pathname: "/sign-in", search:qs.stringify(params) })}>
                 {t("Bu yerga bosing")}!
               </span>
             </p>
@@ -113,13 +119,13 @@ const SignUp = () => {
                       {
                         name: "password",
                         required: true,
-                        min:8,
+                        min: 8,
                       },
                       {
                         name: "confirm_password",
                         compare: "password",
                         required: true,
-                        min:8
+                        min: 8,
                       },
                       {
                         name: "passport_series",
@@ -134,10 +140,11 @@ const SignUp = () => {
                       {
                         name: "offer_id",
                         required: true,
+                        value:get(params, 'offer_id', '')
                       },
                       {
-                        name:"dateOfBirth"
-                      }
+                        name: "dateOfBirth",
+                      },
                     ]
                   : [
                       {
@@ -168,8 +175,8 @@ const SignUp = () => {
                   });
                   dispatch(signIn({ ...data, isAuthenticated: false }));
                   storage.set("token", data?.access);
-                  setSec(59)
-                  setMinut(1)
+                  setSec(59);
+                  setMinut(1);
                 } else if (!userInfo?.phone_verified) {
                   setUserInfo((prev) => {
                     return { ...prev, phone_verified: true };
@@ -178,13 +185,14 @@ const SignUp = () => {
                   storage.set("token", data?.access);
                   // clearInterval(interval);
                 } else {
-                  storage.remove('token')
+                  storage.remove("token");
                   // clearInterval(interval);
-                  navigate({ pathname: "/sign-in" , replace:true});
+                  navigate({ pathname: "/sign-in", replace: true });
                 }
               }}
               onError={(error) => {
-                toast.error(error?.message);
+                toast.error(error?.response?.data?.message);
+                console.log(error);
               }}
             >
               {({ handleSubmit, isLoading }) => {
@@ -253,12 +261,12 @@ const SignUp = () => {
                               />
                             </div>
                           </div>
-                          <Field
+                          {/* <Field
                             name="offer_id"
                             label={t("Taklif id")}
                             component={Input}
                             wrapperClassName={"login-input"}
-                          />
+                          /> */}
                           <Field
                             name="dateOfBirth"
                             label={t("Tug'ilgan sana")}
