@@ -8,7 +8,7 @@ import plus from "assets/icons/AddPlusIconWhite.svg";
 import minus from "assets/icons/CircleMinusIconWhite.svg";
 import { useTranslation } from "react-i18next";
 import { usePost } from "crud";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loader from "components/loader";
 import Modal from "components/modal";
 import { ToastContainer, toast } from "react-toastify";
@@ -20,6 +20,10 @@ const Cards = ({ infos }) => {
   const {t, i18n} = useTranslation()
   const {mutate:dailyBonus, isLoading, isError, error} = usePost()
   const [bonusModal, setBonusModal] = useState({show:false, data:null})
+  const [coins, setCoins] = useState(false)
+
+  
+
   const cards = [
     {
       icon: shoppingCart,
@@ -56,6 +60,7 @@ const Cards = ({ infos }) => {
       <div
         className="bonus-card"
         onClick={() => {
+          setCoins(true)
           dailyBonus({
             url: "/users-get-daily-bonus/",
             method: "post",
@@ -77,11 +82,14 @@ const Cards = ({ infos }) => {
         )}
       </div>
       {
-        isLoading ? <Coins/> : null
+        coins ? <Coins/> : null
       }
 
       {bonusModal.show ? (
-        <Modal onClose={() => setBonusModal({ show: false, data: null })}>
+        <Modal onClose={() => {
+          setBonusModal({ show: false, data: null });
+          setCoins(false)
+        }}>
           <div style={{ padding: "20px" }}>
             <h2>{bonusModal?.data?.message[i18n.language]}</h2>
             <p style={{ marginTop: "10px" }}>
