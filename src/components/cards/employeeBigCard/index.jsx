@@ -4,20 +4,22 @@ import './employeeBigCard.scss'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-const EmployeeBigCard = ({data}) => {
+const EmployeeBigCard = ({data, onClick=()=>{}, allIncome=true}) => {
   const navigate = useNavigate()
   const {t} = useTranslation()
   return (
-    <div className="employee-big-card" onClick={()=>navigate(`/employee/${data.id}`)}>
+    <div className="employee-big-card" onClick={onClick}>
       <div className="top">
         <div className="top__avatar-wrapper">
           <img src={`https://elevato.pythonanywhere.com${data.photo}`} alt="img" />
         </div>
         <div className="overall-infos">
-          <div>
+          {
+            allIncome ? <div>
             <h1>{formatNums(14000000)}</h1>
             <p>{t("Umumiy daromad")}</p>
-          </div>
+          </div> : null
+          }
           {/* <div>
             <h1>{formatNums(5000)}</h1>
             <p>Umumiy ball</p>

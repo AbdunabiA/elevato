@@ -109,6 +109,7 @@ $xxxxl:1921px;
                     text-align: left;
                     border-radius: 8px;
                     position: relative;
+                    transition: .3s;
                     @media (max-width:$xxxl) {
                         font-size: 16px;
                     }

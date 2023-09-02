@@ -16,7 +16,7 @@ const Card = ({card}) => {
         </div>
       </div>
       {
-        card?.right_side ? <div className='card__right'>
+        card?.right_side ? <div className='card__right' onClick={card?.right_side_click}>
         <div>
           <img src={card?.right_icon} alt="" />
         </div>

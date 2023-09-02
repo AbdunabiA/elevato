@@ -12,12 +12,7 @@ import { useSelector } from 'react-redux';
 const Sidebar = ({sideMenu, setSideMenu}) => {
   const {t} = useTranslation()
   const navigate = useNavigate();
-  // const [role, setRole] = useState("admin");
-  // if (storage.get("role") !== role) {
-  //   setRole(storage.get("role"));
-  // } else {
-  //   setRole("admin");
-  // }
+  
   const role = useSelector((state) => state.auth.role);
  
   return (

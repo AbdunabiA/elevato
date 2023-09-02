@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
 import qs from "qs";
 import { get } from "lodash";
+import CustomInputMask from "components/fields/inputMask";
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -52,7 +53,7 @@ const SignUp = () => {
       console.log(data);
     })
     .catch((error)=>{
-      toast.error(error.message)
+      toast.error(error?.response?.data?.message);
     })
   }
   
@@ -100,6 +101,9 @@ const SignUp = () => {
                         min: 13,
                         value: "+998",
                         required: true,
+                        onSubmitValue:(value)=>{
+                          return `+${value.match(/\d+/g).join('')}`
+                        }
                       },
                     ]
                   : userInfo?.phone_verified
@@ -192,7 +196,7 @@ const SignUp = () => {
               }}
               onError={(error) => {
                 toast.error(error?.response?.data?.message);
-                console.log(error);
+                // console.log(error);
               }}
             >
               {({ handleSubmit, isLoading }) => {
@@ -202,8 +206,9 @@ const SignUp = () => {
                       <Field
                         name="email_phone_number"
                         label={t("Telefon raqam")}
-                        component={Input}
+                        component={CustomInputMask}
                         wrapperClassName={"login-input"}
+                        mask={'+998 (99) 999-99-99'}
                       />
                     ) : userInfo?.phone_verified ? (
                       <div className="registration-fields">

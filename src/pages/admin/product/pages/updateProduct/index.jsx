@@ -16,7 +16,7 @@ import { usePost } from "crud";
 
 const UpdateProduct = () => {
     const {id} = useParams()
-    const {i18n} = useTranslation();
+    const {i18n, t} = useTranslation();
     const lang = i18n.language;
     const queryClient = useQueryClient()
     const {mutate:deleteProduct, isLoading:deleteLoading} = usePost()
@@ -82,12 +82,12 @@ const UpdateProduct = () => {
                                 <div className="product-add-fields__left">
                                   <Field
                                     name="name"
-                                    label="Mahsulot to'liq nomi"
+                                    label={t("Mahsulot to'liq nomi")}
                                     component={Input}
                                   />
                                   <Field
                                     name="price"
-                                    label="Mahsulot narxi"
+                                    label={t("Mahsulot narxi")}
                                     component={Input}
                                     type="number"
                                   />
@@ -95,7 +95,7 @@ const UpdateProduct = () => {
                                 <div className="product-add-fields__right">
                                   <Field
                                     name="category"
-                                    label="Kategoriyasi"
+                                    label={t("Kategoriya")}
                                     isSearchable
                                     component={AsyncSelect}
                                     loadOptionsUrl="/categories/"
@@ -106,7 +106,7 @@ const UpdateProduct = () => {
                                   />
                                   <Field
                                     name="manufacturer"
-                                    label="Ishlab chiqaruvchi"
+                                    label={t("Ishlab chiqaruvchi")}
                                     component={Input}
                                   />
                                 </div>
@@ -115,14 +115,14 @@ const UpdateProduct = () => {
                                 <div className="product-add-fields__left">
                                   <Field
                                     name="about_uz"
-                                    label="Batafsil UZ"
+                                    label={`${t("Batafsil")} UZ`}
                                     component={TextArea}
                                   />
                                 </div>
                                 <div className="product-add-fields__right">
                                   <Field
                                     name="about_ru"
-                                    label="Batafsil RU"
+                                    label={`${t("Batafsil")} RU`}
                                     component={TextArea}
                                   />
                                 </div>
@@ -141,19 +141,22 @@ const UpdateProduct = () => {
                             </div>
                             <div className="add-product__button">
                               <Button
-                                text={"O'chirish"}
+                                text={t("O'chirish")}
                                 type={"button"}
                                 color={"#FF0000"}
-                                onClick={()=>deleteProduct({
-                                  method:'delete',
-                                  url:`/admin-products/${id}`,
-                                  onSuccess:()=>navigate(-1),
-                                  onError:(error)=>toast.error(error.message)
-                                })}
-                                disabled={deleteLoading ? true: false}
+                                onClick={() =>
+                                  deleteProduct({
+                                    method: "delete",
+                                    url: `/admin-products/${id}`,
+                                    onSuccess: () => navigate(-1),
+                                    onError: (error) =>
+                                      toast.error(error.message),
+                                  })
+                                }
+                                disabled={deleteLoading ? true : false}
                               />
                               <Button
-                                text={"Saqlash"}
+                                text={t("Saqlash")}
                                 onClick={handleSubmit}
                                 type={"submit"}
                                 disabled={isLoading ? true : false}

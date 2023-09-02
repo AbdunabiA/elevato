@@ -5,7 +5,10 @@
     border-radius: 9px;
     padding: 20px;
     cursor: pointer;
-
+    transition: .3S;
+    &:hover{
+        box-shadow: 0px 2px 6px gray;
+    }
     &>div{
         display: flex;
         align-items: center;

@@ -12,7 +12,13 @@ const EmployeeBigCards = ({data}) => {
       <div className="big-cards__wrapper">
         {
           data?.employees.map((el, i)=>{
-            return <EmployeeBigCard data={el} key={i}  />;
+            return (
+              <EmployeeBigCard
+                data={el}
+                key={i}
+                onClick={() => navigate(`/employee/${el.id}`)}
+              />
+            );
           })
         }
       </div>

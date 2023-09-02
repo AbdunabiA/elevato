@@ -1,0 +1,21 @@
+$sm: 578px;
+$md: 769px;
+$lg: 993px;
+$xl: 1201px;
+$xxl: 1401px;  
+$xxxl:1601px;
+$xxxxl:1921px;
+
+.cards{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 30px;
+        gap: 10px;
+        @media (max-width:$xl) {
+            justify-content: space-around;
+            gap: 20px;
+        }
+        
+    }

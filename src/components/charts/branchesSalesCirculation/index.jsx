@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 
 const BranchesSalesCirculation = ({data}) => {
   const {t} = useTranslation()
+  // console.log(data);
   
     const branches = Object.keys(data).reduce((prev,curr)=>{
       return [

@@ -17,8 +17,10 @@ $xxxxl:1921px;
     display: flex;
     align-items: center;
     white-space: nowrap;
+    transition: .3s;
     &:hover{
         opacity: .8;
+        box-shadow: 1px 2px 6px gray;
     }
     @media (max-width:$xxl) {
         padding: 10px 20px;

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const ProductAddForm = () => {
-  const {i18n} = useTranslation()
+  const {i18n, t} = useTranslation()
   const lang = i18n.language
   const navigate = useNavigate()
   return (
@@ -55,17 +55,17 @@ const ProductAddForm = () => {
                   <>
                     <div>
                       <ToastContainer />
-                      <h1 className="title">Mahsulot qo'shish</h1>
+                      <h1 className="title">{t("Mahsulot qo'shish")}</h1>
                       <div className="product-add-fields">
                         <div className="product-add-fields__left">
                           <Field
                             name="name"
-                            label="Mahsulot to'liq nomi"
+                            label={t("Mahsulot to'liq nomi")}
                             component={Input}
                           />
                           <Field
                             name="price"
-                            label="Mahsulot narxi"
+                            label={t("Mahsulot narxi")}
                             component={Input}
                             type="number"
                           />
@@ -73,7 +73,7 @@ const ProductAddForm = () => {
                         <div className="product-add-fields__right">
                           <Field
                             name="category"
-                            label="Kategoriyasi"
+                            label={t("Kategoriya")}
                             isSearchable
                             component={AsyncSelect}
                             loadOptionsUrl="/categories/"
@@ -84,7 +84,7 @@ const ProductAddForm = () => {
                           />
                           <Field
                             name="manufacturer"
-                            label="Ishlab chiqaruvchi"
+                            label={t("Ishlab chiqaruvchi")}
                             component={Input}
                           />
                         </div>
@@ -93,14 +93,14 @@ const ProductAddForm = () => {
                         <div className="product-add-fields__left">
                           <Field
                             name="about_uz"
-                            label="Batafsil UZ"
+                            label={`${t("Batafsil")} UZ`}
                             component={TextArea}
                           />
                         </div>
                         <div className="product-add-fields__right">
                           <Field
                             name="about_ru"
-                            label="Batafsil RU"
+                            label={`${t("Batafsil")} RU`}
                             component={TextArea}
                           />
                         </div>
@@ -108,7 +108,7 @@ const ProductAddForm = () => {
                     </div>
                     <div className="add-product__button">
                       <Button
-                        text={"Saqlash"}
+                        text={t("Saqlash")}
                         onClick={handleSubmit}
                         type={"submit"}
                         disabled={isLoading ? true : false}

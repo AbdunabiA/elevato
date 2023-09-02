@@ -26,6 +26,10 @@ $xxxxl:1921px;
         background: #F9C70B;
         cursor: pointer;
         border-radius: 20px;
+        transition: .3s;
+        &:hover{
+            box-shadow: 0px 1px 5px gray;
+        }
         @media (max-width:$xxxl) {
             width: 260px;
             height: 110px;

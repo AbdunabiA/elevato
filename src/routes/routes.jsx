@@ -3,6 +3,8 @@ import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Stat
 
 import {CustomerHome, CustomerProducts, CustomerMoneyCirculation, CustomerOrders, CustomerSubscriptions, CustomerProfile, CustomerNotifications} from 'pages/customer'
 
+import { EmployeeHome, EmployeeMoneyCirculation, EmployeeBranches, EmployeeBranchEmployees, EmployeeProducts, EmployeeProductsHistory, EmployeeSalesHistory, EmployeeProduct } from "pages/emplyee";
+
 import { SignIn, SignUp } from "pages/authPages";
 
 const pages = {
@@ -38,9 +40,9 @@ const pages = {
           component: <AddProduct />,
         },
         {
-          path:'/update-product/:id',
-          component:<UpdateProduct/>
-        }
+          path: "/update-product/:id",
+          component: <UpdateProduct />,
+        },
       ],
     },
     {
@@ -110,9 +112,47 @@ const pages = {
       component: <CustomerProfile />,
     },
     {
-      path:'/notifications',
-      component:<CustomerNotifications/>
-    }
+      path: "/notifications",
+      component: <CustomerNotifications />,
+    },
+  ],
+  employee: [
+    {
+      path: "/",
+      component: <EmployeeHome />,
+    },
+    {
+      path: "/money-circulation",
+      component: <EmployeeMoneyCirculation />,
+    },
+    {
+      path: "/branches",
+      component: <EmployeeBranches />,
+      children: [
+        {
+          path: "/branches/employees",
+          component: <EmployeeBranchEmployees />,
+        },
+      ],
+    },
+    {
+      path: "/products",
+      component: <EmployeeProducts />,
+      children: [
+        {
+          path: "/products/history",
+          component: <EmployeeProductsHistory />,
+        },
+        {
+          path: "/products/sales-history",
+          component: <EmployeeSalesHistory />,
+        },
+        {
+          path: '/products/:id',
+          component:<EmployeeProduct/>,
+        }
+      ],
+    },
   ],
 };
 

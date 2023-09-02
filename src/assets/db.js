@@ -59,11 +59,11 @@ export const menus = {
              path: "/money-circulation",
              icon: pulAylanmasi,
            },
-          //  {
-          //    title: "Statistika",
-          //    path: "/statistics",
-          //    icon: statistika,
-          //  },
+           //  {
+           //    title: "Statistika",
+           //    path: "/statistics",
+           //    icon: statistika,
+           //  },
            {
              title: "Obunalar",
              path: "/subscriptions",
@@ -73,6 +73,38 @@ export const menus = {
              title: "Buyurtmalar",
              path: "/orders",
              icon: shoppingCart,
+           },
+         ],
+         employee: [
+           {
+             title: "Asosiy",
+             path: "/",
+             icon: asosiy,
+           },
+           {
+             title: "Filiallar",
+             path: "/branches",
+             icon: filiallar,
+           },
+           {
+             title: "Mahsulotlar",
+             path: "/products",
+             icon: mahsulot,
+           },
+           {
+             title: "Pul aylanmasi",
+             path: "/money-circulation",
+             icon: pulAylanmasi,
+           },
+           {
+             title: "Statistika",
+             path: "/statistics",
+             icon: statistika,
+           },
+           {
+             title: "Obunalar",
+             path: "/subscriptions",
+             icon: obunalar,
            },
          ],
        };
@@ -91,6 +123,18 @@ export const helpers = {
            },
          ],
          ordinary_user: [
+           {
+             title: "Sozlamalar",
+             path: "/",
+             icon: sozlamalar,
+           },
+           {
+             title: "Qo'llab quvvatlash",
+             path: "/",
+             icon: qollabQuvvatlash,
+           },
+         ],
+         employee: [
            {
              title: "Sozlamalar",
              path: "/",

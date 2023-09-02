@@ -15,7 +15,7 @@ export default function  Table({ columns, data, hasPagination=false }) {
       const [perPage, setPerPage] = useState(() => {
         +get(params, "perPage", 5);
       });
-      const total = data.length;
+      const total = data?.length;
       const pagesAmount = Math.ceil(total / perPage);
       const handlePageChange = (val) => {
         if (page > 1 && val < 0) {
@@ -48,7 +48,7 @@ export default function  Table({ columns, data, hasPagination=false }) {
 
       const from = page * perPage - perPage;
       const to = page * perPage;
-      const paginatedData = data.slice(from, to);
+      const paginatedData = data?.slice(from, to);
     return (
       <div>
         <div className={"table__wrapper"}>

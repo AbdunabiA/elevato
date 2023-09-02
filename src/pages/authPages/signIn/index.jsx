@@ -71,6 +71,7 @@ const SignIn = () => {
                 dispatch(signIn({ ...data, isAuthenticated: true }));
                 // console.log(location.pathname);
                 // navigate({pathname:location?.state ? location.state : '/'})
+                console.log(data);
                 navigate("/");
               }}
               onError={(error) => {

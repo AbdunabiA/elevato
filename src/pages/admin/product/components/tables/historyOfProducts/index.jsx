@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const HistoryOfProducts = () => {
   const [inputVal, setInputVal] = useState();
-  console.log(inputVal);
+  // console.log(inputVal);
   const filteredData = mahsulotTarqatish2.filter((el) =>
     el.branch.toLowerCase().includes(inputVal?.toLowerCase())
   );

@@ -121,5 +121,17 @@
   "Xabarlar":"Уведомления",
   "Kiritilgan pul":"Введенный деньги",
   "Progress":"Прогресс",
-  "Yechib olingan pul":"Снятые деньги"
+  "Yechib olingan pul":"Снятые деньги",
+  "Ism va Familiya" : "Имя и фамилия",
+  "Sotuv tarixi":"История продаж",
+  "Mahsulot tarixi":"История товара",
+  "Jadval":"Таблица",
+  "Ko'rish":"Посмотреть",
+  "Mahsulot to'liq nomi":"Полное название товара",
+  "Mahsulot narxi":"Цена товара",
+  "Saqlash":"Сохранить",
+  "O'chirish":"Удалить",
+  "Karta qo'shish":"Добавить карту",
+  "Kartani o'chirish":"Удалить карту",
+  "Dollar" : "Доллары"
 }

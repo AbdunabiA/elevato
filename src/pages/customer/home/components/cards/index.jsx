@@ -7,13 +7,14 @@ import { formatNums } from "services/formatNums";
 import plus from "assets/icons/AddPlusIconWhite.svg";
 import minus from "assets/icons/CircleMinusIconWhite.svg";
 import { useTranslation } from "react-i18next";
-import { usePost } from "crud";
+import { useGet, usePost } from "crud";
 import { useEffect, useState } from "react";
 import Loader from "components/loader";
 import Modal from "components/modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Coins from "components/coins";
+import { get } from "lodash";
 
 
 const Cards = ({ infos }) => {
@@ -22,8 +23,11 @@ const Cards = ({ infos }) => {
   const [bonusModal, setBonusModal] = useState({show:false, data:null})
   const [coins, setCoins] = useState(false)
 
-  
-
+  const { data } = useGet({
+    queryKey: ["user-info"],
+    url: "/users-profile",
+  });
+  // console.log('USER DATA', data?.data?.user?.offer_id);
   const cards = [
     {
       icon: shoppingCart,
@@ -44,6 +48,14 @@ const Cards = ({ infos }) => {
       val: i18n.language === 'ru' || i18n.language == 'Ru-ru' ? "" : "ta",
       right_side: true,
       right_icon: plus,
+      right_side_click:()=>{
+        navigator.clipboard.writeText(
+          `https://elevatto.netlify.app/sign-up?offer_id=${get(
+            data,'data.user.offer_id', ''
+          )}`
+        );
+        toast.success("COPIED");
+      }
     },
     // {
     //   icon: shoppingCart,
