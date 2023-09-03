@@ -1,7 +1,7 @@
 import Filters from "components/filters"
 import { GetAll } from "modules"
 import { useState } from "react";
-import { getLastMonth } from "services/dates";
+import { thisMonth } from "services/dates";
 import Cards from "../../components/cards";
 import SubscriptionsTable from "../../components/table";
 import Loader from "components/loader";
@@ -9,7 +9,7 @@ import Loader from "components/loader";
 
 
 const Subscriptions = () => {
-    const [staticDate, setStaticDate] = useState(getLastMonth());
+    const [staticDate, setStaticDate] = useState(thisMonth());
     const [month, setMonth] = useState(null);
 
   return (

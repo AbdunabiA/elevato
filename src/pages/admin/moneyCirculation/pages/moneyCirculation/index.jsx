@@ -1,7 +1,7 @@
 import Filters from 'components/filters'
 import { GetAll } from 'modules'
 import React, { useState } from 'react'
-import { getLastMonth } from 'services/dates';
+import { thisMonth } from 'services/dates';
 import Cards from '../../components/cards';
 import SubscribersTable from '../../components/subscribersTable';
 import moment from 'moment';
@@ -9,7 +9,7 @@ import Loader from 'components/loader';
 import ErrorPage from 'components/errorPage';
 
 const MoneyCirculation = () => {
-  const [staticDate, setStaticDate] = useState(getLastMonth());
+  const [staticDate, setStaticDate] = useState(thisMonth());
   const [month, setMonth] = useState(null);
   
   return (

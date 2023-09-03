@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./home.scss";
 import {GetAll} from "modules";
-import { getLastMonth } from "services/dates";
+import { thisMonth } from "services/dates";
 import moment from "moment";
 import Filters from "components/filters";
 import Cards from "../../components/cards";
@@ -11,7 +11,7 @@ import Loader from "components/loader";
 
 
 const Home = () => {
-  const [staticDate, setStaticDate] = useState(getLastMonth());
+  const [staticDate, setStaticDate] = useState(thisMonth());
   const [month, setMonth] = useState(null);
   const {t, i18n} = useTranslation()
   // console.log(
