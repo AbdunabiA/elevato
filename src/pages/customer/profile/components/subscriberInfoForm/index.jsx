@@ -67,6 +67,7 @@ const SubscriberInfoForm = ({ data }) => {
   const {mutate:deleteCard, isLoading:cardDeleteLoading} = usePost()
   return (
     <div className="subscriber-info-form__wrapper">
+      <ToastContainer />
       {cardModal ? (
         <Modal onClose={() => setCardModal(false)}>
           <ContainerForm
@@ -85,7 +86,7 @@ const SubscriberInfoForm = ({ data }) => {
               }
             }}
             onError={(error) => {
-              toast.error(get(error,'response.data.message', error?.message));
+              toast.error(get(error, "response.data.message", error?.message));
             }}
             fields={
               cardWritten
@@ -195,30 +196,38 @@ const SubscriberInfoForm = ({ data }) => {
               },
             ]}
             url="/reset-password/"
-            onSuccess={()=>{
-              toast.success('SUCCESSFUL')
-              setPasswordModal(false)
+            onSuccess={() => {
+              toast.success("SUCCESSFUL");
+              setPasswordModal(false);
             }}
-            onError={(error)=>{
+            onError={(error) => {
               toast.error(get(error, "response.data.message", error?.message));
             }}
             method="put"
           >
             {({ handleSubmit: submitPassword, isLoading: passwordLoading }) => {
               return (
-                <div style={{display:"flex", flexDirection:"column", gap:"20px", alignItems:"center", padding:"30px"}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "20px",
+                    alignItems: "center",
+                    padding: "30px",
+                  }}
+                >
                   <Field component={Input} name="password" label={t("Parol")} />
                   <Field
                     component={Input}
                     name="confirm_password"
                     label={t("Parolni tasdiqlang")}
                   />
-                    <Button
-                      text={t("Saqlash")}
-                      onClick={submitPassword}
-                      disabled={passwordLoading}
-                      type={"submit"}
-                    />
+                  <Button
+                    text={t("Saqlash")}
+                    onClick={submitPassword}
+                    disabled={passwordLoading}
+                    type={"submit"}
+                  />
                 </div>
               );
             }}
@@ -254,18 +263,20 @@ const SubscriberInfoForm = ({ data }) => {
           {
             name: "card_number",
             min: 16,
-            required: true,
+            // required: true,
             value: get(data, "card.number", ""),
             onSubmitValue: (value) => {
-              return `${value.match(/\d+/g).join("")}`;
+              if (typeof value === "number") return value;
+              return `${value?.match(/\d+/g).join("")}`;
             },
           },
           {
             name: "card_expirey",
-            required: true,
+            // required: true,
             value: get(data, "card.expire", ""),
             onSubmitValue: (value) => {
-              return `${value.match(/\d+/g).join("")}`;
+              if (typeof value === "number") return value;
+              return `${value?.match(/\d+/g).join("")}`;
             },
           },
           {
@@ -293,16 +304,17 @@ const SubscriberInfoForm = ({ data }) => {
           //   // value:get(data, 'user.email', '')
           // },
         ]}
-        url="/change-user-info/"
+        url="/change-user-own-info/"
         method={"patch"}
         onSuccess={() => {
           toast.success("successful");
+          queryClient.invalidateQueries("customer-profile");
         }}
         onError={(error) => {
           toast.error(get(error, "response.data.message", error?.message));
         }}
       >
-        {({ handleSubmit, isLoading: patchLoading }) => (
+        {({ handleSubmit, isLoading: patchLoading, values }) => (
           <>
             <div className="subscriber-info-form__wrapper__top">
               <div className="subscriber-info-form__wrapper__top__left">
@@ -360,6 +372,7 @@ const SubscriberInfoForm = ({ data }) => {
                     type="number"
                     wrapperClassName="card_num"
                     mask={"9999 9999 9999 9999"}
+                    disabled
                   />
                   <Field
                     name="card_expirey"
@@ -367,6 +380,7 @@ const SubscriberInfoForm = ({ data }) => {
                     component={CustomInputMask}
                     wrapperClassName="card_exp"
                     mask={"99/99"}
+                    disabled
                   />
                 </div>
                 <div
@@ -419,13 +433,14 @@ const SubscriberInfoForm = ({ data }) => {
             </div>
             {/* <ToastContainer/> */}
             <div className="form-buttons">
-              <Button 
-                text={t("Parol o'zgartirish")} 
-                type={'button'}
-                onClick={()=>setPasswordModal(true)}
+              <Button
+                text={t("Parol o'zgartirish")}
+                type={"button"}
+                onClick={() => setPasswordModal(true)}
               />
               <Button
                 text={t("Kartani o'chirish")}
+                disabled={cardDeleteLoading}
                 type={"button"}
                 color={"#FF0000"}
                 onClick={() =>
@@ -448,20 +463,20 @@ const SubscriberInfoForm = ({ data }) => {
                 text={t("Karta qo'shish")}
                 type={"button"}
                 onClick={() => {
+                  // console.log(values);
                   setCardModal(true);
                 }}
               />
               <Button
                 text={t("Saqlash")}
                 onClick={handleSubmit}
-                disabled={patchLoading ? true : false}
+                disabled={patchLoading}
                 type={"submit"}
               />
             </div>
           </>
         )}
       </ContainerForm>
-      <ToastContainer />
     </div>
   );
 };

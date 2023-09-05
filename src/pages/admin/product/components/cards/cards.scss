@@ -10,8 +10,9 @@ $xxxxl:1921px;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: start;
         margin-top: 30px;
+        gap: 30px;
         @media (max-width:$xl) {
             gap: 20px;
         }
@@ -56,4 +57,20 @@ $xxxxl:1921px;
                 }
             }
         }
+        .category-create-form{
+            padding: 20px;
+            .category-create-inputs{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 20px;
+                
+            }
+            .category-create-button{
+                display: flex;
+                align-items: center;
+                justify-content: end;
+            }
+        }
+        
     }

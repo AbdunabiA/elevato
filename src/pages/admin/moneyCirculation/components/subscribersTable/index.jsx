@@ -10,9 +10,11 @@ const SubscribersTable = ({ data }) => {
   const navigate = useNavigate();
   const {t} = useTranslation()
   const dataCorrected = data.reduce((total, curr)=>{
+    console.log(curr);
     return [
       ...total,
       {
+        id:curr?.id,
         ["bet"]: curr?.bet,
         ["on_progress"]: curr?.on_progress,
         ["expense"]: curr?.expense,
@@ -66,10 +68,9 @@ const SubscribersTable = ({ data }) => {
       </div>
       <WhiteRowTable
         {...{ columns }}
-        // onRowClick={(data) => navigate(`/subscriber/${data.id}`)}
+        onRowClick={(data) => console.log(data)}
         data={dataCorrected}
         hasPagination
-        total={10}
       />
     </>
   );

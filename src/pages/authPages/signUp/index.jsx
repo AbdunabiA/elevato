@@ -195,7 +195,9 @@ const SignUp = () => {
                 }
               }}
               onError={(error) => {
-                toast.error(error?.response?.data?.message);
+                toast.error(
+                  get(error, "response.data.message", error?.message)
+                );
                 // console.log(error);
               }}
             >

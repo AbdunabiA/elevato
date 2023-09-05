@@ -13,3 +13,7 @@ export {Subscriptions} from './subscriptions'
 export {CreateTariff} from './subscriptions'
 export {UpdateTariff} from './subscriptions'
 export {UpdateProduct} from './product'
+export {AdminAddBranch} from './branches'
+export {AdminUpdateBranch} from './branches'
+import AdminSettings from "./settings";
+export {AdminSettings}

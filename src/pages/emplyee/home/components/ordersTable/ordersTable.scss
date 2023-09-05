@@ -1,0 +1,11 @@
+.product-send-fields{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    &__left, &__right{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

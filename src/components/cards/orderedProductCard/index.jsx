@@ -9,14 +9,19 @@ import { AsyncSelect, Input } from "components/fields";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { usePost } from "crud";
+import { get } from "lodash";
+import { useQueryClient } from "@tanstack/react-query";
 
 const OrderedProductCard = ({ data }) => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-  const { mutate: orderProduct, isLoading, isError, error } = usePost();
+  const { mutate: deleteProduct, isLoading:deleteLoading } = usePost();
+  const queryClient = useQueryClient() 
+  // console.log(data);
 
   return (
     <div className="product-card">
+      <ToastContainer />
       <div className="product-card__img">
         <img
           src={`https://elevato.pythonanywhere.com/${data?.product.photo}`}
@@ -39,8 +44,7 @@ const OrderedProductCard = ({ data }) => {
           {t("Ishlab chiqaruvchi")}: <span>{data?.product.manufacturer}</span>
         </h3>
         <div className="product-card__info__count-wrapper">
-          <ToastContainer />
-          <h2>{t("Buyurtma ID")}:1234567</h2>
+          <h2>{t("Status")}: {data?.done ? t('Bajarilgan') : t("Aktiv")}</h2>
           <div className="product-order-inputs">
             <div>
               <p>{t("Soni")}</p>
@@ -56,7 +60,26 @@ const OrderedProductCard = ({ data }) => {
             </div>
           </div>
           <div className="product-button__wrapper">
-            <Button text={"Bekor qilish"} color={"#FF0000"} />
+            <Button
+              onClick={() => {
+                deleteProduct({
+                  url: `users-products/order/${data.id}/`,
+                  method: "delete",
+                  onSuccess: () => {
+                    toast.success("SUCCESSFUL")
+                    queryClient.invalidateQueries("users-products-order");
+                  },
+                  onError:(error)=>{
+                    toast.error(
+                      get(error, "response.data.message", error?.message)
+                    );
+                  }
+                });
+              }}
+              disabled={deleteLoading}
+              text={"Bekor qilish"}
+              color={"#FF0000"}
+            />
           </div>
         </div>
       </div>

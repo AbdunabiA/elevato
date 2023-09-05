@@ -17,9 +17,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { get } from "lodash";
 import { Button } from "components/buttons";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Cards = ({ infos }) => {
   const { t } = useTranslation();
+  const queryClient = useQueryClient()
   const { data } = useGet({
     queryKey: ["cutomer-valyuta"],
     url: "/payments/card-and-amount-info/",
@@ -29,7 +31,7 @@ const Cards = ({ infos }) => {
     add: false,
     take: false,
   });
-  // console.log("QWERTY", data?.data);
+  console.log("QWERTY", data?.data);
   const cards = [
     {
       icon: shoppingCart,
@@ -83,6 +85,7 @@ const Cards = ({ infos }) => {
             onSuccess={()=>{
               toast.success('SUCCESSFUL')
               setModal({isOpen:false, add:false, take:false})
+              queryClient.invalidateQueries("customer-money-circulation");
             }}
             onError={(error)=>{
               toast.error(get(error, "response.data.message", error?.message));

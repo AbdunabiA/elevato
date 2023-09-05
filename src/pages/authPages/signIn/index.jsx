@@ -50,7 +50,14 @@ const SignIn = () => {
             </h1>
             <p className="login-wrapper__right__redirect">
               {t("Akkauntingiz mavjud emasmi")}?{" "}
-              <span onClick={() => navigate({ pathname: "/sign-up", search:qs.stringify(params) })}>
+              <span
+                onClick={() =>
+                  navigate({
+                    pathname: "/sign-up",
+                    search: qs.stringify(params),
+                  })
+                }
+              >
                 {t("Bu yerga bosing")}!
               </span>
             </p>
@@ -75,7 +82,9 @@ const SignIn = () => {
                 navigate("/");
               }}
               onError={(error) => {
-                toast.error(error?.response?.data?.message[0]);
+                toast.error(
+                  get(error, "response.data.message", error?.message)
+                );
                 // console.log(error);
               }}
             >

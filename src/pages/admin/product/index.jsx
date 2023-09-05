@@ -3,4 +3,4 @@ import ProductsHistory from "./pages/productsHistory";
 import AddProduct from "./pages/addProduct";
 import UpdateProduct from "./pages/updateProduct";
 
-export {Products, ProductsHistory, AddProduct, UpdateProduct}
+export {Products, ProductsHistory, AddProduct, UpdateProduct,}

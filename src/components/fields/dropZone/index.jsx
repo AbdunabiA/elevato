@@ -62,7 +62,7 @@ export default function DropZone({
                          )}
                        </div>
                      </div>
-                     <div style={{ display: photoUrl ? "block" : "none" }}>
+                     <div className="dropzone-image" style={{ display: photoUrl ? "block" : "none" }}>
                        <img src={photoUrl} alt="img" />;
                        <Button
                          onClick={() => ref.current.click()}

@@ -33,6 +33,9 @@ const BarChart = ({
   textBottom,
   onClick,
   hasButton,
+  updateButton, 
+  deleteButton,
+  deleteLoading,
 }) => {
   const {t} = useTranslation()
   const chartData = {
@@ -77,13 +80,29 @@ const BarChart = ({
     <div className="chart-wrapper">
       <div className="barchart-title">
         {title ? <h1>{title}</h1> : null}
-        {hasButton?<Button text={t("to'liq")} onClick={onClick}/>:null}
+        {hasButton ? <Button text={t("to'liq")} onClick={onClick} /> : null}
       </div>
       {subtitle ? <p className="subtitle">{subtitle}</p> : null}
       <div className="chart">
         <Bar height={width} width={height} options={options} data={chartData} />
       </div>
       {textBottom ? <p className="text-bottom">{textBottom}</p> : null}
+        <div className="add-product__button">
+          {
+            deleteButton ? <Button
+            text={t("O'chirish")}
+            type={"button"}
+            color={"#FF0000"}
+            onClick={deleteButton}
+            disabled={deleteLoading}
+          /> : null
+          }
+          {
+            updateButton ? <Button text={t("O'zgartirish")} onClick={updateButton} /> : null
+          }
+          
+          
+        </div>
     </div>
   );
 };

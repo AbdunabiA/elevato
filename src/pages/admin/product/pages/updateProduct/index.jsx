@@ -153,13 +153,13 @@ const UpdateProduct = () => {
                                       toast.error(error.message),
                                   })
                                 }
-                                disabled={deleteLoading ? true : false}
+                                disabled={deleteLoading}
                               />
                               <Button
                                 text={t("Saqlash")}
                                 onClick={handleSubmit}
                                 type={"submit"}
-                                disabled={isLoading ? true : false}
+                                disabled={isLoading}
                               />
                             </div>
                           </>

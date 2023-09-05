@@ -31,27 +31,43 @@ const CustomerProducts = () => {
         <Swiper
           spaceBetween={15}
           slidesPerView={2}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
+          breakpoints={{
+            200: {
+              slidesPerView: 2,
+            },
+            578: {
+              slidesPerView: 3,
+            },
+            768:{
+              slidesPerView:4
+            },
+            
+            1400:{
+              slidesPerView:5
+            },
+            1600:{
+              slidesPerView:6
+            },
+          }}
+          // onSlideChange={() => console.log("slide change")}
+          // onSwiper={(swiper) => console.log(swiper)}
         >
-          
-            {data?.data?.map((el, i) => {
-              return (
-                <SwiperSlide key={i}>
-                  <p
-                    onClick={() => setCategory(el[`name_${lang}`])}
-                    style={
-                      category === el[`name_${lang}`]
-                        ? { background: "#F9C70B" }
-                        : { background: "#B2B7C1" }
-                    }
-                  >
-                    {el[`name_${lang}`]}
-                  </p>
-                </SwiperSlide>
-              );
-            })}
-          
+          {data?.data?.map((el, i) => {
+            return (
+              <SwiperSlide key={i}>
+                <p
+                  onClick={() => setCategory(el[`name_${lang}`])}
+                  style={
+                    category === el[`name_${lang}`]
+                      ? { background: "#F9C70B", textAlign:"center" }
+                      : { background: "#B2B7C1", textAlign:"center" }
+                  }
+                >
+                  {el[`name_${lang}`]}
+                </p>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
       <Products {...{ data, category, lang }} />

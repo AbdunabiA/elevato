@@ -36,8 +36,8 @@ const Branches = () => {
             <>
               <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
               <Cards {...{ infos }} />
-              <BranchesSales data={items.warehouses_diagram} />
-              <BranchesSalesCirculation data={items.warehouses_diagram} />
+              <BranchesSales data={items?.warehouses_diagram} />
+              <BranchesSalesCirculation data={items?.warehouses_diagram} />
             </>
           );
         }}

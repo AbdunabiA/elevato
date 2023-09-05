@@ -1,5 +1,4 @@
-// import { Home } from "pages/admin";
-import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee, AddProduct, Subscriptions, CreateTariff, UpdateTariff, UpdateProduct } from "pages/admin";
+import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee, AddProduct, Subscriptions, CreateTariff, UpdateTariff, UpdateProduct, AdminAddBranch, AdminUpdateBranch, AdminSettings, } from "pages/admin";
 
 import {CustomerHome, CustomerProducts, CustomerMoneyCirculation, CustomerOrders, CustomerSubscriptions, CustomerProfile, CustomerNotifications} from 'pages/customer'
 
@@ -25,6 +24,14 @@ const pages = {
           path: "/branch/:id/employees",
           component: <BranchEmployees />,
         },
+        {
+          path:'/branches/add',
+          component:<AdminAddBranch/>
+        },
+        {
+          path:"/branches/update/:id",
+          component:<AdminUpdateBranch/>
+        }
       ],
     },
     {
@@ -73,10 +80,10 @@ const pages = {
       path: "/subscriptions/update/:id",
       component: <UpdateTariff />,
     },
-    // {
-    //   path: "/settings",
-    //   component: <Settings />,
-    // },
+    {
+      path: "/settings",
+      component: <AdminSettings />,
+    },
     // {
     //   path: "/support",
     //   component: <Support />,

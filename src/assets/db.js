@@ -113,7 +113,7 @@ export const helpers = {
          admin: [
            {
              title: "Sozlamalar",
-             path: "/",
+             path: "/settings",
              icon: sozlamalar,
            },
            {

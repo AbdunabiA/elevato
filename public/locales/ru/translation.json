@@ -81,7 +81,7 @@
   "Xodim":"Сотрудник",
   "Ish boshlagan sanasi":"Дата начала работы",
   "Mahsulotlar savdo ulushi":"Доля торговли товаров",
-  "Mahsulot qo'shish":"Добавление товара",
+  "Mahsulot qo'shish":"Добавить товар",
   "Mahsulotlar ro'yxati":"Список товаров",
   "Nomi":"Название",
   "Narxi":"Цена",
@@ -133,5 +133,12 @@
   "O'chirish":"Удалить",
   "Karta qo'shish":"Добавить карту",
   "Kartani o'chirish":"Удалить карту",
-  "Dollar" : "Доллары"
+  "Dollar" : "Доллары",
+  "Filial qo'shish":"Добавить филиал",
+  "O'zgartirish":"Изменить",
+  "Adres":"Адрес",
+  "Tavsifi":"Описание",
+  "Kategoriya qo'shish":"Добавить категорию",
+  "Bajarilgan" : "Сделано",
+  "Aktiv":"Активно"
 }

@@ -23,7 +23,7 @@ const Cards = ({ infos }) => {
     },
   ];
   return (
-    <div className="cards">
+    <div className="customer-cards">
       {cards.map((card, i) => {
         return <Card key={i} {...{ card }} />;
       })}

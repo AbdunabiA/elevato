@@ -199,6 +199,7 @@ $xxxxl:1921px;
     .form-buttons{
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         justify-content: end;
         gap: 30px;
         margin-top: 20px;

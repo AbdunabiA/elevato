@@ -68,11 +68,10 @@ const Cards = ({ infos }) => {
   ];
   return (
     <div className="cards">
-      <ToastContainer/>
       <div
         className="bonus-card"
         onClick={() => {
-          setCoins(true)
+          setCoins(true);
           dailyBonus({
             url: "/users-get-daily-bonus/",
             method: "post",
@@ -81,27 +80,28 @@ const Cards = ({ infos }) => {
               setBonusModal({ show: true, data: data.data });
             },
             onError: (error) => {
-              toast.error(error.message)
+              toast.error(error.message);
             },
           });
         }}
-        style={isLoading ? {background:"white"} : {}}
+        style={isLoading ? { background: "white" } : {}}
       >
+        <ToastContainer />
         {isLoading ? (
           <Loader />
         ) : (
           <h1 className="bonus-card__title">{t("Kunlik bonus")}</h1>
         )}
       </div>
-      {
-        coins ? <Coins/> : null
-      }
+      {coins ? <Coins /> : null}
 
       {bonusModal.show ? (
-        <Modal onClose={() => {
-          setBonusModal({ show: false, data: null });
-          setCoins(false)
-        }}>
+        <Modal
+          onClose={() => {
+            setBonusModal({ show: false, data: null });
+            setCoins(false);
+          }}
+        >
           <div style={{ padding: "20px" }}>
             <h2>{bonusModal?.data?.message[i18n.language]}</h2>
             <p style={{ marginTop: "10px" }}>

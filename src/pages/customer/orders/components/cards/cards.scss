@@ -6,10 +6,11 @@ $xxl: 1401px;
 $xxxl:1601px;
 $xxxxl:1921px;
 
-.cards{
+.customer-cards{
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: center;
+        gap: 20px;
         flex-wrap: wrap;
         margin-top: 30px;
         @media (max-width:$xl) {
