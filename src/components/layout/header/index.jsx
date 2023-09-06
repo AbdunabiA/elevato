@@ -1,28 +1,28 @@
-import './header.scss'
-import searcIcon from 'assets/icons/SearchIcon.png'
-import notification from 'assets/icons/NotificationIcon.png'
-import avatar from 'assets/images/Woman.png'
-import hamburger from 'assets/icons/humburger.png'
-import { useLocation, useNavigate} from 'react-router-dom'
-import { Button } from 'components/buttons'
-import { useTranslation } from 'react-i18next'
-import { useEffect, useState } from 'react'
-import { useGet, usePost } from 'crud'
-import { storage } from 'services'
-import { useDispatch, useSelector } from 'react-redux'
-import { changeRole, signOut } from 'store/auth'
+import "./header.scss";
+import searcIcon from "assets/icons/SearchIcon.png";
+import notification from "assets/icons/NotificationIcon.png";
+import avatar from "assets/images/Woman.png";
+import hamburger from "assets/icons/humburger.png";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Button } from "components/buttons";
+import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
+import { useGet, usePost } from "crud";
+import { storage } from "services";
+import { useDispatch, useSelector } from "react-redux";
+import { changeRole, signOut } from "store/auth";
 
 const Header = ({ setSideMenu }) => {
-  const {t, i18n} = useTranslation()
+  const { t, i18n } = useTranslation();
   // console.log(i18n.language);
-  const {mutate} = usePost()
-  const navigate = useNavigate()
+  const { mutate } = usePost();
+  const navigate = useNavigate();
   const role = useSelector((state) => state.auth.role);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   // const {data} = useGet({url:'/users-notifications/', queryKey:['users-notification']})
   // console.log('notif',data);
-  
+
   const location = useLocation();
   const paths = {
     "/branches": "Filiallar",
@@ -33,9 +33,9 @@ const Header = ({ setSideMenu }) => {
     "/settings": "Sozlamalar",
     "/big-leap": "Big Leap Team",
     "/subscriber": "Obunachi",
-    "/employee":"Xodim",
-    "/orders":"Buyurtmalar",
-    "/notifications":"Xabarlar"
+    "/employee": "Xodim",
+    "/orders": "Buyurtmalar",
+    "/notifications": "Xabarlar",
   };
   return (
     <header>
@@ -61,21 +61,29 @@ const Header = ({ setSideMenu }) => {
         <div className="header-wrapper__right">
           {/* <Button text={"Admin"} onClick={() => dispatch(changeRole('admin'))} />
           <Button text={"Mijoz"} onClick={() => dispatch(changeRole('ordinary_user'))} /> */}
-          {
-            role === 'admin' ? <div className="input__wrapper">
-            <label htmlFor="search">
-              <img src={searcIcon} alt="icon" />
-            </label>
-            <input type="text" id="search" placeholder={t("Qidirish")} />
-          </div> : null
-          }
-          
+          {role === "admin" ? (
+            <div className="input__wrapper">
+              <label htmlFor="search">
+                <img src={searcIcon} alt="icon" />
+              </label>
+              <input type="text" id="search" placeholder={t("Qidirish")} />
+            </div>
+          ) : null}
+
           {role !== "admin" ? (
-            <div className="notification" onClick={()=>navigate('/notifications')}>
+            <div
+              className="notification"
+              onClick={() => navigate("/notifications")}
+            >
               <img src={notification} alt="icon" />
             </div>
           ) : null}
-          <div className="avatar" onClick={() => navigate("/profile")}>
+          <div
+            className="avatar"
+            onClick={
+              role == "ordinary_user" ? () => navigate("/profile") : () => {}
+            }
+          >
             <img src={avatar} alt="" />
           </div>
           <select
@@ -86,11 +94,11 @@ const Header = ({ setSideMenu }) => {
             <option value="uz">UZ</option>
             <option value="ru">RU</option>
           </select>
-          <Button text={t("Chiqish")}  onClick={()=>dispatch(signOut())}/>
+          <Button text={t("Chiqish")} onClick={() => dispatch(signOut())} />
         </div>
       </div>
     </header>
   );
 };
 
-export default Header
+export default Header;

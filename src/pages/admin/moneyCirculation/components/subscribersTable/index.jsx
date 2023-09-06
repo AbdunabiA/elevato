@@ -68,7 +68,7 @@ const SubscribersTable = ({ data }) => {
       </div>
       <WhiteRowTable
         {...{ columns }}
-        onRowClick={(data) => console.log(data)}
+        onRowClick={(data) => navigate(`/subscriber/${data?.id}`)}
         data={dataCorrected}
         hasPagination
       />

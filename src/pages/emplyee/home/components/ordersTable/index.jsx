@@ -37,7 +37,7 @@ const OrdersTables = ({ data }) => {
 
   return (
     <div>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       {modal?.isOpen ? (
         <Modal onClose={()=>setModal({isOpen:false, data:null})}>
           <div>
@@ -107,6 +107,7 @@ const OrdersTables = ({ data }) => {
                       onSuccess: () => {
                         queryClient.invalidateQueries("employee-home");
                         toast.success("SUCCESSFUL");
+                        setModal({isOpen:false, data:null})
                       },
                       onError: (error) => {
                         toast.error(

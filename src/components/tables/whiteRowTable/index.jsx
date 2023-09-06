@@ -10,6 +10,7 @@ export default function WhiteRowTable({
   data,
   hasPagination = false,
   onRowClick = () => {},
+  hasNum=false,
 }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -55,7 +56,7 @@ export default function WhiteRowTable({
         <table className="table2">
           <thead>
             <tr>
-              {/* <td>#</td> */}
+              {hasNum ? <td>#</td> : null}
               {columns?.map((elem, i) => (
                 <td key={i}> {elem.title}</td>
               ))}
@@ -68,7 +69,7 @@ export default function WhiteRowTable({
                 style={onRowClick ? { cursor: "pointer" } : {}}
                 onClick={() => onRowClick(item)}
               >
-                {/* <td>{inde + 1}</td> */}
+                {hasNum ? <td>{inde + 1}</td> : null}
                 {columns?.map((elem, index) => (
                   <React.Fragment key={index}>
                     {!elem.render ? (

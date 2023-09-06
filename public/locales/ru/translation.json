@@ -73,7 +73,7 @@
   "Mahsulot tarqatish":"Отправка продуктов",
   "Tarix":"История",
   "Tarixni ko'rish":"Посмотреть историю",
-  "Mahsulot yuborish":"Доставка товара",
+  "Mahsulot yuborish":"Отправить товар",
   "savdo aylanmalari":"оборот продаж",
   "Savdo":"Продажа",
   "Umumiy daromad":"Общая прибыль",
@@ -139,6 +139,12 @@
   "Adres":"Адрес",
   "Tavsifi":"Описание",
   "Kategoriya qo'shish":"Добавить категорию",
-  "Bajarilgan" : "Сделано",
-  "Aktiv":"Активно"
+  "Bajarilgan" : "Доставлено",
+  "Aktiv":"Активно",
+  "Taklif qilinuvchi uchun":"Для пригляшенного",
+  "Taklif qiluvchi uchun":"Для приглашающего",
+  "To'xtatish":"Остановить",
+  "Moliyaviy malumotlar":"Финансовая информация",
+  "Komentariy":"Комментарий",
+  "Mahsulot qaytib olish":"Вернуть товар"
 }

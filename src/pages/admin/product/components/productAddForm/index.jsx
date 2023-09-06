@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { get } from "lodash";
 
 
 const ProductAddForm = () => {
@@ -46,7 +47,7 @@ const ProductAddForm = () => {
         navigate(`/update-product/${data?.id}`)
       }}
       onError={(error)=>{
-        toast.error(error?.message)
+        toast.error(get(error, "response.data.message", error?.message));
       }}
     >
         {

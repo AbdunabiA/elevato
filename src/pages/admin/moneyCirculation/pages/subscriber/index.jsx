@@ -20,8 +20,8 @@ const Subscriber = () => {
           console.log(items);
           return (
             <>
-              <SubscriberInfoForm />
-              <FinancialInfo />
+              <SubscriberInfoForm data={items}/>
+              <FinancialInfo data={items?.financial_information}/>
             </>
           );
         }}

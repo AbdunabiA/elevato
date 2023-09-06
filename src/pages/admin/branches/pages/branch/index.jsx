@@ -14,8 +14,8 @@ import { useGet } from "crud";
 const Branch = () => {
   const [staticDate, setStaticDate] = useState(thisMonth());
   const [month, setMonth] = useState(null);
-  const { id } = useParams()
-  
+  const { id } = useParams();
+
   return (
     <div className="container">
       <GetAll
@@ -24,17 +24,24 @@ const Branch = () => {
           month ? moment(month).format("YYYY-MM") : staticDate
         }/`}
       >
-        {({items, isLoading}) => {
-        if(isLoading) return <Loader/>
-          const infos = [items?.total_income, items?.days, items?.products_amount];
+        {({ items, isLoading }) => {
+          if (isLoading) return <Loader />;
+          const infos = [
+            items?.total_income,
+            items?.days,
+            items?.products_amount,
+          ];
           console.log(items);
           return (
             <>
               <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
               <Cards {...{ infos }} />
-              <EmployeeSmallCards data={items?.employees}/>
-              <ProductDistribution data={items?.products_history}/>
-              <BranchSalesCirculation data={items}/>
+              <EmployeeSmallCards data={items?.employees} />
+              <ProductDistribution
+                data={items?.products_history}
+                warehouse={items?.warehouse}
+              />
+              <BranchSalesCirculation data={items} />
             </>
           );
         }}

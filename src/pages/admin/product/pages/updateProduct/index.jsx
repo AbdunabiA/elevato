@@ -69,7 +69,9 @@ const UpdateProduct = () => {
                         toast.success("O'zgardi");
                       }}
                       onError={(error) => {
-                        toast.error(error?.message);
+                        toast.error(
+                          get(error, "response.data.message", error?.message)
+                        );
                       }}
                     >
                       {({ handleSubmit, isLoading }) => {
