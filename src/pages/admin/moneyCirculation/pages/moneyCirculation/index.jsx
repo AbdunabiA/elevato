@@ -7,6 +7,7 @@ import SubscribersTable from '../../../users/components/subscribersTable';
 import moment from 'moment';
 import Loader from 'components/loader';
 import ErrorPage from 'components/errorPage';
+import MoneyOrdersTable from '../../components/moneyOrdersTable';
 
 const MoneyCirculation = () => {
   const [staticDate, setStaticDate] = useState(thisMonth());
@@ -34,7 +35,7 @@ const MoneyCirculation = () => {
             <>
               <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
               <Cards {...{ infos }} />
-              {/* <SubscribersTable data={items?.users_payments}/> */}
+              <MoneyOrdersTable data={items?.money_orders}/>
             </>
           );
         }}

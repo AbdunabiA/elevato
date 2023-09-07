@@ -65,7 +65,7 @@ const UpdateProduct = () => {
                       ]}
                       url="/admin-products/"
                       onSuccess={(data) => {
-                        console.log(data);
+                        // console.log(data);
                         toast.success("O'zgardi");
                       }}
                       onError={(error) => {

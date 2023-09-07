@@ -10,12 +10,13 @@ const AdminUsers = () => {
   return (
     <div className="container">
       <GetAll
-        queryKey={["money-circulation"]}
-        url={`/admin-finance/month/${staticDate}/`}
+        queryKey={["admin-users"]}
+        url={`/admin-users-finance/`}
       >
         {({ items, isLoading, isError, error }) => {
           if (isLoading) return <Loader />;
           if (isError) return <ErrorPage />;
+          console.log(items);
           return <SubscribersTable data={items?.users_payments} />;
         }}
       </GetAll>

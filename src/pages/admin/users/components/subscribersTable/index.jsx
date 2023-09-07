@@ -10,7 +10,7 @@ const SubscribersTable = ({ data }) => {
   const navigate = useNavigate();
   const {t} = useTranslation()
   const dataCorrected = data.reduce((total, curr)=>{
-    console.log(curr);
+    // console.log(curr);
     return [
       ...total,
       {
