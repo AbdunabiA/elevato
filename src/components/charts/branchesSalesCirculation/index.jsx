@@ -48,7 +48,7 @@ const BranchesSalesCirculation = ({ data }) => {
           // console.log(el);
           return (
             <BarChart
-              updateButton={() => navigate(`update/${el?.id}`)}
+              updateButton={() => navigate(`/branches/update/${el?.id}`)}
               title={el?.name}
               hasButton
               key={i}
