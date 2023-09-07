@@ -1,5 +1,7 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "components/buttons";
 import ErrorPage from "components/errorPage";
+import { Input } from "components/fields";
 import CustomInputMask from "components/fields/inputMask";
 import Loader from "components/loader";
 import Modal from "components/modal";
@@ -17,9 +19,11 @@ import { api } from "services";
 const AdminSettings = () => {
   const { t } = useTranslation();
   const [modal, setModal] = useState(false);
+  const [changeModal, setChangeModal] = useState(false);
   const [cardWritten, setCardWritten] = useState(false);
   const [minut, setMinut] = useState(1);
   const [sec, setSec] = useState(59);
+  const queryClient = useQueryClient()
 
   const { mutate: deleteCard, isLoading: deleteLoading } = usePost();
 
@@ -106,8 +110,155 @@ const AdminSettings = () => {
                     title: `7-${t("Avlod")}`,
                     key: "generation7",
                   },
+                  {
+                    title: t("O'zgartirish"),
+                    render: () => {
+                      return (
+                        <Button
+                          text={t("O'zgartirish")}
+                          onClick={() => setChangeModal(true)}
+                        />
+                      );
+                    },
+                  },
                 ]}
               />
+              {changeModal ? (
+                <Modal onClose={() => setChangeModal(false)}>
+                  <ContainerForm
+                    url="/admin-bonuses-settings/"
+                    method="put"
+                    onSuccess={()=>{
+                      toast.success("SUCCESSFUL")
+                      setChangeModal(false);
+                      queryClient.invalidateQueries("admin-settings");
+                    }}
+                    onError={(error)=>{
+                      toast.error(
+                        get(error, "response.data.message", error?.message)
+                      );
+                    }}
+                    fields={[
+                      {
+                        name: "for_follower",
+                        value: items?.for_follower,
+                      },
+                      {
+                        name: "for_offerer",
+                        value: items?.for_offerer,
+                      },
+                      {
+                        name: "generation1",
+                        value: items?.generation1,
+                      },
+                      {
+                        name: "generation2",
+                        value: items?.generation3,
+                      },
+                      {
+                        name: "generation3",
+                        value: items?.generation3,
+                      },
+                      {
+                        name: "generation4",
+                        value: items?.generation4,
+                      },
+                      {
+                        name: "generation5",
+                        value: items?.generation5,
+                      },
+                      {
+                        name: "generation6",
+                        value: items?.generation6,
+                      },
+                      {
+                        name: "generation7",
+                        value: items?.generation7,
+                      },
+                    ]}
+                  >
+                    {({ handleSubmit, isLoading }) => {
+                      return (
+                        <div>
+                          <div style={{ display: "flex", gap: "20px" }}>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "10px",
+                              }}
+                            >
+                              <Field
+                                name="for_follower"
+                                label={t("Taklif qilinuvchi uchun")}
+                                component={Input}
+                              />
+                              <Field
+                                name="for_offerer"
+                                label={t("Taklif qiluvchi uchun")}
+                                component={Input}
+                              />
+                              <Field
+                                name="generation1"
+                                label={`1-${t("Avlod")}`}
+                                component={Input}
+                              />
+                              <Field
+                                name="generation2"
+                                label={`2-${t("Avlod")}`}
+                                component={Input}
+                              />
+                              <Field
+                                name="generation3"
+                                label={`3-${t("Avlod")}`}
+                                component={Input}
+                              />
+                            </div>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "10px",
+                              }}
+                            >
+                              <Field
+                                name="generation4"
+                                label={`4-${t("Avlod")}`}
+                                component={Input}
+                              />
+                              <Field
+                                name="generation5"
+                                label={`5-${t("Avlod")}`}
+                                component={Input}
+                              />
+                              <Field
+                                name="generation6"
+                                label={`6-${t("Avlod")}`}
+                                component={Input}
+                              />
+                              <Field
+                                name="generation7"
+                                label={`7-${t("Avlod")}`}
+                                component={Input}
+                              />
+                            </div>
+                          </div>
+                          <div
+                            style={{ display: "flex", justifyContent: "end" }}
+                          >
+                            <Button
+                              text={t("Saqlash")}
+                              onClick={handleSubmit}
+                              type={"submit"}
+                              disabled={isLoading}
+                            />
+                          </div>
+                        </div>
+                      );
+                    }}
+                  </ContainerForm>
+                </Modal>
+              ) : null}
               <div
                 style={{
                   marginTop: "50px",
@@ -116,7 +267,7 @@ const AdminSettings = () => {
                   justifyContent: "end",
                 }}
               >
-                <ToastContainer/>
+                <ToastContainer />
                 {modal ? (
                   <Modal onClose={() => setModal(false)}>
                     <ContainerForm
