@@ -77,7 +77,7 @@ const SubscriberInfoForm = ({ data }) => {
                 </div>
                 <div>
                   <h1 className="title">
-                    {formatNums(Math.round(data?.money))}
+                    {formatNums(Math.round(data?.money))}$
                   </h1>
                   <p>{t("Hisob raqamidagi summa")}</p>
                 </div>

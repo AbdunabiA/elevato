@@ -36,6 +36,7 @@ const Header = ({ setSideMenu }) => {
     "/employee": "Xodim",
     "/orders": "Buyurtmalar",
     "/notifications": "Xabarlar",
+    "/users":"Mijozlar"
   };
   return (
     <header>

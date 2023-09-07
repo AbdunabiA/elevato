@@ -53,7 +53,8 @@ const pages = {
       ],
     },
     {
-      path:""
+      path:"/users",
+      component:<AdminUsers/>
     },
     {
       path: "/money-circulation",

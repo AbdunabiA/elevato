@@ -3,7 +3,7 @@ import { GetAll } from 'modules'
 import React, { useState } from 'react'
 import { thisMonth } from 'services/dates';
 import Cards from '../../components/cards';
-import SubscribersTable from '../../components/subscribersTable';
+import SubscribersTable from '../../../users/components/subscribersTable';
 import moment from 'moment';
 import Loader from 'components/loader';
 import ErrorPage from 'components/errorPage';
@@ -34,7 +34,7 @@ const MoneyCirculation = () => {
             <>
               <Filters {...{ staticDate, setStaticDate, month, setMonth }} />
               <Cards {...{ infos }} />
-              <SubscribersTable data={items?.users_payments}/>
+              {/* <SubscribersTable data={items?.users_payments}/> */}
             </>
           );
         }}

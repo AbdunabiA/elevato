@@ -64,7 +64,7 @@ const SubscribersTable = ({ data }) => {
   return (
     <>
       <div className="money-circilation-table-users">
-        <h1 className="title">{t("Mijoz")}</h1>
+        {/* <h1 className="title">{t("Mijozlar")}</h1> */}
       </div>
       <WhiteRowTable
         {...{ columns }}
