@@ -73,7 +73,7 @@ const Header = ({ setSideMenu }) => {
           {role !== "admin" ? (
             <div
               className="notification"
-              onClick={() => navigate("/notifications")}
+              onClick={() => role === "ordinary_user" ? navigate("/notifications") : ()=>{}}
             >
               <img src={notification} alt="icon" />
             </div>

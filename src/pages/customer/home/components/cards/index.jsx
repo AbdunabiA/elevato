@@ -50,7 +50,7 @@ const Cards = ({ infos }) => {
       right_icon: plus,
       right_side_click:()=>{
         navigator.clipboard.writeText(
-          `https://elevatto.netlify.app/sign-up?offer_id=${get(
+          `https://elevato.me/sign-up?offer_id=${get(
             data,'data.user.offer_id', ''
           )}`
         );

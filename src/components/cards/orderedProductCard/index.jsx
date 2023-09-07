@@ -44,7 +44,9 @@ const OrderedProductCard = ({ data }) => {
           {t("Ishlab chiqaruvchi")}: <span>{data?.product.manufacturer}</span>
         </h3>
         <div className="product-card__info__count-wrapper">
-          <h2>{t("Status")}: {data?.done ? t('Bajarilgan') : t("Aktiv")}</h2>
+          <h2>
+            {t("Status")}: {data?.done ? t("Bajarilgan") : t("Aktiv")}
+          </h2>
           <div className="product-order-inputs">
             <div>
               <p>{t("Soni")}</p>
@@ -66,17 +68,17 @@ const OrderedProductCard = ({ data }) => {
                   url: `users-products/order/${data.id}/`,
                   method: "delete",
                   onSuccess: () => {
-                    toast.success("SUCCESSFUL")
+                    toast.success("SUCCESSFUL");
                     queryClient.invalidateQueries("users-products-order");
                   },
-                  onError:(error)=>{
+                  onError: (error) => {
                     toast.error(
                       get(error, "response.data.message", error?.message)
                     );
-                  }
+                  },
                 });
               }}
-              disabled={deleteLoading}
+              disabled={deleteLoading || data?.done}
               text={"Bekor qilish"}
               color={"#FF0000"}
             />

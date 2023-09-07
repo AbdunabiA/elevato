@@ -55,8 +55,8 @@ const ProductDistribution = ({data}) => {
         <div className="table__title">
           <h1 className="title">{t("Tarix")}</h1>
           <div className="buttons">
-            <Button text={t("Tarixni ko'rish")} icon={file} />
-            <Button text={t("Mahsulot yuborish")} icon={file2} />
+            {/* <Button text={t("Tarixni ko'rish")} icon={file} />
+            <Button text={t("Mahsulot yuborish")} icon={file2} /> */}
           </div>
         </div>
         <Table columns={columns} data={mahsulotlar} hasPagination total={12} />

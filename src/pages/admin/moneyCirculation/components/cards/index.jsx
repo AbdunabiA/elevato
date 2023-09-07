@@ -14,6 +14,8 @@ import { Button } from "components/buttons";
 import { useState } from "react";
 import { Input } from "components/fields";
 import { useGet } from "crud";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { get } from "lodash";
 
 const Cards = ({ infos }) => {
@@ -34,19 +36,19 @@ const Cards = ({ infos }) => {
     {
       icon: shoppingCart,
       title: t("Hisob raqamidagi summa"),
-      count: formatNums(infos[0]),
+      count: formatNums(Math.round(infos[0])),
       val: "$",
     },
     {
       icon: mijozlar,
       title: t("Debet"),
-      count: formatNums(infos[1]),
+      count: formatNums(Math.round(infos[1])),
       val: "$",
     },
     {
       icon: mahsulot,
       title: t("Kirim"),
-      count: formatNums(infos[2]),
+      count: formatNums(Math.round(infos[2])),
       val: "$",
       right_side: true,
       right_icon: plus,
@@ -56,7 +58,7 @@ const Cards = ({ infos }) => {
     {
       icon: shoppingCart,
       title: t("Chiqim"),
-      count: formatNums(infos[3]),
+      count: formatNums(Math.round(infos[3])),
       val: "$",
       right_side: true,
       right_icon: minus,
@@ -64,6 +66,7 @@ const Cards = ({ infos }) => {
   ];
   return (
     <div className="cards">
+      <ToastContainer/>
       {cards.map((card, i) => {
         return <Card key={i} {...{ card }} />;
       })}
@@ -82,8 +85,9 @@ const Cards = ({ infos }) => {
               },
             ]}
             onSuccess={() => {
-              toast.success("SUCCESSFUL");
               setModal({ isOpen: false, add: false, take: false });
+              // console.log('succ');
+              toast.success("SUCCESSFUL");
             }}
             onError={(error) => {
               toast.error(get(error, "response.data.message", error?.message));

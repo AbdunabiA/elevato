@@ -1,8 +1,8 @@
-import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee, AddProduct, Subscriptions, CreateTariff, UpdateTariff, UpdateProduct, AdminAddBranch, AdminUpdateBranch, AdminSettings, } from "pages/admin";
+import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee, AddProduct, Subscriptions, CreateTariff, UpdateTariff, UpdateProduct, AdminAddBranch, AdminUpdateBranch, AdminSettings, AdminUsers} from "pages/admin";
 
 import {CustomerHome, CustomerProducts, CustomerMoneyCirculation, CustomerOrders, CustomerSubscriptions, CustomerProfile, CustomerNotifications} from 'pages/customer'
 
-import { EmployeeHome, EmployeeMoneyCirculation, EmployeeBranches, EmployeeBranchEmployees, EmployeeProducts, EmployeeProductsHistory, EmployeeSalesHistory, EmployeeProduct } from "pages/emplyee";
+import { EmployeeHome, EmployeeMoneyCirculation, EmployeeBranches, EmployeeBranchEmployees, EmployeeProducts, EmployeeProductsHistory, EmployeeSalesHistory, EmployeeProduct, EmployeeSubscriptions } from "pages/emplyee";
 
 import { SignIn, SignUp } from "pages/authPages";
 
@@ -25,13 +25,13 @@ const pages = {
           component: <BranchEmployees />,
         },
         {
-          path:'/branches/add',
-          component:<AdminAddBranch/>
+          path: "/branches/add",
+          component: <AdminAddBranch />,
         },
         {
-          path:"/branches/update/:id",
-          component:<AdminUpdateBranch/>
-        }
+          path: "/branches/update/:id",
+          component: <AdminUpdateBranch />,
+        },
       ],
     },
     {
@@ -51,6 +51,9 @@ const pages = {
           component: <UpdateProduct />,
         },
       ],
+    },
+    {
+      path:""
     },
     {
       path: "/money-circulation",
@@ -155,10 +158,14 @@ const pages = {
           component: <EmployeeSalesHistory />,
         },
         {
-          path: '/products/:id',
-          component:<EmployeeProduct/>,
-        }
+          path: "/products/:id",
+          component: <EmployeeProduct />,
+        },
       ],
+    },
+    {
+      path: "/subscriptions",
+      component: <EmployeeSubscriptions />,
     },
   ],
 };

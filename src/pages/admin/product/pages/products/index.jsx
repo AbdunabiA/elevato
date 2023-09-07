@@ -9,6 +9,7 @@ import ProductsDistribution from "../../components/tables/productsDistribution";
 import Loader from "components/loader";
 import ProductsTable from "../../components/tables/productsTable";
 import ErrorPage from "components/errorPage";
+import ProductsCategories from "../../components/tables/productsCategories";
 
 const Products = () => {
   
@@ -29,6 +30,7 @@ const Products = () => {
             <Cards />
             <ProductsSales data={items.products_diagram} />
             <ProductsTable data={items.products} />
+            <ProductsCategories/>
             <ProductsDistribution data={items.distribution} />
           </>
         );

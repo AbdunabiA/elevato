@@ -6,5 +6,6 @@ import EmployeeProducts from "./products/pages/products";
 import EmployeeProductsHistory from "./products/pages/productsHistory";
 import EmployeeSalesHistory from "./products/pages/salesHistory";
 import EmployeeProduct from "./products/pages/product";
+import EmployeeSubscriptions from "./subscriptions/pages/subscriptions";
 
-export {EmployeeHome, EmployeeMoneyCirculation, EmployeeBranches, EmployeeBranchEmployees, EmployeeProducts, EmployeeProductsHistory, EmployeeSalesHistory, EmployeeProduct}
+export {EmployeeHome, EmployeeMoneyCirculation, EmployeeBranches, EmployeeBranchEmployees, EmployeeProducts, EmployeeProductsHistory, EmployeeSalesHistory, EmployeeProduct, EmployeeSubscriptions}

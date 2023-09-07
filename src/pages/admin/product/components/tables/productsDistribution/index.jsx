@@ -61,7 +61,7 @@ const ProductsDistribution = ({data}) => {
               icon={file}
               onClick={() => navigate("history")}
             />
-            <Button text={t("Mahsulot yuborish")} icon={file2} />
+            {/* <Button text={t("Mahsulot yuborish")} icon={file2} /> */}
           </div>
         </div>
         <Table

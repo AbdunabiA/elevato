@@ -178,7 +178,7 @@ const ProductDistribution = ({ data, warehouse }) => {
         <div className="table__title">
           <h1 className="title">{t("Tarix")}</h1>
           <div className="buttons">
-            <Button text={t("Tarixni ko'rish")} icon={file} />
+            {/* <Button text={t("Tarixni ko'rish")} icon={file} /> */}
             <Button
               text={t("Mahsulot qaytib olish")}
               onClick={() => setModal({ isOpen: true, send: false })}

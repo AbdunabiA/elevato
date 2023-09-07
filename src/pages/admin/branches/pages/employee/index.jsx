@@ -1,14 +1,20 @@
-import { GetAll } from 'modules'
-import React from 'react'
-import EmployeeInfoForm from '../../components/employeeInfoForm'
-import { useParams } from 'react-router-dom'
-import Loader from 'components/loader'
-import ErrorPage from 'components/errorPage'
-import { useTranslation } from 'react-i18next'
+import { ContainerForm, GetAll } from "modules";
+import React, { useState } from "react";
+import EmployeeInfoForm from "../../components/employeeInfoForm";
+import { useParams } from "react-router-dom";
+import Loader from "components/loader";
+import ErrorPage from "components/errorPage";
+import { useTranslation } from "react-i18next";
+import { Button } from "components/buttons";
+import Modal from "components/modal";
+import { Field } from "formik";
+import { Input } from "components/fields";
+import CustomInputMask from "components/fields/inputMask";
 
 const Employee = () => {
-  const {id} = useParams()
-  const {t} = useTranslation()
+  const { id } = useParams();
+  const { t } = useTranslation();
+  const [modal, setModal] = useState(false);
   return (
     <div className="container">
       <GetAll queryKey={["admin-employee"]} url={`/admin-employees/${id}`}>
@@ -19,13 +25,13 @@ const Employee = () => {
           return (
             <>
               <h1 className="title">{t("Xodim")}</h1>
-              <EmployeeInfoForm data={items}/>
+              <EmployeeInfoForm data={items} />
             </>
           );
         }}
       </GetAll>
     </div>
   );
-}
+};
 
-export default Employee
+export default Employee;

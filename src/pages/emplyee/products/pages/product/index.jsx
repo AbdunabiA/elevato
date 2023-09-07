@@ -107,8 +107,11 @@ const EmployeeProduct = () => {
                 </div>
               </div>
             </div>
-            <div>
-              <img src={`https://elevato.pythonanywhere.com${item?.photo}`} alt="img" />
+            <div className="dropzone-image">
+              <img
+                src={`https://elevato.pythonanywhere.com${item?.photo}`}
+                alt="img"
+              />
             </div>
             {/* <div className="add-product__button">
               <Button

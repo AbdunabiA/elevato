@@ -11,11 +11,13 @@ import { Button } from "components/buttons";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { get } from "lodash";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Cards = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [modal, setModal] = useState();
+  const queryClient = useQueryClient()
 
   return (
     <div className="cards-add">
@@ -40,6 +42,7 @@ const Cards = () => {
             onSuccess={()=>{
               toast.success('SUCCESSFUL')
               setModal(false)
+              queryClient.invalidateQueries("admin-products-categories");
             }}
             onError={(error)=>{
               toast.error(get(error, "response.data.message", error?.message));

@@ -16,4 +16,5 @@ export {UpdateProduct} from './product'
 export {AdminAddBranch} from './branches'
 export {AdminUpdateBranch} from './branches'
 import AdminSettings from "./settings";
-export {AdminSettings}
+import AdminUsers from "./users/pages/users";
+export { AdminSettings, AdminUsers };

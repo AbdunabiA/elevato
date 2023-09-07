@@ -96,6 +96,7 @@
   "Kirim":"Поступление",
   "Chiqim":"Расход",
   "Mijoz":"Клиент",
+  "Mijozlar":"Клиенты",
   "Umumiy obuna summasi":"Общая сумма подписки",
   "Foydalanuvchilar":"Пользователи",
   "Tarif yaratish":"Создание тарифа",
@@ -139,12 +140,13 @@
   "Adres":"Адрес",
   "Tavsifi":"Описание",
   "Kategoriya qo'shish":"Добавить категорию",
-  "Bajarilgan" : "Доставлено",
+  "Bajarilgan" : "Отправлено",
   "Aktiv":"Активно",
   "Taklif qilinuvchi uchun":"Для пригляшенного",
   "Taklif qiluvchi uchun":"Для приглашающего",
   "To'xtatish":"Остановить",
   "Moliyaviy malumotlar":"Финансовая информация",
   "Komentariy":"Комментарий",
-  "Mahsulot qaytib olish":"Вернуть товар"
+  "Mahsulot qaytib olish":"Вернуть товар",
+  "Xodim qo'shish":"Добавить сотрудника"
 }

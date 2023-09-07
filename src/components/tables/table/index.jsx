@@ -48,7 +48,7 @@ export default function  Table({ columns, data, hasPagination=false }) {
 
       const from = page * perPage - perPage;
       const to = page * perPage;
-      const paginatedData = data?.slice(from, to);
+      const paginatedData = hasPagination ? data?.slice(from, to) : data
     return (
       <div>
         <div className={"table__wrapper"}>

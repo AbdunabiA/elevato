@@ -1,0 +1,11 @@
+.registration-fields__inputs__passport>div{
+                    display: flex;  
+                    gap: 5px;
+                    .reg__passport-series{
+                        width: 50px;
+                        text-transform: uppercase;
+                    }
+                    .reg__passport-num{
+                        width: 180px;
+                    }
+                }

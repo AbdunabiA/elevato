@@ -28,6 +28,11 @@ export const menus = {
              icon: mahsulot,
            },
            {
+             title: "Mijozlar",
+             path: "/users",
+             icon: statistika,
+           },
+           {
              title: "Pul aylanmasi",
              path: "/money-circulation",
              icon: pulAylanmasi,
@@ -91,16 +96,16 @@ export const menus = {
              path: "/products",
              icon: mahsulot,
            },
-           {
-             title: "Pul aylanmasi",
-             path: "/money-circulation",
-             icon: pulAylanmasi,
-           },
-           {
-             title: "Statistika",
-             path: "/statistics",
-             icon: statistika,
-           },
+           //  {
+           //    title: "Pul aylanmasi",
+           //    path: "/money-circulation",
+           //    icon: pulAylanmasi,
+           //  },
+           //  {
+           //    title: "Statistika",
+           //    path: "/statistics",
+           //    icon: statistika,
+           //  },
            {
              title: "Obunalar",
              path: "/subscriptions",

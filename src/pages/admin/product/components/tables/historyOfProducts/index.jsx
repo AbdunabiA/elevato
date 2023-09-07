@@ -2,41 +2,43 @@ import Table from "components/tables/table";
 import { mahsulotTarqatish2 } from "assets/db";
 import "./historyOfProducts.scss";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-const HistoryOfProducts = () => {
+const HistoryOfProducts = ({data}) => {
   const [inputVal, setInputVal] = useState();
+  const {t} = useTranslation()
   // console.log(inputVal);
-  const filteredData = mahsulotTarqatish2.filter((el) =>
-    el.branch.toLowerCase().includes(inputVal?.toLowerCase())
+  const filteredData = data.filter((el) =>{
+    return el.product.toLowerCase().includes(inputVal?.toLowerCase())}
   );
   const columns = [
     {
-      title: "Sana",
+      title: t("Sana"),
       key: "date",
     },
     {
-      title: "Mahsulot",
+      title: t("Mahsulot"),
       key: "product",
     },
     {
-      title: "Miqdori",
+      title: t("Miqdori"),
       key: "amount",
     },
     {
-      title: "Filial",
+      title: t("Filial"),
       key: "branch",
     },
     {
-      title: "Umumiy summa",
+      title: t("Umumiy summa"),
       key: "overallPayment",
-      render: (value) => `${value}uzs`,
+      render: (value) => `${value}$`,
     },
   ];
   return (
     <div className="wrapper">
       <div className="table">
         <div className="table__title">
-          <h1 className="title">Jadval</h1>
+          <h1 className="title">{t("Jadval")}</h1>
           <div className="buttons">
             <input
               className="product-search__input"
@@ -52,9 +54,7 @@ const HistoryOfProducts = () => {
         </div>
         <Table
           columns={columns}
-          data={inputVal ? filteredData : mahsulotTarqatish2}
-          hasPagination
-          total={12}
+          data={inputVal ? filteredData : data}
         />
       </div>
     </div>

@@ -4,6 +4,7 @@ import CustomInputMask from "components/fields/inputMask";
 import Loader from "components/loader";
 import Modal from "components/modal";
 import WhiteRowTable from "components/tables/whiteRowTable";
+import { usePost } from "crud";
 import { Field } from "formik";
 import { get } from "lodash";
 import { ContainerForm, GetAll } from "modules";
@@ -19,6 +20,8 @@ const AdminSettings = () => {
   const [cardWritten, setCardWritten] = useState(false);
   const [minut, setMinut] = useState(1);
   const [sec, setSec] = useState(59);
+
+  const { mutate: deleteCard, isLoading: deleteLoading } = usePost();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,15 +56,14 @@ const AdminSettings = () => {
       });
   }
 
-
   return (
     <div className="container">
-      <ToastContainer/>
+      <ToastContainer />
       <GetAll queryKey={["admin-settings"]} url={"/admin-bonuses-settings/"}>
         {({ items, isLoading, isError, error }) => {
           if (isLoading) return <Loader />;
           if (isError) return <ErrorPage {...{ error }} />;
-          console.log(items);
+          // console.log(items);
           return (
             <div>
               <WhiteRowTable
@@ -110,11 +112,13 @@ const AdminSettings = () => {
                 style={{
                   marginTop: "50px",
                   display: "flex",
+                  gap: "20px",
                   justifyContent: "end",
                 }}
               >
+                <ToastContainer/>
                 {modal ? (
-                  <Modal>
+                  <Modal onClose={() => setModal(false)}>
                     <ContainerForm
                       url={
                         cardWritten
@@ -228,6 +232,27 @@ const AdminSettings = () => {
                     </ContainerForm>
                   </Modal>
                 ) : null}
+                <Button
+                  text={t("Kartani o'chirish")}
+                  disabled={deleteLoading}
+                  type={"button"}
+                  color={"#FF0000"}
+                  onClick={() =>
+                    deleteCard({
+                      method: "delete",
+                      onError: (error) => {
+                        toast.error(
+                          get(error, "response.data.message", error?.message)
+                        );
+                      },
+                      onSuccess: () => {
+                        toast.success("DELETED");
+                        // queryClient.invalidateQueries("customer-profile");
+                      },
+                      url: "/payments/card/delete/",
+                    })
+                  }
+                />
                 <Button
                   text={t("Karta qo'shish")}
                   onClick={() => {

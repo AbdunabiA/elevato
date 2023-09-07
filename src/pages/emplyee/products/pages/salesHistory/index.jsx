@@ -57,10 +57,10 @@ const EmployeeSalesHistory = () => {
                     key: "sum",
                     render: (value) => `${value}$`,
                   },
-                  {
-                    title: t("Batafsil"),
-                    render: () => <Button text={t("Ko'rish")} />,
-                  },
+                  // {
+                  //   title: t("Batafsil"),
+                  //   render: () => <Button text={t("Ko'rish")} />,
+                  // },
                 ]}
               />
             </div>
