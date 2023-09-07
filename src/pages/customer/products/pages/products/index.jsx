@@ -33,20 +33,20 @@ const CustomerProducts = () => {
           slidesPerView={2}
           breakpoints={{
             200: {
-              slidesPerView: 2,
+              slidesPerView: data?.data?.length >= 2 ? 2 : data?.data?.length,
             },
             578: {
-              slidesPerView: 3,
+              slidesPerView: data?.data?.length >= 3 ? 3 : data?.data?.length,
             },
-            768:{
-              slidesPerView:4
+            768: {
+              slidesPerView: data?.data?.length >= 4 ? 4 : data?.data?.length,
             },
-            
-            1400:{
-              slidesPerView:5
+
+            1400: {
+              slidesPerView: data?.data?.length >= 5 ? 5 : data?.data?.length,
             },
-            1600:{
-              slidesPerView:6
+            1600: {
+              slidesPerView: data?.data?.length >= 6 ? 6 : data?.data?.length,
             },
           }}
           // onSlideChange={() => console.log("slide change")}
@@ -59,8 +59,8 @@ const CustomerProducts = () => {
                   onClick={() => setCategory(el[`name_${lang}`])}
                   style={
                     category === el[`name_${lang}`]
-                      ? { background: "#F9C70B", textAlign:"center" }
-                      : { background: "#B2B7C1", textAlign:"center" }
+                      ? { background: "#F9C70B", textAlign: "center" }
+                      : { background: "#B2B7C1", textAlign: "center" }
                   }
                 >
                   {el[`name_${lang}`]}

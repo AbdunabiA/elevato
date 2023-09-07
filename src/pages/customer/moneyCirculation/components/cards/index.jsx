@@ -26,12 +26,14 @@ const Cards = ({ infos }) => {
     queryKey: ["cutomer-valyuta"],
     url: "/payments/card-and-amount-info/",
   });
+  // console.log(data);
   const [modal, setModal] = useState({
     isOpen: false,
     add: false,
     take: false,
   });
-  console.log("QWERTY", data?.data);
+  // const [] = 
+  // console.log("QWERTY", data?.data);
   const cards = [
     {
       icon: shoppingCart,
@@ -52,7 +54,8 @@ const Cards = ({ infos }) => {
       val: "$",
       right_side: true,
       right_icon: plus,
-      right_side_click: () => setModal({isOpen:true, add:true, take:false}),
+      right_side_click: () =>
+        setModal({ isOpen: true, add: true, take: false }),
     },
     {
       icon: shoppingCart,
@@ -61,16 +64,18 @@ const Cards = ({ infos }) => {
       val: "$",
       right_side: true,
       right_icon: minus,
+      right_side_click: () =>
+        setModal({ isOpen: true, add: false, take: true }),
     },
   ];
   return (
     <div className="cards">
-      <ToastContainer/>
+      <ToastContainer />
       {cards.map((card, i) => {
         return <Card key={i} {...{ card }} />;
       })}
 
-      {modal.isOpen ? (
+      {modal.isOpen && modal.add ? (
         <Modal
           onClose={() => setModal({ isOpen: false, add: false, take: false })}
         >
@@ -78,33 +83,46 @@ const Cards = ({ infos }) => {
             url="/payments/create-payment/"
             fields={[
               {
-                name:'amount',
-                required:true,
-              }
+                name: "amount",
+                required: true,
+              },
             ]}
-            onSuccess={()=>{
-              toast.success('SUCCESSFUL')
-              setModal({isOpen:false, add:false, take:false})
+            onSuccess={() => {
+              toast.success("SUCCESSFUL");
+              setModal({ isOpen: false, add: false, take: false });
               queryClient.invalidateQueries("customer-money-circulation");
             }}
-            onError={(error)=>{
+            onError={(error) => {
               toast.error(get(error, "response.data.message", error?.message));
             }}
           >
             {({ handleSubmit, isLoading, values }) => {
               return (
-                <div style={{display:'flex', gap:"20px", flexWrap:'wrap', padding:'30px'}}>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "20px",
+                    flexWrap: "wrap",
+                    padding: "30px",
+                  }}
+                >
                   {modal.add ? (
                     <>
                       <Field name="amount" label="UZS" component={Input} />
                       <label className="input-field__wrapper">
                         <span className="label">USD</span>
                         <div>
-                          <input 
-                            className="custom-input" 
-                            disabled 
+                          <input
+                            className="custom-input"
+                            disabled
                             type="text"
-                            value={values?.amount ? Math.round(values?.amount/data?.data?.USD*100)/100 :''}
+                            value={
+                              values?.amount
+                                ? Math.round(
+                                    (values?.amount / data?.data?.USD) * 100
+                                  ) / 100
+                                : ""
+                            }
                           />
                         </div>
                       </label>
@@ -121,9 +139,9 @@ const Cards = ({ infos }) => {
                       </label>
                     </>
                   ) : null}
-                  <Button 
-                    text={t('Saqlash')}
-                    type={'submit'}
+                  <Button
+                    text={t("Saqlash")}
+                    type={"submit"}
                     onClick={handleSubmit}
                     disabled={isLoading}
                   />
@@ -132,9 +150,83 @@ const Cards = ({ infos }) => {
             }}
           </ContainerForm>
         </Modal>
-      ) : (
-        false
-      )}
+      ) : modal.isOpen && modal.take ? (
+        <Modal
+          onClose={() => setModal({ isOpen: false, add: false, take: false })}
+        >
+          <ContainerForm
+            url="/users-money-order/"
+            fields={[
+              {
+                name: "amount",
+                required: true,
+              },
+            ]}
+            onSuccess={() => {
+              toast.success("SUCCESSFUL");
+              setModal({ isOpen: false, add: false, take: false });
+              queryClient.invalidateQueries("customer-money-circulation");
+            }}
+            onError={(error) => {
+              toast.error(get(error, "response.data.message", error?.message));
+            }}
+          >
+            {({ handleSubmit, isLoading, values }) => {
+              return (
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "20px",
+                    flexWrap: "wrap",
+                    padding: "30px",
+                  }}
+                >
+                  {modal.take ? (
+                    <>
+                      <Field name="amount" label="USD" component={Input} />
+                      <label className="input-field__wrapper">
+                        <span className="label">UZS</span>
+                        <div>
+                          <input
+                            className="custom-input"
+                            disabled
+                            type="text"
+                            value={
+                              values?.amount
+                                ? Math.round(
+                                    values?.amount * data?.data?.USD * 100
+                                  ) / 100
+                                : ""
+                            }
+                          />
+                        </div>
+                      </label>
+                      <label className="input-field__wrapper">
+                        <span className="label">{t("Karta raqami")}</span>
+                        <div>
+                          <input
+                            className="custom-input"
+                            type="text"
+                            disabled
+                            value={get(data, "data.card_number", "")}
+                          />
+                        </div>
+                      </label>
+                    </>
+                  ) : null}
+                  <Button
+                    text={t("Saqlash")}
+                    type={"submit"}
+                    onClick={handleSubmit}
+                    disabled={isLoading}
+                  />
+                </div>
+              );
+            }}
+          </ContainerForm>
+        </Modal>
+      ) : null}
+      {}
     </div>
   );
 };
