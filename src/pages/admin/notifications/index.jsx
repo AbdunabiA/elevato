@@ -133,7 +133,7 @@ const AdminNotifications = () => {
         {({ items, isLoading, isError, error }) => {
           if (isLoading) return <Loader />;
           if (isError) return <ErrorPage {...{ error }} />;
-          console.log(items);
+        //   console.log(items);
           return (
             <div>
               {items?.map((notif, i) => {

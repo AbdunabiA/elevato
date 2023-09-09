@@ -16,7 +16,7 @@ const AdminUsers = () => {
         {({ items, isLoading, isError, error }) => {
           if (isLoading) return <Loader />;
           if (isError) return <ErrorPage />;
-          console.log(items);
+          // console.log(items);
           return <SubscribersTable data={items?.users_payments} />;
         }}
       </GetAll>

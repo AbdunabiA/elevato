@@ -15,7 +15,7 @@ const EmployeeBranchEmployees = () => {
       {({items, isLoading, isError, error}) => {
         if(isLoading) return <Loader/>
         if(isError) return <ErrorPage {...{error}}/>
-        console.log(items);
+        // console.log(items);
         return (
           <div className="container">
             <h1>{t("Xodimlar")}</h1>

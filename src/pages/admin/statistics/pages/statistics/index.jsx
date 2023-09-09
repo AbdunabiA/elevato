@@ -32,7 +32,7 @@ const Statistics = () => {
             items?.days,
             items?.products_amount,
           ];
-          console.log(items);
+          // console.log(items);
           return (
             <>
               <Filters {...{ staticDate, setStaticDate, month, setMonth }} />

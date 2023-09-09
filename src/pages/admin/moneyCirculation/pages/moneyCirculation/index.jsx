@@ -30,7 +30,7 @@ const MoneyCirculation = () => {
             items?.head_info?.admin_income,
             items?.head_info?.admin_expenses,
           ];
-          console.log(items);
+          // console.log(items);
           return (
             <>
               <Filters {...{ staticDate, setStaticDate, month, setMonth }} />

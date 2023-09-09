@@ -52,7 +52,7 @@ const AdminSettings = () => {
     api
       .get("/payments/card/new-verify/")
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       })
       .catch((error) => {
         // console.log('Error', error);

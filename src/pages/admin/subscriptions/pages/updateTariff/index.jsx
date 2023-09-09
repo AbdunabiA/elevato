@@ -24,7 +24,7 @@ const UpdateTariff = () => {
         ({item, isLoading, isError, error})=>{
           if(isLoading) return <Loader/>
           if(isError) return <ErrorPage {...{error}}/>
-          console.log(item);
+          // console.log(item);
           return (
             <div className="container">
               <div
@@ -69,7 +69,7 @@ const UpdateTariff = () => {
                   toast.success("Saqlandi");
                 }}
                 onError={(error) => {
-                  console.log(error);
+                  // console.log(error);
                   toast.error(error?.message);
                 }}
               >

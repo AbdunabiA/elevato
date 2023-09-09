@@ -19,7 +19,7 @@ const Subscriptions = () => {
                 ({items, isLoading})=>{
                   if(isLoading) return <Loader/>
                     const cardsInfoes = [items.total_income, items?.bonus, items?.users]
-                    console.log(items);
+                    // console.log(items);
                     return (
                       <>
                         <Filters

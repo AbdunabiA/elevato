@@ -21,8 +21,9 @@ const UpdateProduct = () => {
     const queryClient = useQueryClient()
     const {mutate:deleteProduct, isLoading:deleteLoading} = usePost()
     const navigate = useNavigate()
+    console.log(id);
   return (
-    <GetOne queryKey={['admin-product']} url={`/admin-products/${id}`}>
+    <GetOne queryKey={['admin-product']} url={`/admin-products/${id}/`}>
         {
             ({item, isLoading, isError, error})=>{
                 if(isLoading) return < Loader/>
@@ -63,7 +64,7 @@ const UpdateProduct = () => {
                           value: get(item, "about_ru", ""),
                         },
                       ]}
-                      url="/admin-products/"
+                      url={`/admin-products/${id}/`}
                       onSuccess={(data) => {
                         // console.log(data);
                         toast.success("O'zgardi");
@@ -73,6 +74,7 @@ const UpdateProduct = () => {
                           get(error, "response.data.message", error?.message)
                         );
                       }}
+                      method="put"
                     >
                       {({ handleSubmit, isLoading }) => {
                         return (

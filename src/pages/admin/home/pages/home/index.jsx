@@ -28,10 +28,10 @@ const Home = () => {
       >
         {({items, isLoading, isError, error}) => {
         if(isLoading) return <Loader/>
-        console.log('Error',error);
+        // console.log('Error',error);
         if(isError) return <p>error</p>
           const infos = [items?.total_income, items?.users, items?.days, items?.products_amount];
-          console.log(items);
+          // console.log(items);
           return (
             <>
               <Filters {...{ staticDate, setStaticDate, month, setMonth }} />

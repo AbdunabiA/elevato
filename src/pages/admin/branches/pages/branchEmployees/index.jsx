@@ -33,7 +33,7 @@ const BranchEmployees = () => {
         {({ items, isLoading, isError, error }) => {
           if (isLoading) return <Loader />;
           if (isError) return <ErrorPage {...{ error }} />;
-          console.log(items);
+          // console.log(items);
           return (
             <div>
               <Button
@@ -109,7 +109,7 @@ const BranchEmployees = () => {
                     ]}
                   >
                     {({ handleSubmit, isLoading, values }) => {
-                      console.log(values);
+                      // console.log(values);
                       return (
                         <div>
                           <div

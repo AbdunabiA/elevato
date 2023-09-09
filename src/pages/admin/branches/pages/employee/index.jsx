@@ -21,7 +21,7 @@ const Employee = () => {
         {({ items, isLoading, isError, error }) => {
           if (isLoading) return <Loader />;
           if (isError) return <ErrorPage error={error} />;
-          console.log(items);
+          // console.log(items);
           return (
             <>
               <h1 className="title">{t("Xodim")}</h1>

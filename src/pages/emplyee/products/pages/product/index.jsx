@@ -18,7 +18,7 @@ const EmployeeProduct = () => {
       {({ item, isLoading, isError, error }) => {
         if (isLoading) return <Loader />;
         if (isError) return <ErrorPage {...{ error }} />;
-        console.log(item);
+        // console.log(item);
         return (
           <>
             <div>

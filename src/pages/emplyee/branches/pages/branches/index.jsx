@@ -30,7 +30,7 @@ const EmployeeBranches = () => {
           items?.days,
           items?.residual_products,
         ];
-        console.log(items);
+        // console.log(items);
         return (
           <div className="container">
             <Filters {...{ staticDate, setStaticDate, month, setMonth }} />

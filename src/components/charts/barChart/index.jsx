@@ -57,7 +57,7 @@ const BarChart = ({
   const options = {
     responsive: true,
     onclick: () => {
-      console.log("CLICKED");
+      // console.log("CLICKED");
     },
     plugins: {
       legend: {

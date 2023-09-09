@@ -18,7 +18,7 @@ const OrdersTables = ({ data }) => {
   const queryClient = useQueryClient();
   const [modal, setModal] = useState({ isOpen: false, data: null });
   const dataCorrected = data.reduce((total, curr) => {
-    console.log(curr);
+    // console.log(curr);
     return [
       ...total,
       {

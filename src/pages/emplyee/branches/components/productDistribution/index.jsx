@@ -47,7 +47,7 @@ const ProductDistribution = ({data}) => {
       },
     ];
   }, []);
-  console.log(data);
+  // console.log(data);
   return (
     <div className="wrapper">
       <h1 className="title">{t("Mahsulot tarqatish")}</h1>

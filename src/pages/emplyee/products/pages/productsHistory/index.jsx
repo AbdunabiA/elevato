@@ -14,7 +14,7 @@ const EmployeeProductsHistory = () => {
       {({ items, isLoading, isError, error }) => {
         if (isLoading) return <Loader />;
         if (isError) return <ErrorPage />;
-        console.log(items);
+        // console.log(items);
         return (
           <div className="container">
             <HistoryOfProducts data={items?.products_history}/>

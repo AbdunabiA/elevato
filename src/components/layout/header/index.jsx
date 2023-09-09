@@ -1,7 +1,7 @@
 import "./header.scss";
 import searcIcon from "assets/icons/SearchIcon.png";
 import notification from "assets/icons/NotificationIcon.png";
-import avatar from "assets/images/Woman.png";
+import avatar from "assets/images/avatar.png";
 import hamburger from "assets/icons/humburger.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "components/buttons";
@@ -20,8 +20,16 @@ const Header = ({ setSideMenu }) => {
   const role = useSelector((state) => state.auth.role);
   const dispatch = useDispatch();
 
-  // const {data} = useGet({url:'/users-notifications/', queryKey:['users-notification']})
-  // console.log('notif',data);
+  let profileData = {}
+  
+  if(role === 'ordinary_user'){
+    const { data } = useGet({
+      queryKey: ["customer-profile"],
+      url: "/users-profile",
+    });
+    profileData = data
+    console.log(profileData);
+  }
 
   const location = useLocation();
   const paths = {
@@ -87,7 +95,11 @@ const Header = ({ setSideMenu }) => {
               role == "ordinary_user" ? () => navigate("/profile") : () => {}
             }
           >
-            <img src={avatar} alt="" />
+            <img
+              src={profileData?.data?.user
+                ?.photo ? `https://paymentstest-60d8729405f3.herokuapp.com${profileData?.data?.user?.photo}` : avatar}
+              alt=""
+            />
           </div>
           <select
             className="languages"
