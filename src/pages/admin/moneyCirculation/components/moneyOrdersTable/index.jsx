@@ -12,9 +12,11 @@ import { Button } from "components/buttons";
 import Modal from "components/modal";
 import { ContainerForm } from "modules";
 import { get } from "lodash";
+import { useQueryClient } from "@tanstack/react-query";
 
 const MoneyOrdersTable = ({ data }) => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient()
   const { t } = useTranslation();
   const [modal, setModal] = useState({ isOpen: false, data: null });
   const dataCorrected = data.reduce((total, curr) => {
@@ -105,6 +107,7 @@ const MoneyOrdersTable = ({ data }) => {
             onSuccess={()=>{
               toast.success("SUCCESSFUL")
               setModal({isOpen:false, data:null})
+              queryClient.invalidateQueries("money-circulation");
             }}
             onError={(error)=>{
               toast.error(get(error, "response.data.message", error?.message));

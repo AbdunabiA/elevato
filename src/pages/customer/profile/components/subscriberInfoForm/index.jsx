@@ -71,7 +71,7 @@ const SubscriberInfoForm = ({ data }) => {
       <ToastContainer />
       {
         changeModal ? (
-          <Modal>
+          <Modal onClose={()=>setChangeModal(false)}>
             <ContainerForm>
               {
                 ({handleSubmit, isLoading})=>{
