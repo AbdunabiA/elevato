@@ -2,7 +2,7 @@ import axios from "axios";
 import storage from "services/storage";
 
 const api = axios.create({
-  baseURL: "https://elevato.pythonanywhere.com/api/v1",
+  baseURL: "https://paymentstest-60d8729405f3.herokuapp.com/api/v1/",
   timeout: 30000,
 });
 

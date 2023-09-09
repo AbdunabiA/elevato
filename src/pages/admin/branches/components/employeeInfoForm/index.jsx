@@ -1,20 +1,20 @@
-import { ContainerForm } from 'modules'
-import './employeeInfoForm.scss'
-import woman from 'assets/images/Woman.png'
-import { Field } from 'formik';
-import { Input, TextArea } from 'components/fields';
-import { Button } from 'components/buttons';
-import Modal from 'components/modal';
-import { useState } from 'react';
-import { useGet } from 'crud';
-import moment from 'moment';
-import { useTranslation } from 'react-i18next';
+import { ContainerForm } from "modules";
+import "./employeeInfoForm.scss";
+import woman from "assets/images/Woman.png";
+import { Field } from "formik";
+import { Input, TextArea } from "components/fields";
+import { Button } from "components/buttons";
+import Modal from "components/modal";
+import { useState } from "react";
+import { useGet } from "crud";
+import moment from "moment";
+import { useTranslation } from "react-i18next";
 
-const EmployeeInfoForm = ({data}) => {
-    // const [modal, setModal] = useState(false)
-    // const data = useGet({url:'/users-profile', queryKey:['']})
-    // console.log(data.data);
-    const {t} = useTranslation()
+const EmployeeInfoForm = ({ data }) => {
+  // const [modal, setModal] = useState(false)
+  // const data = useGet({url:'/users-profile', queryKey:['']})
+  // console.log(data.data);
+  const { t } = useTranslation();
   return (
     <ContainerForm
       fields={[
@@ -42,15 +42,17 @@ const EmployeeInfoForm = ({data}) => {
               <div>
                 <img
                   className="img-wrapper"
-                  src={`https://elevato.pythonanywhere.com/${data?.photo}`}
+                  src={`https://paymentstest-60d8729405f3.herokuapp.com${data?.photo}`}
                   alt=""
                 />
               </div>
-              <h1 className="title">{data?.first_name} {data?.last_name}</h1>
+              <h1 className="title">
+                {data?.first_name} {data?.last_name}
+              </h1>
             </div>
             <div className="employee-info-form__top__right">
               <h1>{t("Ish boshlagan sanasi")}</h1>
-              <p>{moment(data?.date).format('DD.MM.YYYY')}</p>
+              <p>{moment(data?.date).format("DD.MM.YYYY")}</p>
             </div>
           </div>
           <div className="employee-info-form__bottom">
@@ -159,6 +161,6 @@ const EmployeeInfoForm = ({data}) => {
       )}
     </ContainerForm>
   );
-}
+};
 
-export default EmployeeInfoForm
+export default EmployeeInfoForm;

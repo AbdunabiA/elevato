@@ -1,32 +1,37 @@
-import woman from 'assets/images/Woman.png'
-import phone from 'assets/icons/PhoneIcon.png'
-import './employeeSmallCard.scss'
+import woman from "assets/images/Woman.png";
+import phone from "assets/icons/PhoneIcon.png";
+import "./employeeSmallCard.scss";
 
-const EmployeeSmallCard = ({data}) => {
+const EmployeeSmallCard = ({ data }) => {
   return (
     <div className="small-card__wrapper">
       <div className="top">
         <div className="user-avatar__wrapper">
-          <img src={`https://elevato.pythonanywhere.com${data?.photo}`} alt="" />
+          <img
+            src={`https://paymentstest-60d8729405f3.herokuapp.com${data?.photo}`}
+            alt=""
+          />
         </div>
         <div>
-          <h2>{data?.first_name} {data?.last_name}</h2>
+          <h2>
+            {data?.first_name} {data?.last_name}
+          </h2>
           <p>sotuvchi</p>
         </div>
       </div>
       <div className="bottom">
         {/* <h1 className="ball">5000 ball</h1> */}
-        {
-          data?.phone_number ? <div className="phone">
-          <div>
-            <img src={phone} alt="phone" />
+        {data?.phone_number ? (
+          <div className="phone">
+            <div>
+              <img src={phone} alt="phone" />
+            </div>
+            <p>{data?.phone_number}</p>
           </div>
-          <p>{data?.phone_number}</p>
-        </div> : null
-        }
+        ) : null}
       </div>
     </div>
   );
-}
+};
 
-export default EmployeeSmallCard
+export default EmployeeSmallCard;

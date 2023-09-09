@@ -15,8 +15,8 @@ import { useQueryClient } from "@tanstack/react-query";
 const OrderedProductCard = ({ data }) => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-  const { mutate: deleteProduct, isLoading:deleteLoading } = usePost();
-  const queryClient = useQueryClient() 
+  const { mutate: deleteProduct, isLoading: deleteLoading } = usePost();
+  const queryClient = useQueryClient();
   // console.log(data);
 
   return (
@@ -24,7 +24,7 @@ const OrderedProductCard = ({ data }) => {
       <ToastContainer />
       <div className="product-card__img">
         <img
-          src={`https://elevato.pythonanywhere.com/${data?.product.photo}`}
+          src={`https://paymentstest-60d8729405f3.herokuapp.com${data?.product.photo}`}
           alt=""
         />
       </div>
@@ -63,21 +63,25 @@ const OrderedProductCard = ({ data }) => {
           </div>
           <div className="product-button__wrapper">
             <Button
-              onClick={() => {
-                deleteProduct({
-                  url: `users-products/order/${data.id}/`,
-                  method: "delete",
-                  onSuccess: () => {
-                    toast.success("SUCCESSFUL");
-                    queryClient.invalidateQueries("users-products-order");
-                  },
-                  onError: (error) => {
-                    toast.error(
-                      get(error, "response.data.message", error?.message)
-                    );
-                  },
-                });
-              }}
+              onClick={
+                !data?.done || deleteLoading
+                  ? () => {
+                      deleteProduct({
+                        url: `users-products/order/${data.id}/`,
+                        method: "delete",
+                        onSuccess: () => {
+                          toast.success("SUCCESSFUL");
+                          queryClient.invalidateQueries("users-products-order");
+                        },
+                        onError: (error) => {
+                          toast.error(
+                            get(error, "response.data.message", error?.message)
+                          );
+                        },
+                      });
+                    }
+                  : () => {}
+              }
               disabled={deleteLoading || data?.done}
               text={"Bekor qilish"}
               color={"#FF0000"}

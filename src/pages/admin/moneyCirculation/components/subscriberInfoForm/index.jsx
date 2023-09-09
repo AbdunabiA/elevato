@@ -62,7 +62,7 @@ const SubscriberInfoForm = ({ data }) => {
               <div className="subscriber-info-form__wrapper__top__left">
                 <div className="img-wrapper">
                   <img
-                    src={`https://elevato.pythonanywhere.com${data?.photo}`}
+                    src={`https://paymentstest-60d8729405f3.herokuapp.com${data?.photo}`}
                     alt="img"
                   />
                 </div>

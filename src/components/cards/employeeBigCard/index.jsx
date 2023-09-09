@@ -1,25 +1,28 @@
-import woman from 'assets/images/Woman.png'
-import { formatNums } from 'services/formatNums'
-import './employeeBigCard.scss'
-import { useNavigate } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+import woman from "assets/images/Woman.png";
+import { formatNums } from "services/formatNums";
+import "./employeeBigCard.scss";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-const EmployeeBigCard = ({data, onClick=()=>{}, allIncome=true}) => {
-  const navigate = useNavigate()
-  const {t} = useTranslation()
+const EmployeeBigCard = ({ data, onClick = () => {}, allIncome = true }) => {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
   return (
     <div className="employee-big-card" onClick={onClick}>
       <div className="top">
         <div className="top__avatar-wrapper">
-          <img src={`https://elevato.pythonanywhere.com${data.photo}`} alt="img" />
+          <img
+            src={`https://paymentstest-60d8729405f3.herokuapp.com${data.photo}`}
+            alt="img"
+          />
         </div>
         <div className="overall-infos">
-          {
-            allIncome ? <div>
-            <h1>{formatNums(14000000)}</h1>
-            <p>{t("Umumiy daromad")}</p>
-          </div> : null
-          }
+          {allIncome ? (
+            <div>
+              <h1>{formatNums(14000000)}</h1>
+              <p>{t("Umumiy daromad")}</p>
+            </div>
+          ) : null}
           {/* <div>
             <h1>{formatNums(5000)}</h1>
             <p>Umumiy ball</p>
@@ -28,7 +31,9 @@ const EmployeeBigCard = ({data, onClick=()=>{}, allIncome=true}) => {
       </div>
       <div className="bottom">
         <div className="name">
-          <h1>{data.first_name} {data.last_name}</h1>
+          <h1>
+            {data.first_name} {data.last_name}
+          </h1>
           <p>{t("sotuvchi")}</p>
         </div>
         <div className="tel-nums">
@@ -44,6 +49,6 @@ const EmployeeBigCard = ({data, onClick=()=>{}, allIncome=true}) => {
       </div>
     </div>
   );
-}
+};
 
-export default EmployeeBigCard
+export default EmployeeBigCard;

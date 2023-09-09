@@ -64,7 +64,7 @@ const SubscriberInfoForm = ({ data }) => {
       });
   }
 
-  const {mutate:deleteCard, isLoading:cardDeleteLoading} = usePost()
+  const { mutate: deleteCard, isLoading: cardDeleteLoading } = usePost();
   return (
     <div className="subscriber-info-form__wrapper">
       <ToastContainer />
@@ -323,7 +323,7 @@ const SubscriberInfoForm = ({ data }) => {
                     <img src={avatar} alt="img" />
                   ) : (
                     <img
-                      src={`https://elevato.pythonanywhere.com${data?.user?.photo}`}
+                      src={`https://paymentstest-60d8729405f3.herokuapp.com${data?.user?.photo}`}
                       alt="img"
                     />
                   )}

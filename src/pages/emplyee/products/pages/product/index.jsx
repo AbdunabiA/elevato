@@ -15,9 +15,9 @@ const EmployeeProduct = () => {
   const navigate = useNavigate();
   return (
     <GetOne queryKey={["employee-product"]} url={`employees-products/${id}`}>
-      {({item, isLoading, isError, error}) => {
-        if(isLoading) return <Loader/>
-        if(isError) return <ErrorPage {...{error}}/>
+      {({ item, isLoading, isError, error }) => {
+        if (isLoading) return <Loader />;
+        if (isError) return <ErrorPage {...{ error }} />;
         console.log(item);
         return (
           <>
@@ -109,7 +109,7 @@ const EmployeeProduct = () => {
             </div>
             <div className="dropzone-image">
               <img
-                src={`https://elevato.pythonanywhere.com${item?.photo}`}
+                src={`https://paymentstest-60d8729405f3.herokuapp.com${item?.photo}`}
                 alt="img"
               />
             </div>

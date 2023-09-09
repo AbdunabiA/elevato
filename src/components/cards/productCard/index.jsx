@@ -1,27 +1,29 @@
-import { Button } from 'components/buttons';
-import React, { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next';
-import cartIcon from 'assets/icons/ShoppingCart.png'
-import './productCard.scss'
-import { ContainerForm } from 'modules';
-import { Field } from 'formik';
-import { AsyncSelect, Input } from 'components/fields';
+import { Button } from "components/buttons";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import cartIcon from "assets/icons/ShoppingCart.png";
+import "./productCard.scss";
+import { ContainerForm } from "modules";
+import { Field } from "formik";
+import { AsyncSelect, Input } from "components/fields";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { usePost } from 'crud';
+import { usePost } from "crud";
 
+const ProductCard = ({ data }) => {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+  const [count, setCount] = useState(1);
+  const overallValue = count * data?.price;
+  const { mutate: orderProduct, isLoading, isError, error } = usePost();
 
-const ProductCard = ({data}) => {
-  const {t, i18n} = useTranslation()
-  const lang = i18n.language
-  const [count, setCount] = useState(1)
-  const overallValue = count * data?.price
-  const {mutate:orderProduct, isLoading, isError, error} = usePost()
-  
   return (
     <div className="product-card">
       <div className="product-card__img">
-        <img src={`https://elevato.pythonanywhere.com/${data?.photo}`} alt="" />
+        <img
+          src={`https://paymentstest-60d8729405f3.herokuapp.com${data?.photo}`}
+          alt=""
+        />
       </div>
       <div className="product-card__info">
         <div className="product-card__info__title-price">
@@ -91,7 +93,7 @@ const ProductCard = ({data}) => {
                         });
                       }}
                       disabled={isLoading ? true : false}
-                      type={'button'}
+                      type={"button"}
                     />
                   </div>
                 </>
@@ -102,6 +104,6 @@ const ProductCard = ({data}) => {
       </div>
     </div>
   );
-}
+};
 
-export default ProductCard
+export default ProductCard;
