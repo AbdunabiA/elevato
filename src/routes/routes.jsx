@@ -1,4 +1,4 @@
-import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee, AddProduct, Subscriptions, CreateTariff, UpdateTariff, UpdateProduct, AdminAddBranch, AdminUpdateBranch, AdminSettings, AdminUsers} from "pages/admin";
+import { Home,Branches, Branch, BranchEmployees, Products, ProductsHistory, Statistics, MoneyCirculation, Subscriber, Employee, AddProduct, Subscriptions, CreateTariff, UpdateTariff, UpdateProduct, AdminAddBranch, AdminUpdateBranch, AdminSettings, AdminUsers, AdminNotifications} from "pages/admin";
 
 import {CustomerHome, CustomerProducts, CustomerMoneyCirculation, CustomerOrders, CustomerSubscriptions, CustomerProfile, CustomerNotifications} from 'pages/customer'
 
@@ -53,8 +53,8 @@ const pages = {
       ],
     },
     {
-      path:"/users",
-      component:<AdminUsers/>
+      path: "/users",
+      component: <AdminUsers />,
     },
     {
       path: "/money-circulation",
@@ -87,6 +87,10 @@ const pages = {
     {
       path: "/settings",
       component: <AdminSettings />,
+    },
+    {
+      path: "/notifications",
+      component: <AdminNotifications />,
     },
     // {
     //   path: "/support",

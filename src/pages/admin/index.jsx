@@ -17,4 +17,5 @@ export {AdminAddBranch} from './branches'
 export {AdminUpdateBranch} from './branches'
 import AdminSettings from "./settings";
 import AdminUsers from "./users/pages/users";
-export { AdminSettings, AdminUsers };
+import AdminNotifications from "./notifications";
+export { AdminSettings, AdminUsers, AdminNotifications };

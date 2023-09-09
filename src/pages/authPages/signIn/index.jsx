@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import qs from "qs";
+import { get } from 'lodash';
 
 const SignIn = () => {
   const location = useLocation();
@@ -61,6 +62,7 @@ const SignIn = () => {
                 {t("Bu yerga bosing")}!
               </span>
             </p>
+            <ToastContainer />
             <ContainerForm
               fields={[
                 {
@@ -78,10 +80,11 @@ const SignIn = () => {
                 dispatch(signIn({ ...data, isAuthenticated: true }));
                 // console.log(location.pathname);
                 // navigate({pathname:location?.state ? location.state : '/'})
-                console.log(data);
+                // console.log(data);
                 navigate("/");
               }}
               onError={(error) => {
+                // console.log(error);
                 toast.error(
                   get(error, "response.data.message", error?.message)
                 );

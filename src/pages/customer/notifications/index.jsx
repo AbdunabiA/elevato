@@ -5,6 +5,7 @@ import ErrorPage from 'components/errorPage';
 import { useTranslation } from 'react-i18next';
 import arrowLeft from "assets/icons/ArrowCircleLeftYellow.png";
 import { useNavigate } from 'react-router-dom';
+import './notifications.scss'
 
 export const CustomerNotifications = () => {
   const {i18n} = useTranslation()

@@ -50,7 +50,7 @@ const SignUp = () => {
     setSec(59)
     setMinut(1)
     api.get('/new-verify/').then((data)=>{
-      console.log(data);
+      // console.log(data);
     })
     .catch((error)=>{
       toast.error(error?.response?.data?.message);

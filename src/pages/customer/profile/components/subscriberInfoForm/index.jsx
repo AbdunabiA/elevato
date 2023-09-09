@@ -117,6 +117,15 @@ const SubscriberInfoForm = ({ data }) => {
                         return `${value.match(/\d+/g).join("")}`;
                       },
                     },
+                    {
+                      name: "phone",
+                      required: true,
+                      min: 19,
+                      value:"+998",
+                      onSubmitValue: (value) => {
+                        return `+${value.match(/\d+/g).join("")}`;
+                      },
+                    },
                   ]
             }
           >
@@ -163,6 +172,12 @@ const SubscriberInfoForm = ({ data }) => {
                         name={"expire"}
                         label={t("Karta amal qlish muddati")}
                         mask="99/99"
+                        component={CustomInputMask}
+                      />
+                      <Field
+                        name={"phone"}
+                        label={t("Karta ulangan telefon raqam")}
+                        mask="+999 (99) 999-99-99"
                         component={CustomInputMask}
                       />
                     </>
