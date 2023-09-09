@@ -1,7 +1,7 @@
 import { ContainerForm } from "modules";
 import "./subscriberInfoForm.scss";
 import { Field } from "formik";
-import { Input } from "components/fields";
+import { DropZone, Input } from "components/fields";
 import avatar from "assets/images/avatar.png";
 import { formatNums } from "services/formatNums";
 import { Button } from "components/buttons";
@@ -20,6 +20,7 @@ import { useQueryClient } from "@tanstack/react-query";
 const SubscriberInfoForm = ({ data }) => {
   const { t } = useTranslation();
   const [passwordModal, setPasswordModal] = useState(false);
+  const [changeModal, setChangeModal] = useState(false)
   const [cardModal, setCardModal] = useState(false);
   const [cardWritten, setCardWritten] = useState(false);
   const [minut, setMinut] = useState(1);
@@ -68,6 +69,36 @@ const SubscriberInfoForm = ({ data }) => {
   return (
     <div className="subscriber-info-form__wrapper">
       <ToastContainer />
+      {
+        changeModal ? (
+          <Modal>
+            <ContainerForm>
+              {
+                ({handleSubmit, isLoading})=>{
+                  return (
+                    <div>
+                      <DropZone
+                        method="put"
+                        sendUrl={`/change-user-photo/`}
+                        onSuccess={()=>{
+                          toast.success("SUCCESSFUL")
+                          queryClient.invalidateQueries("customer-profile");
+                          setChangeModal(false)
+                        }}
+                        onError={(error)=>{
+                          toast.error(
+                            get(error, "response.data.message", error?.message)
+                          );
+                        }}
+                      />
+                    </div>
+                  )
+                }
+              }
+            </ContainerForm>
+          </Modal>
+        ) : null 
+      }
       {cardModal ? (
         <Modal onClose={() => setCardModal(false)}>
           <ContainerForm
@@ -121,7 +152,7 @@ const SubscriberInfoForm = ({ data }) => {
                       name: "phone",
                       required: true,
                       min: 19,
-                      value:"+998",
+                      value: "+998",
                       onSubmitValue: (value) => {
                         return `+${value.match(/\d+/g).join("")}`;
                       },
@@ -448,6 +479,11 @@ const SubscriberInfoForm = ({ data }) => {
             </div>
             {/* <ToastContainer/> */}
             <div className="form-buttons">
+              <Button
+                text={t("Rasmni o'zgartirish")}
+                type={"button"}
+                onClick={() => setChangeModal(true)}
+              />
               <Button
                 text={t("Parol o'zgartirish")}
                 type={"button"}

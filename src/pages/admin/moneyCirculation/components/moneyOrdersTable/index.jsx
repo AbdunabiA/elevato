@@ -77,6 +77,7 @@ const MoneyOrdersTable = ({ data }) => {
             text={t("To'lash")}
             onClick={() => {
               setModal({ isOpen: true, data: row });
+              // console.log(modal);
             }}
           />
         );
@@ -111,11 +112,12 @@ const MoneyOrdersTable = ({ data }) => {
             fields={[
               {
                 name:'pay',
-                value:data?.id,
+                value:modal?.data?.id,
               }
             ]}
           >
-            {({ handleSubmit, isLoading }) => {
+            {({ handleSubmit, isLoading, values }) => {
+              console.log(values);
               return (
                 <>
                   <div style={{ display: "flex", gap: "20px" }}>
