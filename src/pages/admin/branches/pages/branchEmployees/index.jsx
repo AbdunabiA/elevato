@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useQueryClient } from "@tanstack/react-query";
 import { get } from "lodash";
 
+
 const BranchEmployees = () => {
   const { id } = useParams();
   const { t } = useTranslation();
@@ -33,7 +34,7 @@ const BranchEmployees = () => {
         {({ items, isLoading, isError, error }) => {
           if (isLoading) return <Loader />;
           if (isError) return <ErrorPage {...{ error }} />;
-          // console.log(items);
+          console.log(items);
           return (
             <div>
               <Button
@@ -88,7 +89,7 @@ const BranchEmployees = () => {
                       {
                         name: "passport_num",
                         required: true,
-                        min: 7,
+                        max: 7,
                       },
                       {
                         name: "phone_number",

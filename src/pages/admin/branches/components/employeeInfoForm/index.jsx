@@ -9,11 +9,12 @@ import { useState } from "react";
 import { useGet } from "crud";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
+import avatar from "assets/images/avatar.png";
 
 const EmployeeInfoForm = ({ data }) => {
   // const [modal, setModal] = useState(false)
   // const data = useGet({url:'/users-profile', queryKey:['']})
-  // console.log(data.data);
+  console.log(data)
   const { t } = useTranslation();
   return (
     <ContainerForm
@@ -33,6 +34,16 @@ const EmployeeInfoForm = ({ data }) => {
           required: true,
           value: data?.phone_number,
         },
+        {
+          name: "passport_series",
+          required: true,
+          value: data?.passport_series,
+        },
+        {
+          name: "passport_num",
+          required: true,
+          value: data?.passport_num,
+        },
       ]}
     >
       {({ handleSubmit, isLoading }) => (
@@ -42,7 +53,7 @@ const EmployeeInfoForm = ({ data }) => {
               <div>
                 <img
                   className="img-wrapper"
-                  src={`https://paymentstest-60d8729405f3.herokuapp.com${data?.photo}`}
+                  src={data?.photo ? `https://paymentstest-60d8729405f3.herokuapp.com${data?.photo}` : avatar}
                   alt=""
                 />
               </div>
@@ -61,11 +72,7 @@ const EmployeeInfoForm = ({ data }) => {
               <div className="fields__inputs">
                 <Field name="first_name" label="Ism" component={Input} />
                 <Field name="last_name" label="Familia" component={Input} />
-                <Field
-                  name="phone_number"
-                  label={t("Telefon raqam")}
-                  component={Input}
-                />
+
                 {/* <Field
                   name="phone_num2"
                   label="Telefon raqam 2"
@@ -94,6 +101,11 @@ const EmployeeInfoForm = ({ data }) => {
                       component={Input}
                     />
                   </div>
+                  <Field
+                    name="phone_number"
+                    label={t("Telefon raqam")}
+                    component={Input}
+                  />
                 </div>
 
                 {/* <Field name="education" label="Ma'lumoti" component={Input} />
@@ -104,9 +116,9 @@ const EmployeeInfoForm = ({ data }) => {
                 /> */}
               </div>
             </div>
-            <div className="textarea">
+            {/* <div className="textarea">
               <Field name="about" component={TextArea} />
-            </div>
+            </div> */}
           </div>
           <div className="form-buttons">
             <Button text={"Ishdan olish"} color={"#FF0000"} />

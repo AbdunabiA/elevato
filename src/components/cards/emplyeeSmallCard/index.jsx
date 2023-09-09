@@ -1,6 +1,7 @@
 import woman from "assets/images/Woman.png";
 import phone from "assets/icons/PhoneIcon.png";
 import "./employeeSmallCard.scss";
+import avatar from "assets/images/avatar.png";
 
 const EmployeeSmallCard = ({ data }) => {
   return (
@@ -8,7 +9,7 @@ const EmployeeSmallCard = ({ data }) => {
       <div className="top">
         <div className="user-avatar__wrapper">
           <img
-            src={`https://paymentstest-60d8729405f3.herokuapp.com${data?.photo}`}
+            src={data?.photo ? `https://paymentstest-60d8729405f3.herokuapp.com${data?.photo}` : avatar}
             alt=""
           />
         </div>

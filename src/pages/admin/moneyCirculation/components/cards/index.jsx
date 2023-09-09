@@ -17,9 +17,11 @@ import { useGet } from "crud";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { get } from "lodash";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Cards = ({ infos }) => {
   const {t} = useTranslation()
+  const queryClient = useQueryClient()
     const { data } = useGet({
       queryKey: ["cutomer-valyuta"],
       url: "/payments/card-and-amount-info/",
@@ -62,6 +64,8 @@ const Cards = ({ infos }) => {
       val: "$",
       right_side: true,
       right_icon: minus,
+      right_side_click: () =>
+        setModal({ isOpen: true, add: false, take: true }),
     },
   ];
   return (
@@ -72,7 +76,7 @@ const Cards = ({ infos }) => {
       })}
 
 
-      {modal.isOpen ? (
+      {modal.isOpen && modal.add ? (
         <Modal
           onClose={() => setModal({ isOpen: false, add: false, take: false })}
         >
@@ -88,6 +92,7 @@ const Cards = ({ infos }) => {
               setModal({ isOpen: false, add: false, take: false });
               // console.log('succ');
               toast.success("SUCCESSFUL");
+              queryClient.invalidateQueries("money-circulation");
             }}
             onError={(error) => {
               toast.error(get(error, "response.data.message", error?.message));
@@ -147,9 +152,82 @@ const Cards = ({ infos }) => {
             }}
           </ContainerForm>
         </Modal>
-      ) : (
-        false
-      )}
+      ) : modal.isOpen && modal.take ?  (
+        <Modal
+          onClose={() => setModal({ isOpen: false, add: false, take: false })}
+        >
+          <ContainerForm
+            url="/users-money-order/"
+            fields={[
+              {
+                name: "amount",
+                required: true,
+              },
+            ]}
+            onSuccess={() => {
+              toast.success("SUCCESSFUL");
+              setModal({ isOpen: false, add: false, take: false });
+              queryClient.invalidateQueries("money-circulation");
+            }}
+            onError={(error) => {
+              toast.error(get(error, "response.data.message", error?.message));
+            }}
+          >
+            {({ handleSubmit, isLoading, values }) => {
+              return (
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "20px",
+                    flexWrap: "wrap",
+                    padding: "30px",
+                  }}
+                >
+                  {modal.take ? (
+                    <>
+                      <Field name="amount" label="USD" component={Input} />
+                      <label className="input-field__wrapper">
+                        <span className="label">UZS</span>
+                        <div>
+                          <input
+                            className="custom-input"
+                            disabled
+                            type="text"
+                            value={
+                              values?.amount
+                                ? Math.round(
+                                    values?.amount * data?.data?.USD * 100
+                                  ) / 100
+                                : ""
+                            }
+                          />
+                        </div>
+                      </label>
+                      <label className="input-field__wrapper">
+                        <span className="label">{t("Karta raqami")}</span>
+                        <div>
+                          <input
+                            className="custom-input"
+                            type="text"
+                            disabled
+                            value={get(data, "data.card_number", "")}
+                          />
+                        </div>
+                      </label>
+                    </>
+                  ) : null}
+                  <Button
+                    text={t("Saqlash")}
+                    type={"submit"}
+                    onClick={handleSubmit}
+                    disabled={isLoading}
+                  />
+                </div>
+              );
+            }}
+          </ContainerForm>
+        </Modal>
+      ):null}
 
 
 

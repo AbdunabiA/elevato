@@ -128,12 +128,12 @@ const AdminSettings = () => {
                   <ContainerForm
                     url="/admin-bonuses-settings/"
                     method="put"
-                    onSuccess={()=>{
-                      toast.success("SUCCESSFUL")
+                    onSuccess={() => {
+                      toast.success("SUCCESSFUL");
                       setChangeModal(false);
                       queryClient.invalidateQueries("admin-settings");
                     }}
-                    onError={(error)=>{
+                    onError={(error) => {
                       toast.error(
                         get(error, "response.data.message", error?.message)
                       );
@@ -321,6 +321,15 @@ const AdminSettings = () => {
                                   return `${value.match(/\d+/g).join("")}`;
                                 },
                               },
+                              {
+                                name: "phone",
+                                required: true,
+                                min: 19,
+                                value: "+998",
+                                onSubmitValue: (value) => {
+                                  return `+${value.match(/\d+/g).join("")}`;
+                                },
+                              },
                             ]
                       }
                     >
@@ -367,6 +376,12 @@ const AdminSettings = () => {
                                   name={"expire"}
                                   label={t("Karta amal qlish muddati")}
                                   mask="99/99"
+                                  component={CustomInputMask}
+                                />
+                                <Field
+                                  name={"phone"}
+                                  label={t("Karta ulangan telefon raqam")}
+                                  mask="+999 (99) 999-99-99"
                                   component={CustomInputMask}
                                 />
                               </>
