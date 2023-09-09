@@ -4,6 +4,7 @@ import './dropZone.scss'
 import { Button } from "components/buttons";
 import { usePost } from "crud";
 import Loader from "components/loader";
+import { useTranslation } from "react-i18next";
 
 export default function DropZone({
                 //  field: { value, name },
@@ -15,6 +16,7 @@ export default function DropZone({
                  onError=()=>{},
                }) {
                 const { mutate, isLoading } = usePost();
+                const {t} = useTranslation()
                 const ref = useRef(null);
                 const onDrop = useCallback((acceptedFiles) => {
                   let formData = new FormData();

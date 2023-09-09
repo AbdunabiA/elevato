@@ -1,7 +1,9 @@
+import { useTranslation } from "react-i18next";
 import "./modal.scss";
 import CloseIcon from "assets/icons/close.png";
 
-const Modal = ({ children, onClose}) => {
+const Modal = ({ children, onClose=()=>{}}) => {
+  const {t} = useTranslation()
   return (
     <div
       id="modal_wrapper"

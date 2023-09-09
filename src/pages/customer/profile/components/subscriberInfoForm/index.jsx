@@ -78,6 +78,7 @@ const SubscriberInfoForm = ({ data }) => {
                   return (
                     <div>
                       <DropZone
+                      key={1}
                         method="put"
                         sendUrl={`/change-user-photo/`}
                         onSuccess={()=>{
