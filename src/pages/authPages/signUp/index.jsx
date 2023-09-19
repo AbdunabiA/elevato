@@ -1,4 +1,5 @@
 import logo from "assets/icons/LogoWithoutBg.svg";
+import paymeLogo from "assets/icons/Payme_logo.png";
 import { Button } from "components/buttons";
 import { Input } from "components/fields";
 import { Field } from "formik";
@@ -22,7 +23,7 @@ const SignUp = () => {
   const params = qs.parse(location.search, { ignoreQueryPrefix: true });
   const [userInfo, setUserInfo] = useState({ phone_number: false, phone_verified:false});
   const dispatch = useDispatch()
-  const {t} = useTranslation()
+  const { t, i18n } = useTranslation();
   const [minut, setMinut] = useState(1);
   const [sec, setSec] = useState(59);
   
@@ -76,8 +77,8 @@ const SignUp = () => {
           <div className="login-wrapper__left__texts">
             <h2>{t("Xush kelibsiz")}!</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur. Integer morbi interdum
-              odio ac. Duis sit habitant gravida sit vulputate ac pulvinar.
+              {/* Lorem ipsum dolor sit amet consectetur. Integer morbi interdum
+              odio ac. Duis sit habitant gravida sit vulputate ac pulvinar. */}
             </p>
           </div>
         </div>
@@ -88,7 +89,14 @@ const SignUp = () => {
             </h1>
             <p className="login-wrapper__right__redirect">
               {t("Akkauntingiz mavjudmi")}?
-              <span onClick={() => navigate({ pathname: "/sign-in", search:qs.stringify(params) })}>
+              <span
+                onClick={() =>
+                  navigate({
+                    pathname: "/sign-in",
+                    search: qs.stringify(params),
+                  })
+                }
+              >
                 {t("Bu yerga bosing")}!
               </span>
             </p>
@@ -101,9 +109,9 @@ const SignUp = () => {
                         min: 13,
                         value: "+998",
                         required: true,
-                        onSubmitValue:(value)=>{
-                          return `+${value.match(/\d+/g).join('')}`
-                        }
+                        onSubmitValue: (value) => {
+                          return `+${value.match(/\d+/g).join("")}`;
+                        },
                       },
                     ]
                   : userInfo?.phone_verified
@@ -144,7 +152,7 @@ const SignUp = () => {
                       {
                         name: "offer_id",
                         required: true,
-                        value:get(params, 'offer_id', '')
+                        value: get(params, "offer_id", ""),
                       },
                       {
                         name: "dateOfBirth",
@@ -210,7 +218,7 @@ const SignUp = () => {
                         label={t("Telefon raqam")}
                         component={CustomInputMask}
                         wrapperClassName={"login-input"}
-                        mask={'+998 (99) 999-99-99'}
+                        mask={"+998 (99) 999-99-99"}
                       />
                     ) : userInfo?.phone_verified ? (
                       <div className="registration-fields">
@@ -318,6 +326,15 @@ const SignUp = () => {
                 );
               }}
             </ContainerForm>
+            <div className="payme_partner">
+              <p>
+                <span>{i18n.language === "ru" ? "В партнерстве с" : ""}</span>
+                <span className="payme-logo">
+                  <img src={paymeLogo} alt="payme_logo" />
+                </span>
+                {i18n.language === "uz" ? "Payme hamkorligida" : ""}
+              </p>
+            </div>
           </div>
         </div>
       </div>

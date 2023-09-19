@@ -146,6 +146,23 @@ $xxxxl:1921px;
             flex-direction: column;
             justify-content: start;
             gap: 20px;
+            .payme_partner{
+                margin-top: 80px;
+            }
+            .payme_partner > p{
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                white-space: nowrap;
+                &>.payme-logo{
+                    max-width: 60px;
+                }
+                    // &>div{
+                    //     @media (max-width:$xxxl) {
+                            
+                    //     }
+                    // }
+            }
         }
         &__title{
             font-size: 36px;

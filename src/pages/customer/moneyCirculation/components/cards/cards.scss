@@ -16,5 +16,23 @@ $xxxxl:1921px;
             justify-content: space-around;
             gap: 20px;
         }
+        .payme_partner{
+                margin-top: 80px;
+                margin-left: 20px;
+            }
+            .payme_partner > p{
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                white-space: nowrap;
+                &>.payme-logo{
+                    max-width: 60px;
+                }
+                    // &>div{
+                    //     @media (max-width:$xxxl) {
+                            
+                    //     }
+                    // }
+            }
         
     }

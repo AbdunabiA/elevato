@@ -1,25 +1,26 @@
-import logo from 'assets/icons/LogoWithoutBg.svg'
-import { Button } from 'components/buttons';
-import { Input } from 'components/fields';
-import { Field } from 'formik';
-import { ContainerForm } from 'modules';
-import './signIn.scss'
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { signIn } from 'store/auth';
-import { storage } from 'services';
-import { useTranslation } from 'react-i18next';
+import logo from "assets/icons/LogoWithoutBg.svg";
+import paymeLogo from "assets/icons/Payme_logo.png";
+import { Button } from "components/buttons";
+import { Input } from "components/fields";
+import { Field } from "formik";
+import { ContainerForm } from "modules";
+import "./signIn.scss";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signIn } from "store/auth";
+import { storage } from "services";
+import { useTranslation } from "react-i18next";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import qs from "qs";
-import { get } from 'lodash';
+import { get } from "lodash";
 
 const SignIn = () => {
   const location = useLocation();
   const params = qs.parse(location.search, { ignoreQueryPrefix: true });
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const {t} = useTranslation()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
   return (
     <div className="container1">
       <ToastContainer />
@@ -39,8 +40,8 @@ const SignIn = () => {
           <div className="login-wrapper__left__texts">
             <h2>{t("Xush kelibsiz")}!</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur. Integer morbi interdum
-              odio ac. Duis sit habitant gravida sit vulputate ac pulvinar.
+              {/* Lorem ipsum dolor sit amet consectetur. Integer morbi interdum
+              odio ac. Duis sit habitant gravida sit vulputate ac pulvinar. */}
             </p>
           </div>
         </div>
@@ -120,11 +121,22 @@ const SignIn = () => {
                 );
               }}
             </ContainerForm>
+            <div className="payme_partner">
+              <p>
+                <span>
+                  {i18n.language === "ru" ? "В партнерстве с" : ""} 
+                </span>
+                <span className="payme-logo">
+                  <img src={paymeLogo} alt="payme_logo" />
+                </span>
+                {i18n.language === 'uz' ? 'Payme hamkorligida' : ""}
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default SignIn
+export default SignIn;
