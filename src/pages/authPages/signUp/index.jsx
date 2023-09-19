@@ -332,7 +332,7 @@ const SignUp = () => {
                 <span className="payme-logo">
                   <img src={paymeLogo} alt="payme_logo" />
                 </span>
-                {i18n.language === "uz" ? "Payme hamkorligida" : ""}
+                {i18n.language === "uz" ? "hamkorligida" : ""}
               </p>
             </div>
           </div>
