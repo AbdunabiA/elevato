@@ -116,7 +116,10 @@ const Cards = ({ infos }) => {
                   >
                     {modal.add ? (
                       <>
-                        <Field name="amount" label="UZS" component={Input} />
+                        <div>
+                          <Field name="amount" label="UZS" component={Input} />
+                          <span>{t("Komissiya")} 2%</span>
+                        </div>
                         <label className="input-field__wrapper">
                           <span className="label">USD</span>
                           <div>
